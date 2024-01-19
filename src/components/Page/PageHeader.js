@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {LinkLogo} from 'components/Links';
 
 import {Flex, HStack, IconButton, Text} from '@chakra-ui/react';
@@ -41,7 +41,7 @@ function PageHeader() {
 					<FaSearch />
 				</IconButton>
 
-				<IconButton variant='ghost'>
+				<IconButton variant='ghost' as={Link} to='/register'>
 					<FaRegUser />
 				</IconButton>
 
