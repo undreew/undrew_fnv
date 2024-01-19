@@ -11,11 +11,11 @@ import {BrowserRouter as Router, Routes} from 'react-router-dom';
 function App() {
 	return (
 		<AppProviders>
-			<Page>
-				<Router>
+			<Router>
+				<Page>
 					<Routes>{renderRoutes(routes)}</Routes>
-				</Router>
-			</Page>
+				</Page>
+			</Router>
 		</AppProviders>
 	);
 }

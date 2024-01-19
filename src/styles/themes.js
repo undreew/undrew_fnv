@@ -11,6 +11,97 @@ const theme = extendTheme({
 		body: 'League Spartan, sans-serif',
 	},
 
+	/*
+	 for text style properties
+	 USAGE: <Text textStyle='display1'>Label<Text/>
+	 */
+	textStyles: {
+		display1: {
+			fontSize: ['4rem'], // 64px
+			fontWeight: 'bold',
+		},
+		display2: {
+			fontSize: ['3.5rem'], // 56px
+			fontWeight: 'bold',
+		},
+		h1: {
+			fontSize: ['2.75rem'], // 44px
+			fontWeight: 'bold',
+		},
+		h2: {
+			fontSize: ['2.5rem'], // 40px
+			fontWeight: 'bold',
+		},
+		h3: {
+			fontSize: ['2rem'], // 32px
+			fontWeight: 'semibold',
+		},
+		h4: {
+			fontSize: ['1.5rem'], // 24px
+			fontWeight: 'bold',
+		},
+		h5: {
+			fontSize: ['1.25rem'], // 20px
+			fontWeight: 'bold',
+		},
+		h6: {
+			fontSize: ['1rem'], // 16px
+			fontWeight: 'bold',
+		},
+
+		bodyXl: {
+			fontSize: ['1.25rem'], // 20px
+			fontWeight: 'regular',
+		},
+		bodyLg: {
+			fontSize: ['1.125rem'], // 18px
+			fontWeight: 'regular',
+		},
+		bodyMd: {
+			fontSize: ['1rem'], // 16px
+			fontWeight: 'regular',
+		},
+		bodySm: {
+			fontSize: ['0.875rem'], // 14px
+			fontWeight: 'regular',
+		},
+		bodyXs: {
+			fontSize: ['0.75rem'], // 12px
+			fontWeight: 'regular',
+		},
+
+		captionLg: {
+			fontSize: ['0.875rem'], // 14px
+			fontWeight: 'semibold',
+		},
+		captionMd: {
+			fontSize: ['0.75rem'], // 12px
+			fontWeight: 'regular',
+		},
+		captionSm: {
+			fontSize: ['0.625rem'], // 10px
+			fontWeight: 'semibold',
+		},
+
+		buttonLg: {
+			fontSize: ['1rem'], // 16px
+			fontWeight: 'regular',
+		},
+		buttonSm: {
+			fontSize: ['0.875rem'], // 14px
+			fontWeight: 'regular',
+		},
+
+		overlineLg: {
+			fontSize: ['1rem'], // 16px
+			fontWeight: 'regular',
+		},
+		overlineSm: {
+			fontSize: ['0.75rem'], // 12px
+			fontWeight: 'semibold',
+		},
+	},
+
 	colors: {
 		base: {
 			primary: '#748C70',
