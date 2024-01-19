@@ -9,10 +9,8 @@ function Page(props) {
 	return (
 		<Container
 			maxW={['sm', '2xl', '3xl', '7xl']}
-			minH='100vh'
 			display='flex'
 			flexDir='column'
-			justifyContent='space-between'
 		>
 			<PageHeader />
 
