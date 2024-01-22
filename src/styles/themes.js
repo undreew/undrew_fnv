@@ -1,4 +1,5 @@
 import {extendTheme} from '@chakra-ui/react';
+import {Button, Input} from './components';
 
 const theme = extendTheme({
 	config: {
@@ -9,6 +10,11 @@ const theme = extendTheme({
 	fonts: {
 		heading: 'Montserrat, sans-serif',
 		body: 'League Spartan, sans-serif',
+	},
+
+	components: {
+		Input,
+		Button,
 	},
 
 	/*
