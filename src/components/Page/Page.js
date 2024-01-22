@@ -1,11 +1,17 @@
 import React from 'react';
-
 import {Box, Container} from '@chakra-ui/react';
+
 import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
 
+import {useLayout} from 'contexts/LayoutContext';
+
 function Page(props) {
 	const {children} = props;
+
+	const {header, footer} = useLayout();
+	const _header = header && <PageHeader />;
+	const _footer = footer && <PageFooter />;
 
 	return (
 		<Container
@@ -14,7 +20,7 @@ function Page(props) {
 			flexDir='column'
 			maxW={['2xl', '3xl', '7xl']}
 		>
-			<PageHeader />
+			{_header}
 
 			<Box
 				as='main'
@@ -27,7 +33,7 @@ function Page(props) {
 				{children}
 			</Box>
 
-			<PageFooter />
+			{_footer}
 		</Container>
 	);
 }
