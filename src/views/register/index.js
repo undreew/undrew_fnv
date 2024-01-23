@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Register from './Register';
+import {GuestLayout} from 'components/Layouts';
 
 function Index() {
 	return (
-		<div>
+		<GuestLayout header={false}>
 			<Register />
-		</div>
+		</GuestLayout>
 	);
 }
 

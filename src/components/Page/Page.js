@@ -18,7 +18,11 @@ function Page(props) {
 			display='flex'
 			height='100vh'
 			flexDir='column'
-			maxW={['2xl', '3xl', '7xl']}
+			maxW={{
+				sm: '2xl',
+				md: '4xl',
+				lg: '7xl',
+			}}
 		>
 			{_header}
 
