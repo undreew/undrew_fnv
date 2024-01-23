@@ -6,10 +6,10 @@ import {inputAnatomy} from '@chakra-ui/anatomy';
 const {definePartsStyle, defineMultiStyleConfig} =
 	createMultiStyleConfigHelpers(inputAnatomy.keys);
 
-const modima = definePartsStyle({
+const modimaFilled = definePartsStyle({
 	field: {
 		borderRadius: 0,
-		border: '1px solid',
+		border: '2px solid',
 		color: 'neutral.gray606060',
 		borderColor: 'neutral.gray606060',
 
@@ -66,7 +66,7 @@ const modimaFlush = definePartsStyle({
 });
 
 const Input = defineMultiStyleConfig({
-	variants: {modima, modimaFlush},
+	variants: {modimaFilled, modimaFlush},
 });
 
 export default Input;

@@ -1,38 +1,18 @@
 import React from 'react';
 import {GuestLayout} from 'components/Layouts';
-import {
-	Box,
-	FormControl,
-	FormErrorMessage,
-	Input,
-	InputGroup,
-	InputLeftElement,
-} from '@chakra-ui/react';
-import {FaSearch, FaUser} from 'react-icons/fa';
+import {Box, Button} from '@chakra-ui/react';
 
 function Index() {
 	return (
 		<GuestLayout header={false}>
-			<Box mt={5} display='flex' flexDir='column' gap={3}>
-				<FormControl isInvalid={false}>
-					<InputGroup>
-						<InputLeftElement>
-							<FaUser />
-						</InputLeftElement>
-						<Input type='text' variant='modima' placeholder='First Name' />
-					</InputGroup>
+			<Box mt={5} mx={1} display='flex' flexDir='column' gap={3}>
+				<Button variant='modimaSolid' isDisabled={false}>
+					Button
+				</Button>
 
-					<FormErrorMessage>This field is required.</FormErrorMessage>
-				</FormControl>
-
-				<FormControl isInvalid={true}>
-					<InputGroup>
-						<InputLeftElement>
-							<FaSearch />
-						</InputLeftElement>
-						<Input type='text' variant='modimaFlush' placeholder='Test' />
-					</InputGroup>
-				</FormControl>
+				<Button variant='ghost' colorScheme='purple' isDisabled={false}>
+					Test
+				</Button>
 			</Box>
 		</GuestLayout>
 	);
