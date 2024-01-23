@@ -1,5 +1,7 @@
 import {extendTheme} from '@chakra-ui/react';
-import {Button, Input} from './components';
+
+import Input from './input';
+import Button from './button';
 
 const theme = extendTheme({
 	config: {
@@ -106,6 +108,13 @@ const theme = extendTheme({
 			fontSize: ['0.75rem'], // 12px
 			fontWeight: 'semibold',
 		},
+
+		// LOGO
+		logo: {
+			fontSize: ['1.125rem', '1.5rem', '2rem'], //   '18px', '24px', '32px'
+			fontFamily: 'body',
+			fontWeight: 'bold',
+		},
 	},
 
 	colors: {
@@ -164,6 +173,8 @@ const theme = extendTheme({
 			bg: '#FFF2F2',
 		},
 	},
+
+	semanticTokens: {},
 });
 
 export default theme;
