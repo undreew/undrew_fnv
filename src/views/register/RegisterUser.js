@@ -1,57 +1,78 @@
 import React from 'react';
-import {FormControl, Input} from '@chakra-ui/react';
+import {FormControl, FormErrorMessage, Input} from '@chakra-ui/react';
 
 import RegisterForm from './RegisterForm';
+import useRegister from './useRegister';
 
 function RegisterUser() {
+	const {
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		errors,
+		values,
+		touched,
+		isSubmitting,
+	} = useRegister();
+
 	return (
-		<RegisterForm gap={3}>
-			<FormControl isInvalid={false}>
+		<RegisterForm onSubmit={handleSubmit} isSubmitting={isSubmitting}>
+			<FormControl isInvalid={touched.firstName && errors.firstName}>
 				<Input
 					type='text'
 					name='firstName'
 					variant='modimaFilled'
 					placeholder='First Name'
-					onBlur={() => {}}
-					onChange={() => {}}
-					defaultValue={''}
+					onBlur={handleBlur}
+					onChange={handleChange}
+					defaultValue={values.firstName}
 				/>
+				<FormErrorMessage>
+					{touched.firstName && errors.firstName}
+				</FormErrorMessage>
 			</FormControl>
 
-			<FormControl isInvalid={false}>
+			<FormControl isInvalid={touched.lastName && errors.lastName}>
 				<Input
 					type='text'
 					name='lastName'
 					variant='modimaFilled'
 					placeholder='Last Name'
-					onBlur={() => {}}
-					onChange={() => {}}
-					defaultValue={''}
+					onBlur={handleBlur}
+					onChange={handleChange}
+					defaultValue={values.lastName}
 				/>
+				<FormErrorMessage>
+					{touched.lastName && errors.lastName}
+				</FormErrorMessage>
 			</FormControl>
 
-			<FormControl isInvalid={false}>
+			<FormControl isInvalid={touched.email && errors.email}>
 				<Input
 					type='text'
 					name='email'
 					variant='modimaFilled'
 					placeholder='Email'
-					onBlur={() => {}}
-					onChange={() => {}}
-					defaultValue=''
+					onBlur={handleBlur}
+					onChange={handleChange}
+					defaultValue={values.email}
 				/>
+				<FormErrorMessage>{touched.email && errors.email}</FormErrorMessage>
 			</FormControl>
 
-			<FormControl isInvalid={false}>
+			<FormControl isInvalid={touched.password && errors.password}>
 				<Input
-					name='email'
+					name='password'
 					type='password'
 					variant='modimaFilled'
 					placeholder='Password'
-					onBlur={() => {}}
-					onChange={() => {}}
-					defaultValue=''
+					onBlur={handleBlur}
+					onChange={handleChange}
+					defaultValue={values.password}
 				/>
+				<FormErrorMessage>
+					{touched.password && errors.password}
+				</FormErrorMessage>
 			</FormControl>
 		</RegisterForm>
 	);
