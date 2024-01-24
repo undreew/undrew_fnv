@@ -5,12 +5,12 @@ import {Button, HStack, IconButton, Text, VStack} from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import {FaApple, FaFacebook, FaGoogle} from 'react-icons/fa';
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
 	onSubmit: PropTypes.func,
 	isSubmitting: PropTypes.bool,
 };
 
-function RegisterForm(props) {
+function LoginForm(props) {
 	const {children, onSubmit, isSubmitting, ...rest} = props;
 
 	return (
@@ -27,14 +27,7 @@ function RegisterForm(props) {
 				Register
 			</Button>
 
-			<VStack textAlign='center'>
-				<Text textStyle='bodySm' mt={2}>
-					Already have an account?{' '}
-					<Text as={Link} to='/login' color='base.primary' fontWeight='500'>
-						Login
-					</Text>
-				</Text>
-
+			<VStack>
 				<Text textStyle='bodySm'>or</Text>
 
 				<HStack>
@@ -52,13 +45,9 @@ function RegisterForm(props) {
 				</HStack>
 
 				<Text textStyle='bodySm'>
-					By clicking Register, you agree to{' '}
-					<Text color='base.primary' as={Link} fontWeight='500'>
-						Terms & Conditions
-					</Text>{' '}
-					and{' '}
-					<Text color='base.primary' as={Link} fontWeight='500'>
-						Privacy Policy.
+					New to Modimal?{' '}
+					<Text color='base.primary' as={Link} fontWeight='500' to='/register'>
+						Create an account
 					</Text>
 				</Text>
 			</VStack>
@@ -66,4 +55,4 @@ function RegisterForm(props) {
 	);
 }
 
-export default RegisterForm;
+export default LoginForm;
