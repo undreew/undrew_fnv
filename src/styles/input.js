@@ -9,7 +9,7 @@ const {definePartsStyle, defineMultiStyleConfig} =
 const modimaFilled = definePartsStyle({
 	field: {
 		borderRadius: 0,
-		border: '2px solid',
+		border: '1px solid',
 		color: 'neutral.gray606060',
 		borderColor: 'neutral.gray606060',
 

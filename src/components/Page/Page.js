@@ -32,7 +32,7 @@ function Page(props) {
 				flexGrow={1}
 				display='flex'
 				flexDir='column'
-				overflow='hidden'
+				// overflow='hidden'
 			>
 				{children}
 			</Box>

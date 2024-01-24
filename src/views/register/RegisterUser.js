@@ -10,7 +10,7 @@ function RegisterUser() {
 				<Input
 					type='text'
 					name='firstName'
-					variant='outline'
+					variant='modimaFilled'
 					placeholder='First Name'
 					onBlur={() => {}}
 					onChange={() => {}}
@@ -22,7 +22,7 @@ function RegisterUser() {
 				<Input
 					type='text'
 					name='lastName'
-					variant='outline'
+					variant='modimaFilled'
 					placeholder='Last Name'
 					onBlur={() => {}}
 					onChange={() => {}}
@@ -34,7 +34,7 @@ function RegisterUser() {
 				<Input
 					type='text'
 					name='email'
-					variant='outline'
+					variant='modimaFilled'
 					placeholder='Email'
 					onBlur={() => {}}
 					onChange={() => {}}
@@ -46,7 +46,7 @@ function RegisterUser() {
 				<Input
 					name='email'
 					type='password'
-					variant='outline'
+					variant='modimaFilled'
 					placeholder='Password'
 					onBlur={() => {}}
 					onChange={() => {}}
