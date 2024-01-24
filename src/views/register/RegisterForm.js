@@ -1,21 +1,30 @@
 import React from 'react';
-import {Button, Text, VStack} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
+import {Button, Text, VStack} from '@chakra-ui/react';
+
+import PropTypes from 'prop-types';
+
+RegisterForm.propTypes = {
+	onSubmit: PropTypes.func,
+	isSubmitting: PropTypes.bool,
+};
 
 function RegisterForm(props) {
-	const {children, onSubmit, isDisabled, isSubmitting, ...rest} = props;
+	const {children, onSubmit, isSubmitting, ...rest} = props;
 
 	return (
-		<VStack as='form' onSubmit={onSubmit} {...rest}>
+		<VStack as='form' gap={3} onSubmit={onSubmit} {...rest}>
 			{children}
 
 			<Button
 				mt={2}
+				type='submit'
 				bg='primary.600'
 				color='base.white'
 				fontFamily='heading'
 				variant='modimaSolid'
-				disabled={isDisabled || isSubmitting}
+				isLoading={isSubmitting}
+				isDisabled={isSubmitting}
 			>
 				Register
 			</Button>
