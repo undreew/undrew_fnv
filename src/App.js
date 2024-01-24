@@ -9,8 +9,12 @@ import AppProviders from 'AppProviders';
 import {BrowserRouter as Router, Routes} from 'react-router-dom';
 
 import 'utils/axios-config';
+import useBSID from 'hooks/useBSID';
 
 function App() {
+	const {isLoading} = useBSID();
+	if (isLoading) return 'Loading...';
+
 	return (
 		<AppProviders>
 			<Router>

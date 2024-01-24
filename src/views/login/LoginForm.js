@@ -24,7 +24,7 @@ function LoginForm(props) {
 				isLoading={isSubmitting}
 				isDisabled={isSubmitting}
 			>
-				Register
+				Login
 			</Button>
 
 			<VStack>
