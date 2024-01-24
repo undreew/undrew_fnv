@@ -1,11 +1,15 @@
 import {useFormik} from 'formik';
 import {object, string} from 'yup';
 import {postRegister} from 'api/auth';
+import {useAuth} from 'contexts/AuthContext';
 
 function useRegister() {
+	const {setAuth} = useAuth();
+
 	async function handleRegister(formData) {
 		try {
-			await postRegister(formData);
+			const {session_id} = await postRegister(formData);
+			setAuth(session_id);
 		} catch (error) {
 			console.log(error);
 		}
