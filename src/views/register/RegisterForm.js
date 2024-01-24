@@ -56,11 +56,11 @@ function RegisterForm(props) {
 
 				<Text textStyle='bodySm'>
 					By clicking Register, you agree to{' '}
-					<Text color='base.primary' as={Link}>
+					<Text color='base.primary' as={Link} fontWeight='500'>
 						Terms & Conditions
 					</Text>{' '}
 					and{' '}
-					<Text color='base.primary' as={Link}>
+					<Text color='base.primary' as={Link} fontWeight='500'>
 						Privacy Policy.
 					</Text>
 				</Text>
