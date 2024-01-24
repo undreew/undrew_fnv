@@ -10,14 +10,14 @@ function RegisterForm(props) {
 			{children}
 
 			<Button
-				w='md'
 				mt={2}
 				bg='primary.600'
 				color='base.white'
 				fontFamily='heading'
+				variant='modimaSolid'
 				disabled={isDisabled || isSubmitting}
 			>
-				Regiser
+				Register
 			</Button>
 
 			<Text fontSize='sm' textAlign='center' mt={2}>
