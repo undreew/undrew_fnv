@@ -1,12 +1,11 @@
 import {useFormik} from 'formik';
 import {object, string} from 'yup';
+import {postRegister} from 'api/auth';
 
 function useRegister() {
-	const dummyApi = async (formData) => null;
-
-	async function postRegister(formData) {
+	async function handleRegister(formData) {
 		try {
-			await dummyApi(formData);
+			await postRegister(formData);
 		} catch (error) {
 			console.log(error);
 		}
@@ -29,7 +28,7 @@ function useRegister() {
 	return useFormik({
 		initialValues,
 		validationSchema,
-		onSubmit: postRegister,
+		onSubmit: handleRegister,
 	});
 }
 
