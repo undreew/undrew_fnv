@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Text, VStack} from '@chakra-ui/react';
+import {Button, HStack, IconButton, Text, VStack} from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
+import {FaApple, FaFacebook, FaGoogle} from 'react-icons/fa';
 
 RegisterForm.propTypes = {
 	onSubmit: PropTypes.func,
@@ -29,12 +30,41 @@ function RegisterForm(props) {
 				Register
 			</Button>
 
-			<Text fontSize='sm' textAlign='center' mt={2}>
-				Already have an account?{' '}
-				<Text as={Link} to='/login' color='base.primary' fontWeight='500'>
-					Login
+			<VStack textAlign='center'>
+				<Text textStyle='bodySm' mt={2}>
+					Already have an account?{' '}
+					<Text as={Link} to='/login' color='base.primary' fontWeight='500'>
+						Login
+					</Text>
 				</Text>
-			</Text>
+
+				<Text textStyle='bodySm'>or</Text>
+
+				<HStack>
+					<IconButton variant='ghost' borderRadius={0} colorScheme='blackAlpha'>
+						<FaApple />
+					</IconButton>
+
+					<IconButton variant='ghost' borderRadius={0} colorScheme='orange'>
+						<FaGoogle />
+					</IconButton>
+
+					<IconButton variant='ghost' borderRadius={0} colorScheme='facebook'>
+						<FaFacebook />
+					</IconButton>
+				</HStack>
+
+				<Text textStyle='bodySm'>
+					By clicking Register, you agree to{' '}
+					<Text color='base.primary' as={Link}>
+						Terms & Conditions
+					</Text>{' '}
+					and{' '}
+					<Text color='base.primary' as={Link}>
+						Privacy Policy.
+					</Text>
+				</Text>
+			</VStack>
 		</VStack>
 	);
 }
