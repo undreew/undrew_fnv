@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
     "crypto-js": "^4.2.0",
+    "form-serialize": "^0.7.2",
     "formik": "^2.4.5",
     "framer-motion": "^10.18.0",
     "lodash": "^4.17.21",
