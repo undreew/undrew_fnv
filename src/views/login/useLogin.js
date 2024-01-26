@@ -1,12 +1,15 @@
+import {postAuthLogin} from 'api/auth';
+import {useAuth} from 'contexts/AuthContext';
 import {useFormik} from 'formik';
 import {object, string} from 'yup';
 
 function useLogin() {
-	const dummyApi = async () => null;
+	const {setAuth} = useAuth();
 
-	async function postLogin(formData) {
+	async function handleLogin(formData) {
 		try {
-			await dummyApi(formData);
+			const {session_id} = await postAuthLogin(formData);
+			setAuth(session_id);
 		} catch (error) {
 			console.log(error);
 		}
@@ -25,7 +28,7 @@ function useLogin() {
 	return useFormik({
 		initialValues,
 		validationSchema,
-		onSubmit: postLogin,
+		onSubmit: handleLogin,
 	});
 }
 
