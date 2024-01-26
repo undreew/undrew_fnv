@@ -1,12 +1,8 @@
 import React from 'react';
-import {Text} from '@chakra-ui/react';
+import {GuestLayout} from 'components/Layouts';
 
 function Index() {
-	return (
-		<div>
-			<Text>Landing</Text>
-		</div>
-	);
+	return <GuestLayout header={true}></GuestLayout>;
 }
 
 export default Index;
