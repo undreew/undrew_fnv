@@ -4,16 +4,12 @@ import DashboardStepFormHeader from './DashboardStepFormHeader';
 import DashboardStepFormContent from './DashboardStepFormContent';
 
 function DashboardStepForm(props) {
-	const {steps, children} = props;
+	const {steps, children, onNext, onSubmit} = props;
 
 	const {activeStep, setActiveStep} = useSteps({
 		index: 0,
 		count: steps.length,
 	});
-
-	function handleSubmit(formData) {
-		console.log(formData);
-	}
 
 	function handlePrev(formData) {
 		console.log(formData);
@@ -21,7 +17,7 @@ function DashboardStepForm(props) {
 	}
 
 	function handleNext(formData) {
-		console.log(formData);
+		onNext(formData, activeStep);
 		setActiveStep(activeStep + 1);
 	}
 
@@ -40,7 +36,7 @@ function DashboardStepForm(props) {
 				const isLast = index >= children.length - 1;
 
 				let onPrev = isFirst ? null : handlePrev;
-				let onNext = isLast ? handleSubmit : handleNext;
+				let onNext = isLast ? onSubmit : handleNext;
 				let nextButtonText = isLast ? 'Submit' : 'Continue';
 
 				return (
