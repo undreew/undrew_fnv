@@ -1,15 +1,23 @@
 import {Box, Button, HStack, Text} from '@chakra-ui/react';
 import React from 'react';
+import {withSteps} from './DashboadStepFormContext';
 
 function DashboardStepEditForm(props) {
-	const {children, title, ...rest} = props;
+	const {children, title, step, handleEdit} = props;
 
 	return (
-		<Box {...rest}>
+		<Box>
 			<HStack justify='space-between'>
 				<Text textStyle='bodyLg'>{title}</Text>
 
-				<Button variant='outline'>Edit</Button>
+				<Button
+					variant='outline'
+					onClick={() => {
+						handleEdit(step);
+					}}
+				>
+					Edit
+				</Button>
 			</HStack>
 
 			{children}
@@ -17,4 +25,4 @@ function DashboardStepEditForm(props) {
 	);
 }
 
-export default DashboardStepEditForm;
+export default withSteps(DashboardStepEditForm);

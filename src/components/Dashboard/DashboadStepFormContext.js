@@ -1,18 +1,25 @@
 import {useSteps} from '@chakra-ui/react';
 import React, {createContext, useContext} from 'react';
 
-export const DashboadStepFormContext = createContext();
+const DashboadStepFormContext = createContext();
 
-export function DashboadStepFormProvider(props) {
-	const {children, steps} = props;
+function DashboadStepFormProvider(props) {
+	const {children, steps, onEdit} = props;
 
 	const {activeStep, setActiveStep} = useSteps({
 		index: 0,
 		count: steps.length,
 	});
 
+	function handleEdit(step) {
+		setActiveStep(step);
+		onEdit(step);
+	}
+
 	return (
-		<DashboadStepFormContext.Provider value={{activeStep, setActiveStep}}>
+		<DashboadStepFormContext.Provider
+			value={{activeStep, setActiveStep, handleEdit}}
+		>
 			{children}
 		</DashboadStepFormContext.Provider>
 	);
@@ -20,10 +27,17 @@ export function DashboadStepFormProvider(props) {
 
 const useWithSteps = () => useContext(DashboadStepFormContext);
 
-export function withSteps(Component) {
+function withSteps(Component) {
 	return function (props) {
 		const stepProps = useWithSteps();
 
 		return <Component {...stepProps} {...props} />;
 	};
 }
+
+export {
+	DashboadStepFormContext,
+	DashboadStepFormProvider,
+	useWithSteps,
+	withSteps,
+};
