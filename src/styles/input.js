@@ -13,6 +13,8 @@ const modimaFilled = definePartsStyle({
 		color: 'neutral.gray606060',
 		borderColor: 'neutral.gray606060',
 
+		bgColor: 'transparent',
+
 		fontSize: '14px',
 		fontWeight: 500,
 		fontFamily: 'heading',
@@ -51,6 +53,8 @@ const modimaFlush = definePartsStyle({
 		borderBottom: '1px solid',
 		color: 'neutral.gray606060',
 		borderColor: 'neutral.gray606060',
+
+		bgColor: 'transparent',
 
 		fontSize: '14px',
 		fontWeight: 500,

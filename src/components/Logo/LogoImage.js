@@ -1,16 +1,19 @@
 import React from 'react';
-import {HStack, Image, Text} from '@chakra-ui/react';
+import {HStack, Image, Text, useColorMode} from '@chakra-ui/react';
 
 import img from 'assets/images/img.png';
 
 function LogoImage() {
+	const {colorMode} = useColorMode();
+	const isLightMode = colorMode === 'light';
+
 	return (
 		<HStack>
 			<Text
 				textStyle='logo'
-				color='neutral.gray404040'
-				_hover={{color: 'neutral.gray202020'}}
-				_selected={{color: 'neutral.gray0C0C0C'}}
+				color={isLightMode ? 'neutral.gray404040' : 'neutral.white'}
+				_hover={{color: isLightMode && 'neutral.gray202020'}}
+				_selected={{color: isLightMode && 'neutral.gray0C0C0C'}}
 			>
 				modimal
 			</Text>

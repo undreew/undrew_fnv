@@ -5,6 +5,8 @@ import {FormControl, FormErrorMessage, Input, Text} from '@chakra-ui/react';
 import LoginForm from './LoginForm';
 import useLogin from './useLogin';
 
+import {InputPassword} from 'components/Input';
+
 function LoginUser() {
 	const {
 		handleChange,
@@ -32,9 +34,8 @@ function LoginUser() {
 			</FormControl>
 
 			<FormControl isInvalid={touched.password && errors.password}>
-				<Input
+				<InputPassword
 					name='password'
-					type='password'
 					variant='modimaFilled'
 					placeholder='Password'
 					onBlur={handleBlur}
