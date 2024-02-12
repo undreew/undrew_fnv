@@ -1,7 +1,8 @@
 import {extendTheme} from '@chakra-ui/react';
 
-import Input from './input';
-import Button from './button';
+import Input from './style.components/input';
+import Button from './style.components/button';
+import Accordion from './style.components/accordion';
 
 const theme = extendTheme({
 	config: {
@@ -17,6 +18,7 @@ const theme = extendTheme({
 	components: {
 		Input,
 		Button,
+		Accordion,
 	},
 
 	/*

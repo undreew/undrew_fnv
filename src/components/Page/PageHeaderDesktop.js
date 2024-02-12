@@ -3,7 +3,7 @@ import {Link, NavLink} from 'react-router-dom';
 
 import {LinkLogo} from 'components/Links';
 import {HStack, IconButton, Text} from '@chakra-ui/react';
-import {FaSearch, FaRegUser, FaRegHeart, FaShoppingBag} from 'react-icons/fa';
+import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
 
 function PageHeaderDesktop(props) {
 	const {items} = props;
@@ -30,19 +30,39 @@ function PageHeaderDesktop(props) {
 			</HStack>
 
 			<HStack gap={5}>
-				<IconButton variant='ghost'>
-					<FaSearch />
+				<IconButton
+					as={Link}
+					variant='ghost'
+					to='/dashboard'
+					aria-label='Dashboard'
+				>
+					<FaDashcube />
 				</IconButton>
 
-				<IconButton variant='ghost' as={Link} to='/register'>
+				<IconButton
+					as={Link}
+					to='/register'
+					variant='ghost'
+					aria-label='Register'
+				>
 					<FaRegUser />
 				</IconButton>
 
-				<IconButton variant='ghost'>
+				<IconButton
+					as={Link}
+					variant='ghost'
+					to='/favorites'
+					aria-label='Favorites'
+				>
 					<FaRegHeart />
 				</IconButton>
 
-				<IconButton variant='ghost'>
+				<IconButton
+					as={Link}
+					to='/cart'
+					variant='ghost'
+					aria-label='Add to Cart'
+				>
 					<FaShoppingBag />
 				</IconButton>
 			</HStack>
