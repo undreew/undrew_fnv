@@ -3,8 +3,6 @@ import {defineStyle, defineStyleConfig} from '@chakra-ui/react';
 const modimaSolid = defineStyle({
 	color: 'neutral.white',
 
-	w: '100%',
-
 	borderRadius: 0,
 	backgroundColor: 'primary.600',
 

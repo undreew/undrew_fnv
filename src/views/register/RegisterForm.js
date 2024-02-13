@@ -19,6 +19,7 @@ function RegisterForm(props) {
 
 			<Button
 				mt={2}
+				width='100%'
 				type='submit'
 				variant='modimaSolid'
 				isLoading={isSubmitting}
