@@ -20,7 +20,8 @@ const filter = definePartsStyle({
 	},
 
 	container: {
-		border: '1px solid gray',
+		borderWidth: '1px',
+		borderColor: 'base.primary',
 	},
 
 	icon: {},

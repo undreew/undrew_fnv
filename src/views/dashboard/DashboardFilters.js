@@ -23,7 +23,7 @@ function DashboardFilters() {
 	}
 
 	return (
-		<Box>
+		<Box position='sticky' top={0} py={3}>
 			{!isEmpty(query) && (
 				<Box mb={2}>
 					<Box border='1px solid' borderColor='base.primary' p={2} mb={2}>
