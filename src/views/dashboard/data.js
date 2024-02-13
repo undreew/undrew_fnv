@@ -12,6 +12,7 @@ const ITEMS = [
 		price: '$160',
 		in_wishlist: true,
 		image: item1,
+		is_new: true,
 	},
 	{
 		name: 'Essential T-Shirt',
@@ -23,6 +24,7 @@ const ITEMS = [
 		price: '$95',
 		in_wishlist: false,
 		image: item2,
+		is_new: false,
 	},
 ];
 
