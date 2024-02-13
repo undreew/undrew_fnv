@@ -1,12 +1,14 @@
 import React from 'react';
-import {Box, Heading} from '@chakra-ui/react';
+import {Box, Text} from '@chakra-ui/react';
 
 function DashboardHeader(props) {
 	const {title} = props;
 
 	return (
 		<Box>
-			<Heading mt={2}>{title}</Heading>
+			<Text textStyle='h3' mt={2}>
+				{title}
+			</Text>
 		</Box>
 	);
 }

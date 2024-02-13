@@ -6,26 +6,16 @@ import {
 	DashboardHeader,
 	DashboardList,
 } from 'components/Dashboard';
-import DashboardFilters from './DashboardFilters';
-import ITEMS from './data';
-
 import {ProductCard} from 'components/Product';
+import DashboardFilters from './DashboardFilters';
 
-// import db from 'assets/images/dashboard.png';
+import ITEMS from './data';
 
 function Dashboard() {
 	return (
 		<div>
 			<DashboardBreadcrumb />
 			<DashboardHeader title='Shop All' />
-
-			{/* <Image src={db} backgroundSize='cover' /> */}
-			{/* <Image
-				src={db}
-				bgRepeat='no-repeat'
-				bgPosition='center center'
-				bgSize='cover'
-			/> */}
 
 			<DashboardContent itemList>
 				<DashboardFilters />
