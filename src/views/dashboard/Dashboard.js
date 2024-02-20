@@ -5,13 +5,19 @@ import {
 	DashboardContent,
 	DashboardHeader,
 	DashboardList,
+	DashboardListContent,
+	DashboardListFooter,
 } from 'components/Dashboard';
 import {ProductCard} from 'components/Product';
 import DashboardFilters from './DashboardFilters';
 
-import ITEMS from './data';
+// import ITEMS from './data';
+import {Button} from '@chakra-ui/react';
+import useGetProducts from './useGetProducts';
 
 function Dashboard() {
+	const {data, hasNext, loadMore, isLoading, isReloading} = useGetProducts();
+
 	return (
 		<div>
 			<DashboardBreadcrumb />
@@ -21,22 +27,42 @@ function Dashboard() {
 				<DashboardFilters />
 
 				<DashboardList>
-					{(ITEMS || []).map((item, index) => {
-						const {name, image, price, list_description, colors, in_wishlist} =
-							item || {};
+					<DashboardListContent isLoading={isReloading}>
+						{(data || []).map((item, index) => {
+							const {
+								name,
+								image,
+								price,
+								list_description,
+								colors,
+								in_wishlist,
+							} = item || {};
 
-						return (
-							<ProductCard
-								key={index}
-								name={name}
-								image={image}
-								price={price}
-								colors={colors}
-								wishlist={in_wishlist}
-								description={list_description}
-							/>
-						);
-					})}
+							return (
+								<ProductCard
+									key={index}
+									name={name}
+									image={image}
+									price={price}
+									colors={colors}
+									wishlist={in_wishlist}
+									description={list_description}
+								/>
+							);
+						})}
+					</DashboardListContent>
+
+					{hasNext && (
+						<DashboardListFooter direction='row' mt={5} justify='center'>
+							<Button
+								isLoading={isLoading}
+								variant='modimaOutline'
+								onClick={() => loadMore(false)}
+							>
+								Load more
+							</Button>
+						</DashboardListFooter>
+					)}
 				</DashboardList>
 			</DashboardContent>
 		</div>

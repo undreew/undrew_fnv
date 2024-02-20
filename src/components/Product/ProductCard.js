@@ -35,7 +35,7 @@ function ProductCard(props) {
 					<VStack alignItems='start'>
 						<Text textStyle='h6'>{name}</Text>
 						<Text textStyle='bodyMd'>{description}</Text>
-						<Text textStyle='bodyMd'>{colors[0]}</Text>
+						{/* <Text textStyle='bodyMd'>{colors[0]}</Text> */}
 					</VStack>
 
 					<Text textStyle='h6'>{price}</Text>

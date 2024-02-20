@@ -1,0 +1,51 @@
+import useQuery from 'hooks/useQuery';
+import {getProducts} from 'api/products';
+import {useEffect, useState} from 'react';
+
+function useGetProducts() {
+	const {query} = useQuery();
+
+	const [isLoading, setIsLoading] = useState(false);
+	const [isReloading, setIsReloading] = useState(false);
+
+	const [data, setData] = useState([]);
+	const [page, setPage] = useState(0);
+	const [hasNext, setHasNext] = useState(false);
+
+	async function getData(isReload) {
+		const _query = {
+			...query,
+			page,
+		};
+
+		isReload ? setIsReloading(true) : setIsLoading(true);
+
+		try {
+			const {data: dataResponse, meta} = await getProducts(_query);
+			const {hasMore, offset} = meta || {};
+
+			setData((prevData) => [...(!isReload ? prevData : []), ...dataResponse]);
+			setHasNext(hasMore);
+			setPage(offset + 1);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			isReload ? setIsReloading(false) : setIsLoading(false);
+		}
+	}
+
+	useEffect(() => {
+		getData(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [query]);
+
+	return {
+		data,
+		hasNext,
+		isLoading,
+		isReloading,
+		loadMore: getData,
+	};
+}
+
+export default useGetProducts;
