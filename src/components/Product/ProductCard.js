@@ -14,7 +14,8 @@ import {
 import {FaHeart, FaRegHeart} from 'react-icons/fa';
 
 function ProductCard(props) {
-	const {name, image, price, description, colors, wishlist} = props;
+	const {name, image, price, description, wishlist} = props; // colors
+	const {public_id} = image || {};
 
 	return (
 		<Card>
@@ -28,7 +29,9 @@ function ProductCard(props) {
 				</HStack>
 			</CardHeader>
 
-			<Image src={image} />
+			<Image
+				src={`https://res.cloudinary.com/jamie231-cloudinary/image/upload/v1693790862/${public_id}`}
+			/>
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>

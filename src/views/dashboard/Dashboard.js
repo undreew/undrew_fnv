@@ -11,9 +11,10 @@ import {
 import {ProductCard} from 'components/Product';
 import DashboardFilters from './DashboardFilters';
 
-// import ITEMS from './data';
 import {Button} from '@chakra-ui/react';
 import useGetProducts from './useGetProducts';
+
+import {first} from 'lodash'; // temp
 
 function Dashboard() {
 	const {data, hasNext, loadMore, isLoading, isReloading} = useGetProducts();
@@ -31,7 +32,7 @@ function Dashboard() {
 						{(data || []).map((item, index) => {
 							const {
 								name,
-								image,
+								images,
 								price,
 								list_description,
 								colors,
@@ -42,7 +43,7 @@ function Dashboard() {
 								<ProductCard
 									key={index}
 									name={name}
-									image={image}
+									image={first(images)}
 									price={price}
 									colors={colors}
 									wishlist={in_wishlist}

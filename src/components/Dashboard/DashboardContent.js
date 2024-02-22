@@ -10,7 +10,7 @@ function DashboardContent(props) {
 		<Grid
 			templateColumns={`repeat(${itemList ? 3 : 4}, 1fr)`}
 			sx={{my: 5}}
-			gap={5}
+			gap={4}
 		>
 			<GridItem colSpan={itemList ? 1 : 2}>{first(children)}</GridItem>
 			<GridItem colSpan={2}>{last(children)}</GridItem>
