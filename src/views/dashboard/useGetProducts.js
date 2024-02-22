@@ -9,24 +9,24 @@ function useGetProducts() {
 	const [isReloading, setIsReloading] = useState(false);
 
 	const [data, setData] = useState([]);
-	const [page, setPage] = useState(0);
+	const [nextPage, setNextPage] = useState(0);
 	const [hasNext, setHasNext] = useState(false);
 
 	async function getData(isReload) {
 		const _query = {
 			...query,
-			page,
+			page: !isReload ? nextPage : '',
 		};
 
 		isReload ? setIsReloading(true) : setIsLoading(true);
 
 		try {
 			const {data: dataResponse, meta} = await getProducts(_query);
-			const {hasMore, offset} = meta || {};
+			const {hasMore, nextPage} = meta || {};
 
 			setData((prevData) => [...(!isReload ? prevData : []), ...dataResponse]);
 			setHasNext(hasMore);
-			setPage(offset + 1);
+			setNextPage(nextPage);
 		} catch (error) {
 			console.log(error);
 		} finally {

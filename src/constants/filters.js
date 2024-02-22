@@ -1,8 +1,11 @@
 export const SORT_BY_ITEMS = {
 	featured: 'Featured',
 	best_seller: 'Best Seller',
-	low_to_high: 'Price: Low to High',
-	high_to_low: 'Price: High to Low',
+};
+
+export const SORT_BY_PRICE = {
+	low_to_high: 'Low to High',
+	high_to_low: 'High to Low',
 };
 
 export const SORT_BY_SIZE = {

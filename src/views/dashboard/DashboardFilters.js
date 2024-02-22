@@ -8,6 +8,7 @@ import {
 	SORT_BY_COLLECTION,
 	SORT_BY_FABRIC,
 	SORT_BY_ITEMS,
+	SORT_BY_PRICE,
 	SORT_BY_SIZE,
 } from 'constants/filters';
 
@@ -15,8 +16,7 @@ import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
 
 function DashboardFilters() {
 	const {query, pushQuery} = useQuery();
-	const {sort_by_items, sort_by_size, sort_by_collection, sort_by_fabric} =
-		query || {};
+	const {price, sort, size, stock, fabric} = query || {};
 
 	function handleClear() {
 		pushQuery({});
@@ -27,14 +27,7 @@ function DashboardFilters() {
 			{!isEmpty(query) && (
 				<Box mb={2}>
 					<Box border='1px solid' borderColor='base.primary' p={2} mb={2}>
-						{(
-							[
-								sort_by_items,
-								sort_by_size,
-								sort_by_collection,
-								sort_by_fabric,
-							] || []
-						).map((items) => {
+						{([sort, price, size, stock, fabric] || []).map((items) => {
 							return (items || []).map((item, index) => {
 								return (
 									<Badge ml={2} bgColor='primary.50' key={index}>
@@ -55,33 +48,43 @@ function DashboardFilters() {
 
 			<AccordionFilterBase
 				mb={2}
-				name='sort_by_items'
+				name='sort'
 				title='Sort By'
 				source={SORT_BY_ITEMS}
-				defaultValue={sort_by_items}
+				defaultValue={sort}
 			/>
 
 			<AccordionFilterBase
 				mb={2}
-				name='sort_by_size'
-				title='Sort By Size'
+				name='price'
+				title='Price'
+				source={SORT_BY_PRICE}
+				defaultValue={price}
+				isSingle
+			/>
+
+			<AccordionFilterBase
+				mb={2}
+				name='size'
+				title='Size'
 				source={SORT_BY_SIZE}
-				defaultValue={sort_by_size}
+				defaultValue={size}
 			/>
 
 			<AccordionFilterBase
 				mb={2}
-				name='sort_by_collection'
-				title='Sort By Collection'
+				name='stock'
+				title='Collection'
 				source={SORT_BY_COLLECTION}
-				defaultValue={sort_by_collection}
+				defaultValue={stock}
+				isSingle
 			/>
 
 			<AccordionFilterBase
-				name='sort_by_fabric'
-				title='Sort By Fabric'
+				name='fabric'
+				title='Fabric'
 				source={SORT_BY_FABRIC}
-				defaultValue={sort_by_fabric}
+				defaultValue={fabric}
 			/>
 		</Box>
 	);

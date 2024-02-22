@@ -13,7 +13,7 @@ import useQuery from 'hooks/useQuery';
 import {find, keys, filter, includes} from 'lodash';
 
 function AccordionFilterBase(props) {
-	const {title, source, name, defaultValue = [], ...rest} = props;
+	const {title, source, name, defaultValue = [], isSingle, ...rest} = props;
 
 	const {updateQuery} = useQuery();
 
@@ -22,6 +22,8 @@ function AccordionFilterBase(props) {
 			if (isChecked) return false;
 			return updateQuery({[name]: filter(defaultValue, (v) => v !== item)});
 		}
+
+		if (isSingle) return updateQuery({[name]: [item]});
 
 		updateQuery({[name]: [...defaultValue, item]});
 	}
