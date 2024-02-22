@@ -6,7 +6,7 @@ import {HStack, IconButton, Text} from '@chakra-ui/react';
 import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
 
 function PageHeaderDesktop(props) {
-	const {items} = props;
+	const {items, isAuth} = props;
 
 	return (
 		<>
@@ -30,23 +30,27 @@ function PageHeaderDesktop(props) {
 			</HStack>
 
 			<HStack gap={5}>
-				<IconButton
-					as={Link}
-					variant='ghost'
-					to='/dashboard'
-					aria-label='Dashboard'
-				>
-					<FaDashcube />
-				</IconButton>
+				{isAuth && (
+					<IconButton
+						as={Link}
+						variant='ghost'
+						to='/dashboard'
+						aria-label='Dashboard'
+					>
+						<FaDashcube />
+					</IconButton>
+				)}
 
-				<IconButton
-					as={Link}
-					to='/register'
-					variant='ghost'
-					aria-label='Register'
-				>
-					<FaRegUser />
-				</IconButton>
+				{!isAuth && (
+					<IconButton
+						as={Link}
+						to='/register'
+						variant='ghost'
+						aria-label='Register'
+					>
+						<FaRegUser />
+					</IconButton>
+				)}
 
 				<IconButton
 					as={Link}

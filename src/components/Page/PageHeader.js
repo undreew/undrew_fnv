@@ -3,6 +3,7 @@ import {Flex, useMediaQuery} from '@chakra-ui/react';
 
 import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
+import {useAuth} from 'contexts/AuthContext';
 
 const links = [
 	{label: 'Collection', to: '/collection'},
@@ -13,14 +14,15 @@ const links = [
 ];
 
 function PageHeader() {
+	const {isAuth} = useAuth();
 	const [isSmallerThanSm] = useMediaQuery('(max-width: 30em)');
 
 	return (
 		<Flex justify='space-between' alignItems='center' paddingTop={2}>
 			{isSmallerThanSm ? (
-				<PageHeaderMobile />
+				<PageHeaderMobile isAuth={isAuth} />
 			) : (
-				<PageHeaderDesktop items={links} />
+				<PageHeaderDesktop items={links} isAuth={isAuth} />
 			)}
 		</Flex>
 	);
