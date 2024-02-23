@@ -1,17 +1,18 @@
 import React from 'react';
-import {Badge, Box, Button, HStack} from '@chakra-ui/react';
+import {Box, Button} from '@chakra-ui/react';
 
 import {isEmpty} from 'lodash';
 import useQuery from 'hooks/useQuery';
 
 import {
-	SORT_BY_COLLECTION,
-	SORT_BY_FABRIC,
+	SORT_BY_SIZE,
 	SORT_BY_ITEMS,
 	SORT_BY_PRICE,
-	SORT_BY_SIZE,
+	SORT_BY_FABRIC,
+	SORT_BY_COLLECTION,
 } from 'constants/filters';
 
+import {FilterList} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
 
 function DashboardFilters() {
@@ -23,26 +24,14 @@ function DashboardFilters() {
 	}
 
 	return (
-		<Box position='sticky' top={0} py={3}>
+		<Box position='sticky' top={3}>
 			{!isEmpty(query) && (
 				<Box mb={2}>
-					<Box border='1px solid' borderColor='base.primary' p={2} mb={2}>
-						{([sort, price, size, stock, fabric] || []).map((items) => {
-							return (items || []).map((item, index) => {
-								return (
-									<Badge ml={2} bgColor='primary.50' key={index}>
-										{item}
-									</Badge>
-								);
-							});
-						})}
-					</Box>
+					<FilterList p={2} mb={2} data={query} />
 
-					<HStack>
-						<Button variant='modimaOutline' onClick={handleClear}>
-							Clear All Filters
-						</Button>
-					</HStack>
+					<Button variant='modimaOutline' onClick={handleClear}>
+						Clear All Filters
+					</Button>
 				</Box>
 			)}
 

@@ -28,3 +28,10 @@ export const SORT_BY_FABRIC = {
 	silk: 'Silk',
 	cashmere: 'Cashmere',
 };
+
+export const FILTERS = {
+	...SORT_BY_ITEMS,
+	...SORT_BY_PRICE,
+	...SORT_BY_COLLECTION,
+	...SORT_BY_FABRIC,
+};
