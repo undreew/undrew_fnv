@@ -1,9 +1,12 @@
 import PAGE_ACCESS from 'constants/page-access';
 
+import Error from 'views/errors';
+
 import landing from './landing';
 import register from './register';
 import login from './login';
 import dashboard from './dashboard';
+import errors from './errors';
 
 const routes = [
 	{
@@ -21,6 +24,23 @@ const routes = [
 	{
 		access: PAGE_ACCESS.private,
 		...dashboard,
+	},
+	{
+		...errors,
+	},
+	// no error code found
+	// when path e.g. error/hahaha
+	// redirects to this
+	{
+		path: '/not-found',
+		element: Error,
+	},
+	// not found page
+	// when path e.g. /hahaha
+	// redirects to this
+	{
+		path: '*',
+		element: Error,
 	},
 ];
 
