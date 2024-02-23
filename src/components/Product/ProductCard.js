@@ -12,6 +12,7 @@ import {
 	VStack,
 } from '@chakra-ui/react';
 import {FaHeart, FaRegHeart} from 'react-icons/fa';
+import {IMAGE_URL} from 'constants/configs';
 
 function ProductCard(props) {
 	const {name, image, price, description, wishlist} = props; // colors
@@ -29,9 +30,7 @@ function ProductCard(props) {
 				</HStack>
 			</CardHeader>
 
-			<Image
-				src={`https://res.cloudinary.com/jamie231-cloudinary/image/upload/v1693790862/${public_id}`}
-			/>
+			<Image src={`${IMAGE_URL}${public_id}`} />
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
