@@ -7,15 +7,23 @@ import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
 
 import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
 
+const links = [
+	{label: 'Collection', to: '/collection'},
+	{label: 'New In', to: '/new-in'},
+	// {label: 'Modiweek', to: '/modiweek'},
+	// {label: 'Plus Size', to: '/plus-size'},
+	{label: 'Sustainability', to: '/sustainability'},
+];
+
 function PageHeaderDesktop(props) {
-	const {items, isAuth} = props;
+	const {isAuth} = props;
 
 	return (
 		<>
 			<LinkLogo />
 
 			<HStack gap={20} display={['none', 'none', 'none', 'flex', 'flex']}>
-				{(items || []).map((item, index) => {
+				{(links || []).map((item, index) => {
 					const {label, to} = item || {};
 					return (
 						<Text

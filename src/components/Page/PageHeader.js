@@ -5,14 +5,6 @@ import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
 import {useAuth} from 'contexts/AuthContext';
 
-const links = [
-	{label: 'Collection', to: '/collection'},
-	{label: 'New In', to: '/new-in'},
-	// {label: 'Modiweek', to: '/modiweek'},
-	// {label: 'Plus Size', to: '/plus-size'},
-	{label: 'Sustainability', to: '/sustainability'},
-];
-
 function PageHeader() {
 	const {isAuth} = useAuth();
 	const [isSmallerThanSm] = useMediaQuery('(max-width: 30em)');
@@ -22,7 +14,7 @@ function PageHeader() {
 			{isSmallerThanSm ? (
 				<PageHeaderMobile isAuth={isAuth} />
 			) : (
-				<PageHeaderDesktop items={links} isAuth={isAuth} />
+				<PageHeaderDesktop isAuth={isAuth} />
 			)}
 		</Flex>
 	);
