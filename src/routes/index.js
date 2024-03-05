@@ -7,6 +7,7 @@ import register from './register';
 import login from './login';
 import dashboard from './dashboard';
 import errors from './errors';
+import logout from './logout';
 
 const routes = [
 	{
@@ -24,6 +25,10 @@ const routes = [
 	{
 		access: PAGE_ACCESS.private,
 		...dashboard,
+	},
+	{
+		access: PAGE_ACCESS.private,
+		...logout,
 	},
 	{
 		...errors,
