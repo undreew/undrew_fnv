@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {API_URL} from 'constants/configs';
 import Cookies from './cookies';
+import {isEmpty} from 'lodash';
 
 axios.defaults.baseURL = API_URL;
 axios.defaults.timeout = 50 * 1000;
@@ -47,7 +48,48 @@ axios.interceptors.response.use(
 	},
 	function (error) {
 		// Do something with the error response
+
 		// generalize the error from be for fe formatting
-		return Promise.reject(error);
+		const errorResult = {
+			status: 404,
+			token: undefined,
+			code: 'not_found',
+			message: 'Your request could not be found. Please check and try again.',
+		};
+
+		// always for error.response
+		if (error.response) {
+			const response = error.response;
+			console.log(response);
+
+			// Set status
+			// http code like 404, 500, etc..
+			errorResult.status = response.status;
+
+			// Set code
+			// Internal error code
+			if (response.data?.code) {
+				errorResult.code = response.data?.code;
+			}
+
+			switch (errorResult.status) {
+				// case 401: {
+				// 	window.location.replace('error/401');
+				// 	break;
+				// }
+
+				case 440: {
+					// remove session from cookies
+					Cookies.session = '';
+					window.location.replace('error/session');
+					break;
+				}
+
+				default:
+					break;
+			}
+		}
+
+		return Promise.reject(errorResult);
 	}
 );
