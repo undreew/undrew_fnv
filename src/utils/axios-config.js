@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {API_URL} from 'constants/configs';
 import Cookies from './cookies';
-import {isEmpty} from 'lodash';
 
 axios.defaults.baseURL = API_URL;
 axios.defaults.timeout = 50 * 1000;
@@ -21,7 +20,7 @@ axios.interceptors.request.use(
 			config.headers['x-http-bsid'] = bsid;
 		} else {
 			delete axios.defaults.headers.common['x-http-bsid'];
-			delete config.headers['x-http-token'];
+			delete config.headers['x-http-bsid'];
 		}
 
 		// session

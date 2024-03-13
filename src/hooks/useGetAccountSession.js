@@ -8,10 +8,10 @@ function useGetAccountSession(session) {
 	async function getSessionAccount() {
 		setIsLoading(true);
 		try {
-			const data = await getAuthSession(session);
+			const data = await getAuthSession();
 			setData(data);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		} finally {
 			setIsLoading(false);
 		}

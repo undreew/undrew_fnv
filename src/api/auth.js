@@ -12,6 +12,6 @@ export const postAuthLogout = () => {
 	return fetcher('POST', 'auth/logout');
 };
 
-export const getAuthSession = (sessionId) => {
-	return fetcher('GET', `auth/session/${sessionId}`);
+export const getAuthSession = () => {
+	return fetcher('GET', `auth/session`);
 };
