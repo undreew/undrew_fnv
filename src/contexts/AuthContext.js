@@ -47,8 +47,16 @@ function AuthProvider(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLoading]);
 
-	function setAuth(sessionId) {
-		Cookies.session = sessionId;
+	function setAuth(sessionId, remember = true) {
+		let obj = {
+			session: sessionId,
+		};
+
+		if (remember) {
+			obj.remember = remember;
+		}
+
+		Cookies.session = obj;
 		setSession(sessionId);
 	}
 

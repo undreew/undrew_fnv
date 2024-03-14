@@ -4,7 +4,13 @@ import {decrypt, encrypt} from './encrypts';
 import Cookie from 'universal-cookie';
 import {COOKIE_PREFIX, COOKIE_SECRET_KEY} from 'constants/configs';
 
+const SESSION_EXPIRES = 7; // 7 days
+
 const cookie = new Cookie();
+
+function dayToSecond(day) {
+	return day * 24 * 60 * 60;
+}
 
 function createCookieName(name) {
 	if (!name || !isString(name)) return null;
@@ -29,6 +35,7 @@ function setCookie(name, value, options) {
 	};
 
 	if (isEmpty(value)) {
+		console.log(value);
 		cookie.remove(cookieName, cookieOptions);
 	} else {
 		cookie.set(cookieName, value, cookieOptions);
@@ -47,8 +54,14 @@ const Cookies = {
 		return getEncryptCookie('session');
 	},
 
-	set session(sessionId) {
-		setEncryptCookie('session', sessionId);
+	set session(sessionObj) {
+		const {session, remember} = sessionObj;
+
+		const options = remember
+			? {maxAge: dayToSecond(SESSION_EXPIRES)}
+			: undefined;
+
+		setEncryptCookie('session', session, options);
 	},
 
 	get bsid() {
