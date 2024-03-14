@@ -37,15 +37,15 @@ const theme = extendTheme({
 			fontWeight: 'bold',
 		},
 		h1: {
-			fontSize: ['2.75rem'], // 44px
+			fontSize: ['1.75rem', '2.25rem', '2.75rem'], // 44px
 			fontWeight: 'bold',
 		},
 		h2: {
-			fontSize: ['2.5rem'], // 40px
+			fontSize: ['1.5rem', '2rem', '2.5rem'], // 40px
 			fontWeight: 'bold',
 		},
 		h3: {
-			fontSize: ['2rem'], // 32px
+			fontSize: ['1.125rem', '1.5rem', '2rem'], // 32px
 			fontWeight: 'semibold',
 		},
 		h4: {

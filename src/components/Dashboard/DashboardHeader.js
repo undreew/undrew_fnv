@@ -6,7 +6,7 @@ function DashboardHeader(props) {
 
 	return (
 		<Box>
-			<Text textStyle='h3' mt={2}>
+			<Text textStyle='h2' mt={2}>
 				{title}
 			</Text>
 		</Box>
