@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button} from '@chakra-ui/react';
+import {Box, Button, useMediaQuery} from '@chakra-ui/react';
 
 import {isEmpty} from 'lodash';
 import useQuery from 'hooks/useQuery';
@@ -14,8 +14,9 @@ import {
 
 import {FilterList} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
+import DashboardFiltersMobile from './DashboardFiltersMobile';
 
-function DashboardFilters() {
+function DashboardListFilters() {
 	const {query, pushQuery} = useQuery();
 	const {price, sort, size, stock, fabric} = query || {};
 
@@ -76,6 +77,22 @@ function DashboardFilters() {
 				defaultValue={fabric}
 			/>
 		</Box>
+	);
+}
+
+function DashboardFilters() {
+	const [isSmallerThanMd] = useMediaQuery('(max-width: 48em)');
+
+	return (
+		<>
+			{isSmallerThanMd ? (
+				<DashboardFiltersMobile>
+					<DashboardListFilters />
+				</DashboardFiltersMobile>
+			) : (
+				<DashboardListFilters />
+			)}
+		</>
 	);
 }
 
