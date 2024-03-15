@@ -3,11 +3,10 @@ import {Button} from '@chakra-ui/react';
 
 import {
 	DashboardBreadcrumb,
+	DashboardListFooter,
 	DashboardContent,
 	DashboardHeader,
 	DashboardList,
-	DashboardListContent,
-	DashboardListFooter,
 } from 'components/Dashboard';
 import {ProductCard} from 'components/Product';
 
@@ -26,25 +25,23 @@ function Dashboard() {
 			<DashboardContent itemList>
 				<DashboardFilters />
 
-				<DashboardList>
-					<DashboardListContent isLoading={isReloading}>
-						{(data || []).map((item, index) => {
-							return <ProductCard key={index} item={item} />;
-						})}
-					</DashboardListContent>
-
-					{hasNext && (
-						<DashboardListFooter direction='row' mt={5} justify='center'>
-							<Button
-								isLoading={isLoading}
-								variant='modimaOutline'
-								onClick={() => loadMore(false)}
-							>
-								Load more
-							</Button>
-						</DashboardListFooter>
-					)}
+				<DashboardList isLoading={isReloading}>
+					{(data || []).map((item, index) => {
+						return <ProductCard key={index} item={item} />;
+					})}
 				</DashboardList>
+
+				{hasNext && (
+					<DashboardListFooter direction='row' mt={5} justify='center'>
+						<Button
+							isLoading={isLoading}
+							variant='modimaOutline'
+							onClick={() => loadMore(false)}
+						>
+							Load more
+						</Button>
+					</DashboardListFooter>
+				)}
 			</DashboardContent>
 		</div>
 	);

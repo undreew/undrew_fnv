@@ -3,29 +3,28 @@ import {Link} from 'react-router-dom';
 
 import {Breadcrumb, BreadcrumbItem, BreadcrumbLink} from '@chakra-ui/react';
 
-DashboardBreadcrumb.defaultProps = {
-	item: [
-		{
-			to: '/',
-			label: 'Home',
-		},
-		{
-			to: '/dashboard',
-			label: 'Shop All',
-		},
-	],
+import PropTypes from 'prop-types';
+
+DashboardBreadcrumb.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			isActive: PropTypes.bool,
+			label: PropTypes.string.isRequired,
+			to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+		})
+	),
 };
 
 function DashboardBreadcrumb(props) {
-	const {item} = props;
+	const {items} = props;
 
 	return (
 		<Breadcrumb>
-			{(item || []).map((item, index) => {
-				const {to, label} = item || {};
+			{(items || []).map((item, index) => {
+				const {to, label, isActive} = item || {};
 
 				return (
-					<BreadcrumbItem key={index}>
+					<BreadcrumbItem key={index} isCurrentPage={isActive}>
 						<BreadcrumbLink as={Link} to={to}>
 							{label}
 						</BreadcrumbLink>

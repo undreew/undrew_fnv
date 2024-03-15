@@ -2,6 +2,11 @@ import React from 'react';
 import {Grid, GridItem, useMediaQuery} from '@chakra-ui/react';
 
 import {first, last} from 'lodash';
+import PropTypes from 'prop-types';
+
+DashboardContent.propTypes = {
+	itemList: PropTypes.bool,
+};
 
 function DashboardContent(props) {
 	const {itemList, children} = props;
