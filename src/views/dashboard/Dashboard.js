@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from '@chakra-ui/react';
 
 import {
 	DashboardBreadcrumb,
@@ -9,12 +10,10 @@ import {
 	DashboardListFooter,
 } from 'components/Dashboard';
 import {ProductCard} from 'components/Product';
+
 import DashboardFilters from './DashboardFilters';
 
-import {Button} from '@chakra-ui/react';
 import useGetProducts from './useGetProducts';
-
-import {first} from 'lodash'; // temp
 
 function Dashboard() {
 	const {data, hasNext, loadMore, isLoading, isReloading} = useGetProducts();
@@ -30,26 +29,7 @@ function Dashboard() {
 				<DashboardList>
 					<DashboardListContent isLoading={isReloading}>
 						{(data || []).map((item, index) => {
-							const {
-								name,
-								images,
-								price,
-								list_description,
-								colors,
-								in_wishlist,
-							} = item || {};
-
-							return (
-								<ProductCard
-									key={index}
-									name={name}
-									image={first(images)}
-									price={price}
-									colors={colors}
-									wishlist={in_wishlist}
-									description={list_description}
-								/>
-							);
+							return <ProductCard key={index} item={item} />;
 						})}
 					</DashboardListContent>
 

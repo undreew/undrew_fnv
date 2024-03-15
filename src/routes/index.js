@@ -6,6 +6,7 @@ import landing from './landing';
 import register from './register';
 import login from './login';
 import dashboard from './dashboard';
+import products from './products';
 import errors from './errors';
 import logout from './logout';
 
@@ -25,6 +26,10 @@ const routes = [
 	{
 		access: PAGE_ACCESS.private,
 		...dashboard,
+	},
+	{
+		access: PAGE_ACCESS.private,
+		...products,
 	},
 	{
 		access: PAGE_ACCESS.private,

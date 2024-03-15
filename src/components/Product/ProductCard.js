@@ -13,10 +13,12 @@ import {
 } from '@chakra-ui/react';
 import {FaHeart, FaRegHeart} from 'react-icons/fa';
 import {IMAGE_URL} from 'constants/configs';
+import {first} from 'lodash';
 
 function ProductCard(props) {
-	const {name, image, price, description, wishlist} = props; // colors
-	const {public_id} = image || {};
+	const {item} = props;
+	const {name, images, price, description, wishlist} = item; // colors
+	const {public_id} = first(images) || {}; // temp
 
 	return (
 		<Card>
