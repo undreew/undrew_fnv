@@ -47,7 +47,7 @@ function PageHeaderMobileMenu(props) {
 
 	const items = [
 		isAuth && {
-			to: '/dashboard',
+			to: '/products',
 			label: 'Dashboard',
 			icon: <FaDashcube />,
 		},

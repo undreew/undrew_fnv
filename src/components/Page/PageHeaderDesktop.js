@@ -75,7 +75,7 @@ function PageHeaderDesktop(props) {
 					<>
 						<IconButton
 							as={Link}
-							to='/dashboard'
+							to='/products'
 							variant='ghost'
 							aria-label='Dashboard'
 						>
