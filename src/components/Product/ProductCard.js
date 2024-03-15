@@ -1,4 +1,5 @@
 import React from 'react';
+import {FaHeart, FaRegHeart} from 'react-icons/fa';
 
 import {
 	Badge,
@@ -11,9 +12,21 @@ import {
 	Text,
 	VStack,
 } from '@chakra-ui/react';
-import {FaHeart, FaRegHeart} from 'react-icons/fa';
-import {IMAGE_URL} from 'constants/configs';
+
 import {first} from 'lodash';
+import {IMAGE_URL} from 'constants/configs';
+
+import PropTypes from 'prop-types';
+
+ProductCard.propTypes = {
+	item: PropTypes.shape({
+		name: PropTypes.string,
+		images: PropTypes.array,
+		price: PropTypes.number,
+		description: PropTypes.string,
+		wishlist: PropTypes.bool,
+	}),
+};
 
 function ProductCard(props) {
 	const {item} = props;
@@ -26,7 +39,7 @@ function ProductCard(props) {
 				<HStack justify='space-between'>
 					<Badge>New</Badge>
 
-					<IconButton variant='ghost'>
+					<IconButton variant='ghost' color='primary.400'>
 						{wishlist ? <FaHeart /> : <FaRegHeart />}
 					</IconButton>
 				</HStack>
