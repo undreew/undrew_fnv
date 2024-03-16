@@ -5,7 +5,7 @@ import Error from 'views/errors';
 import landing from './landing';
 import register from './register';
 import login from './login';
-import dashboard from './dashboard';
+import products from './products';
 import errors from './errors';
 import logout from './logout';
 
@@ -22,9 +22,10 @@ const routes = [
 		access: PAGE_ACCESS.guest,
 		...login,
 	},
+
 	{
 		access: PAGE_ACCESS.private,
-		...dashboard,
+		...products,
 	},
 	{
 		access: PAGE_ACCESS.private,

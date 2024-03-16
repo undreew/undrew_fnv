@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, useMediaQuery} from '@chakra-ui/react';
 
-import {isEmpty} from 'lodash';
+import {filter, isEmpty} from 'lodash';
 import useQuery from 'hooks/useQuery';
 
 import {
@@ -12,13 +12,16 @@ import {
 	SORT_BY_COLLECTION,
 } from 'constants/filters';
 
-import {FilterList} from 'components/Filter';
+import {FilterList, FilterMobile} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
-import DashboardFiltersMobile from './DashboardFiltersMobile';
 
-function DashboardListFilters() {
-	const {query, pushQuery} = useQuery();
+function Filters() {
+	const {query, pushQuery, updateQuery} = useQuery();
 	const {price, sort, size, stock, fabric} = query || {};
+
+	function handleFilterItem(item, key) {
+		updateQuery({[key]: filter(query[key], (i) => i !== item)});
+	}
 
 	function handleClear() {
 		pushQuery({});
@@ -28,7 +31,7 @@ function DashboardListFilters() {
 		<Box position='sticky' top={3}>
 			{!isEmpty(query) && (
 				<Box mb={2}>
-					<FilterList p={2} mb={2} data={query} />
+					<FilterList p={2} mb={2} data={query} onChange={handleFilterItem} />
 
 					<Button variant='modimaOutline' onClick={handleClear}>
 						Clear All Filters
@@ -80,20 +83,20 @@ function DashboardListFilters() {
 	);
 }
 
-function DashboardFilters() {
+function ListFilters() {
 	const [isSmallerThanMd] = useMediaQuery('(max-width: 48em)');
 
 	return (
 		<>
 			{isSmallerThanMd ? (
-				<DashboardFiltersMobile>
-					<DashboardListFilters />
-				</DashboardFiltersMobile>
+				<FilterMobile>
+					<Filters />
+				</FilterMobile>
 			) : (
-				<DashboardListFilters />
+				<Filters />
 			)}
 		</>
 	);
 }
 
-export default DashboardFilters;
+export default ListFilters;

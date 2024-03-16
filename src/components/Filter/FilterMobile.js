@@ -12,7 +12,7 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 
-function DashboardFiltersMobile(props) {
+function FilterMobile(props) {
 	const {children} = props;
 	const {isOpen, onOpen, onClose} = useDisclosure();
 
@@ -41,4 +41,4 @@ function DashboardFiltersMobile(props) {
 	);
 }
 
-export default DashboardFiltersMobile;
+export default FilterMobile;

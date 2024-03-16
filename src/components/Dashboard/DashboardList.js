@@ -3,7 +3,6 @@ import {Box} from '@chakra-ui/react';
 
 function DashboardList(props) {
 	const {children} = props;
-
 	return <Box>{children}</Box>;
 }
 
