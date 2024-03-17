@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {HStack, Tag, TagCloseButton, TagLabel} from '@chakra-ui/react';
 
-import {upperCase} from 'lodash';
 import {FILTERS} from 'constants/filters';
+import {flatMap, map, upperCase} from 'lodash';
 
 function FilterList(props) {
 	const {data, onChange, ...rest} = props;
@@ -11,17 +11,15 @@ function FilterList(props) {
 
 	useEffect(() => {
 		if (data) {
-			let queries = [];
-			for (const key in data) {
-				const value = data[key];
-				value.forEach((val) => {
-					queries.push({
+			const queries = flatMap(data, (value, key) => {
+				return map(value, (val) => {
+					return {
 						value: val,
 						queryKey: key,
-						label: FILTERS[val],
-					}); // FILTERS may become reusable
+						label: FILTERS[val], // FILTERS may become dynamic
+					};
 				});
-			}
+			});
 			setFilters(queries);
 		}
 	}, [data]);
