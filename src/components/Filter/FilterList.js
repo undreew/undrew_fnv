@@ -1,7 +1,8 @@
-import {Badge, HStack, IconButton} from '@chakra-ui/react';
-import {FILTERS} from 'constants/filters';
 import React, {useEffect, useState} from 'react';
-import {FaTimes} from 'react-icons/fa';
+import {HStack, Tag, TagCloseButton, TagLabel} from '@chakra-ui/react';
+
+import {upperCase} from 'lodash';
+import {FILTERS} from 'constants/filters';
 
 function FilterList(props) {
 	const {data, onChange, ...rest} = props;
@@ -36,25 +37,13 @@ function FilterList(props) {
 				const {value, label, queryKey} = item || {};
 
 				return (
-					<Badge
-						pl={2}
-						fontSize='sm'
-						bgColor='primary.50'
-						color='neutral.black'
-						key={index}
-					>
-						{label}
+					<Tag key={index} bgColor='primary.50' borderRadius={0}>
+						<TagLabel fontSize='sm' fontWeight='600' color='neutral.black'>
+							{upperCase(label)}
+						</TagLabel>
 
-						<IconButton
-							size='xs'
-							cursor='pointer'
-							variant='ghost'
-							_hover={{bg: 'transparent'}}
-							onClick={() => onChange(value, queryKey)}
-						>
-							<FaTimes size={10} />
-						</IconButton>
-					</Badge>
+						<TagCloseButton onClick={() => onChange(value, queryKey)} />
+					</Tag>
 				);
 			})}
 		</HStack>
