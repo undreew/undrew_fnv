@@ -2,18 +2,31 @@ import React from 'react';
 import {FaFilter} from 'react-icons/fa';
 
 import {
-	Button,
 	Drawer,
 	DrawerBody,
-	DrawerCloseButton,
-	DrawerContent,
 	DrawerHeader,
 	DrawerOverlay,
+	DrawerContent,
+	DrawerCloseButton,
+	Text,
+	Button,
 	useDisclosure,
 } from '@chakra-ui/react';
 
+import PropTypes from 'prop-types';
+
+FilterMobile.defaultProps = {
+	headerText: 'Filters',
+	triggerText: 'Filters',
+};
+
+FilterMobile.propTypes = {
+	headerText: PropTypes.string,
+	triggerText: PropTypes.string,
+};
+
 function FilterMobile(props) {
-	const {children} = props;
+	const {children, headerText, triggerText} = props;
 	const {isOpen, onOpen, onClose} = useDisclosure();
 
 	return (
@@ -24,16 +37,19 @@ function FilterMobile(props) {
 				variant='modimaOutline'
 				leftIcon={<FaFilter />}
 			>
-				Filters
+				{triggerText}
 			</Button>
 
-			<Drawer placement='top' size='full' isOpen={isOpen} onClose={onClose}>
+			<Drawer placement='left' size='full' isOpen={isOpen} onClose={onClose}>
 				<DrawerOverlay />
 
 				<DrawerContent>
 					<DrawerCloseButton />
 
-					<DrawerHeader>Filters</DrawerHeader>
+					<DrawerHeader>
+						<Text textStyle='h4'>{headerText}</Text>
+					</DrawerHeader>
+
 					<DrawerBody>{children}</DrawerBody>
 				</DrawerContent>
 			</Drawer>
