@@ -13,25 +13,18 @@ import {
 	VStack,
 } from '@chakra-ui/react';
 
-import {first} from 'lodash';
-import {IMAGE_URL} from 'constants/configs';
-
 import PropTypes from 'prop-types';
 
 ProductCard.propTypes = {
-	item: PropTypes.shape({
-		name: PropTypes.string,
-		images: PropTypes.array,
-		price: PropTypes.number,
-		description: PropTypes.string,
-		wishlist: PropTypes.bool,
-	}),
+	name: PropTypes.string,
+	image: PropTypes.string,
+	price: PropTypes.number,
+	description: PropTypes.string,
+	wishlist: PropTypes.bool,
 };
 
 function ProductCard(props) {
-	const {item} = props;
-	const {name, images, price, description, wishlist} = item; // colors
-	const {public_id} = first(images) || {}; // temp
+	const {name, image, price, description, wishlist} = props;
 
 	return (
 		<Card>
@@ -45,7 +38,7 @@ function ProductCard(props) {
 				</HStack>
 			</CardHeader>
 
-			<Image src={`${IMAGE_URL}${public_id}`} />
+			<Image src={image} />
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
