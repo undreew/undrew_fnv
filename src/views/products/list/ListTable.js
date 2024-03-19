@@ -13,7 +13,7 @@ function ListTable(props) {
 	return (
 		<DashboardListContent isLoading={isLoading}>
 			{(data || []).map((item, index) => {
-				const {name, images, price, variants, description, wishlist} =
+				const {_id, name, images, price, variants, description, wishlist} =
 					item || {};
 				const {colors} = first(variants) || {};
 				const {public_id} = first(images) || {};
@@ -22,6 +22,7 @@ function ListTable(props) {
 
 				return (
 					<ProductCard
+						id={_id}
 						key={index}
 						name={name}
 						price={price}

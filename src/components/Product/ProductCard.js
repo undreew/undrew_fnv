@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
@@ -26,7 +27,7 @@ ProductCard.propTypes = {
 };
 
 function ProductCard(props) {
-	const {name, image, price, colors, description, wishlist} = props;
+	const {id, name, image, price, colors, description, wishlist} = props;
 
 	return (
 		<Card>
@@ -44,8 +45,10 @@ function ProductCard(props) {
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
-					<VStack alignItems='start'>
-						<Text textStyle='h6'>{name}</Text>
+					<VStack alignItems='start' flexGrow={1}>
+						<Text textStyle='h6' as={Link} to={id}>
+							{name}
+						</Text>
 
 						<Text textStyle='bodyMd'>{description}</Text>
 
