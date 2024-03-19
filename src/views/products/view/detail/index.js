@@ -9,13 +9,13 @@ import useGetProductDetail from './useGetProductDetail';
 import {ProductImagesGallery} from 'components/Product';
 
 function Index() {
-	const {isLoading, data} = useGetProductDetail();
+	const {data} = useGetProductDetail(); // isLoading
 
 	return (
 		<div>
 			<DetailBreadcrumb data={data} />
 
-			<DashboardContent>
+			<DashboardContent gap={10}>
 				<ProductImagesGallery data={data} />
 
 				<DetailProduct data={data} />

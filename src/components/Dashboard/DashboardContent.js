@@ -9,7 +9,7 @@ DashboardContent.propTypes = {
 };
 
 function DashboardContent(props) {
-	const {itemList, children} = props;
+	const {itemList, children, ...rest} = props;
 	const [isSmallerThanMd] = useMediaQuery('(max-width: 48em)');
 
 	let firstItemSpan = 2;
@@ -26,9 +26,10 @@ function DashboardContent(props) {
 
 	return (
 		<Grid
-			templateColumns={`repeat(${itemList ? 3 : 4}, 1fr)`}
-			sx={{my: 5}}
 			gap={4}
+			sx={{my: 5}}
+			templateColumns={`repeat(${itemList ? 3 : 4}, 1fr)`}
+			{...rest}
 		>
 			<GridItem colSpan={firstItemSpan}>{first(children)}</GridItem>
 			<GridItem colSpan={secondItemSpan}>{last(children)}</GridItem>
