@@ -13,7 +13,9 @@ function ListTable(props) {
 	return (
 		<DashboardListContent isLoading={isLoading}>
 			{(data || []).map((item, index) => {
-				const {name, images, price, description, wishlist} = item || {};
+				const {name, images, price, variants, description, wishlist} =
+					item || {};
+				const {colors} = first(variants) || {};
 				const {public_id} = first(images) || {};
 
 				const imageSrc = urlJoin(IMAGE_URL, public_id);
@@ -23,6 +25,7 @@ function ListTable(props) {
 						key={index}
 						name={name}
 						price={price}
+						colors={colors}
 						image={imageSrc}
 						wishlist={wishlist}
 						description={description}

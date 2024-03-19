@@ -3,6 +3,7 @@ import {FaHeart, FaRegHeart} from 'react-icons/fa';
 
 import {
 	Badge,
+	Box,
 	Card,
 	CardFooter,
 	CardHeader,
@@ -19,12 +20,13 @@ ProductCard.propTypes = {
 	name: PropTypes.string,
 	image: PropTypes.string,
 	price: PropTypes.number,
+	colors: PropTypes.array,
 	description: PropTypes.string,
 	wishlist: PropTypes.bool,
 };
 
 function ProductCard(props) {
-	const {name, image, price, description, wishlist} = props;
+	const {name, image, price, colors, description, wishlist} = props;
 
 	return (
 		<Card>
@@ -44,8 +46,24 @@ function ProductCard(props) {
 				<HStack w='100%' justify='space-between'>
 					<VStack alignItems='start'>
 						<Text textStyle='h6'>{name}</Text>
+
 						<Text textStyle='bodyMd'>{description}</Text>
-						{/* <Text textStyle='bodyMd'>{colors[0]}</Text> */}
+
+						<Text as='div' textStyle='bodyMd'>
+							{(colors || []).map((color, index) => {
+								const {name} = color || {};
+								return (
+									<Box
+										maxW='100px'
+										borderRadius='50%'
+										children={'test'}
+										bgColor={name}
+										color={name}
+										key={index}
+									/>
+								);
+							})}
+						</Text>
 					</VStack>
 
 					<Text textStyle='h6'>{price}</Text>
