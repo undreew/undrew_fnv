@@ -54,9 +54,9 @@ function ProductCard(props) {
 								const {name} = color || {};
 								return (
 									<Box
-										maxW='100px'
+										w='25px'
+										height='25px'
 										borderRadius='50%'
-										children={'test'}
 										bgColor={name}
 										color={name}
 										key={index}
