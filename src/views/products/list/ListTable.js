@@ -13,19 +13,19 @@ function ListTable(props) {
 	return (
 		<DashboardListContent isLoading={isLoading}>
 			{(data || []).map((item, index) => {
-				const {name, images, price, variants, description, wishlist} =
+				const {_id, name, images, price, variants, description, wishlist} =
 					item || {};
-				const {colors} = first(variants) || {};
 				const {public_id} = first(images) || {};
 
-				const imageSrc = urlJoin(IMAGE_URL, public_id);
+				const imageSrc = urlJoin(IMAGE_URL, public_id || '');
 
 				return (
 					<ProductCard
+						id={_id}
 						key={index}
 						name={name}
 						price={price}
-						colors={colors}
+						variants={variants}
 						image={imageSrc}
 						wishlist={wishlist}
 						description={description}
