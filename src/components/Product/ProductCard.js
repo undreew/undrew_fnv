@@ -3,7 +3,6 @@ import {FaHeart, FaRegHeart} from 'react-icons/fa';
 
 import {
 	Badge,
-	Box,
 	Card,
 	CardFooter,
 	CardHeader,
@@ -16,18 +15,19 @@ import {
 
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {ColorList} from 'components/Color';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
 	image: PropTypes.string,
 	price: PropTypes.number,
-	colors: PropTypes.array,
+	variants: PropTypes.array,
 	description: PropTypes.string,
 	wishlist: PropTypes.bool,
 };
 
 function ProductCard(props) {
-	const {id, name, image, price, colors, description, wishlist} = props;
+	const {id, name, image, price, variants, description, wishlist} = props;
 
 	return (
 		<Card>
@@ -41,7 +41,7 @@ function ProductCard(props) {
 				</HStack>
 			</CardHeader>
 
-			<Image src={image} />
+			<Image src={image} display='flex' flexGrow={1} alt='Image' />
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
@@ -52,21 +52,7 @@ function ProductCard(props) {
 
 						<Text textStyle='bodyMd'>{description}</Text>
 
-						<Text as='div' textStyle='bodyMd'>
-							{(colors || []).map((color, index) => {
-								const {name} = color || {};
-								return (
-									<Box
-										w='25px'
-										height='25px'
-										borderRadius='50%'
-										bgColor={name}
-										color={name}
-										key={index}
-									/>
-								);
-							})}
-						</Text>
+						<ColorList items={variants} />
 					</VStack>
 
 					<Text textStyle='h6'>{price}</Text>

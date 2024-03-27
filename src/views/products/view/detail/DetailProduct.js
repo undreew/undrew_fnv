@@ -1,10 +1,11 @@
 import React from 'react';
-import {Box, Text} from '@chakra-ui/react';
+import {Box} from '@chakra-ui/react';
 
-import {first} from 'lodash';
 import PropTypes from 'prop-types';
 
-import {ColorList} from 'components/Color';
+import DetailAddWishlist from './DetailAddWishlist';
+import DetailProductStatic from './DetailProductStatic';
+import DetailProductAddCart from './DetailProductAddCart';
 
 DetailProduct.propTypes = {
 	data: PropTypes.object.isRequired,
@@ -12,18 +13,14 @@ DetailProduct.propTypes = {
 
 function DetailProduct(props) {
 	const {data} = props;
-	const {name, full_description: description, variants} = data || {};
-	const {colors} = first(variants) || {};
 
 	return (
-		<Box>
-			<Text textStyle='h3'>{name}</Text>
+		<Box display='flex' flexDir='column' justifyContent='space-between'>
+			<DetailProductStatic data={data} />
 
-			<Text textStyle='bodyLg' mt={2}>
-				{description}
-			</Text>
+			<DetailProductAddCart data={data} />
 
-			<ColorList mt={2} title='Colors' colors={colors} />
+			<DetailAddWishlist data={data} />
 		</Box>
 	);
 }

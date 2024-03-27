@@ -13,15 +13,15 @@ DetailBreadcrumb.propTypes = {
 
 function DetailBreadcrumb(props) {
 	const {data} = props;
-	const {name} = data || {};
+	const {name, _id} = data || {};
 
 	const {query} = useQuery();
 	const {category} = query || {};
 
 	const items = [
 		{
-			to: '/',
-			label: 'Home',
+			to: '/products',
+			label: 'Products',
 		},
 		// temp
 		category && {
@@ -29,7 +29,8 @@ function DetailBreadcrumb(props) {
 			label: startCase(category),
 		},
 		{
-			to: '/',
+			isActive: true,
+			to: `/products/${_id}`,
 			label: name || '',
 		},
 	].filter((v) => v);

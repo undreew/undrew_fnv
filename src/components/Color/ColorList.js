@@ -2,10 +2,7 @@ import React from 'react';
 import {Box, HStack, Text} from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
-
-ColorList.defaultProps = {
-	title: 'Colors',
-};
+import useGetParseColors from 'hooks/useGetParseColors';
 
 ColorList.propTypes = {
 	title: PropTypes.string,
@@ -13,22 +10,23 @@ ColorList.propTypes = {
 };
 
 function ColorList(props) {
-	const {title, colors, ...rest} = props;
+	const {items, title, ...rest} = props;
+
+	const {colors} = useGetParseColors(items);
 
 	return (
 		<Box {...rest}>
-			<Text textStyle='bodyMd'>{title}</Text>
+			{title && <Text textStyle='bodyMd'>{title}</Text>}
 
 			<HStack gap={2} wrap='nowrap'>
 				{(colors || []).map((color, index) => {
-					const {name} = color || {};
 					return (
 						<Box
 							w='25px'
 							height='25px'
 							borderRadius='50%'
-							bgColor={name}
-							color={name}
+							bgColor={color}
+							color={color}
 							key={index}
 						/>
 					);

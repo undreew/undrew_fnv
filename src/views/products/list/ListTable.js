@@ -15,10 +15,9 @@ function ListTable(props) {
 			{(data || []).map((item, index) => {
 				const {_id, name, images, price, variants, description, wishlist} =
 					item || {};
-				const {colors} = first(variants) || {};
 				const {public_id} = first(images) || {};
 
-				const imageSrc = urlJoin(IMAGE_URL, public_id);
+				const imageSrc = urlJoin(IMAGE_URL, public_id || '');
 
 				return (
 					<ProductCard
@@ -26,7 +25,7 @@ function ListTable(props) {
 						key={index}
 						name={name}
 						price={price}
-						colors={colors}
+						variants={variants}
 						image={imageSrc}
 						wishlist={wishlist}
 						description={description}
