@@ -1,12 +1,14 @@
 import React from 'react';
 
 import {DashboardContent} from 'components/Dashboard';
+import {ProductImagesGallery} from 'components/Product';
 
 import DetailProduct from './DetailProduct';
 import DetailBreadcrumb from './DetailBreadcrumb';
+import DetailAccordionStatic from './DetailAccordionStatic';
+import DetailProductMaterial from './DetailProductMaterial';
 
 import useGetProductDetail from './useGetProductDetail';
-import {ProductImagesGallery} from 'components/Product';
 
 function Index() {
 	const {data} = useGetProductDetail(); // isLoading
@@ -19,6 +21,12 @@ function Index() {
 				<ProductImagesGallery data={data} />
 
 				<DetailProduct data={data} />
+			</DashboardContent>
+
+			<DashboardContent gap={10}>
+				<DetailAccordionStatic />
+
+				<DetailProductMaterial />
 			</DashboardContent>
 		</div>
 	);

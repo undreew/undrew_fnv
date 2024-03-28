@@ -38,13 +38,13 @@ const contact = definePartsStyle({
 		_hover: null,
 		_expanded: {
 			bgColor: 'primary.25',
-			color: 'base.black',
+			color: 'base.primary',
 		},
 	},
 
 	container: {
 		bgColor: 'primary.25',
-		borderColor: 'primary.25',
+		borderColor: 'neutral.grayCBCBCB',
 	},
 
 	icon: {},

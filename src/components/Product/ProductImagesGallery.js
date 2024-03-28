@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box} from '@chakra-ui/react';
+import {Box, useMediaQuery} from '@chakra-ui/react';
 import ReactImageGallery from 'react-image-gallery';
 
 import urlJoin from 'url-join';
@@ -14,6 +14,9 @@ ProductImagesGallery.propTypes = {
 function ProductImagesGallery(props) {
 	const {data} = props;
 	const {images} = data || {};
+
+	const [isSmallerThanMd] = useMediaQuery('(max-width: 48em)');
+	const thumbnailPosition = isSmallerThanMd ? 'bottom' : 'left';
 
 	function parseImages(data) {
 		return (data || []).map((item, index) => {
@@ -31,13 +34,14 @@ function ProductImagesGallery(props) {
 		<Box>
 			<ReactImageGallery
 				showNav
-				showThumbnails
-				disableThumbnailScroll
 				disableThumbnailSwipe
 				showPlayButton={false}
-				thumbnailPosition='left'
+				disableThumbnailScroll
 				showFullscreenButton={false}
 				items={parseImages(images)}
+				showBullets={isSmallerThanMd}
+				showThumbnails={!isSmallerThanMd}
+				thumbnailPosition={thumbnailPosition}
 			/>
 		</Box>
 	);
