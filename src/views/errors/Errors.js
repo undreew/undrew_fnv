@@ -35,8 +35,8 @@ const ACTION = {
 		</Button>
 	),
 	401: (
-		<Button variant='modimaOutline' to='/' as={Link}>
-			Back to Home
+		<Button variant='modimaOutline' to='/login' as={Link}>
+			Go to Log in
 		</Button>
 	),
 	403: (
