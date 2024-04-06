@@ -52,8 +52,8 @@ function PageHeaderMobileMenu(props) {
 			icon: <FaDashcube />,
 		},
 		!isAuth && {
-			to: '/register',
-			label: 'Register',
+			to: '/login',
+			label: 'Login',
 			icon: <FaRegUser />,
 		},
 		{

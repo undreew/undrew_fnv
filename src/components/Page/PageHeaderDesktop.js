@@ -8,7 +8,7 @@ import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
 import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
 
 const links = [
-	{label: 'Collection', to: '/collection'},
+	{label: 'Collection', to: '/products'},
 	{label: 'New In', to: '/new-in'},
 	// {label: 'Modiweek', to: '/modiweek'},
 	// {label: 'Plus Size', to: '/plus-size'},
@@ -44,9 +44,9 @@ function PageHeaderDesktop(props) {
 					<>
 						<IconButton
 							as={Link}
-							to='/register'
+							to='/login'
 							variant='ghost'
-							aria-label='Register'
+							aria-label='Login'
 						>
 							<FaRegUser />
 						</IconButton>
@@ -54,8 +54,8 @@ function PageHeaderDesktop(props) {
 						<IconButton
 							as={Link}
 							variant='ghost'
-							to='/favorites'
-							aria-label='Favorites'
+							to='/wishlist'
+							aria-label='Wishlist'
 						>
 							<FaRegHeart />
 						</IconButton>

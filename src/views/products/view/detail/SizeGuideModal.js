@@ -13,7 +13,7 @@ function SizeGuideModal(props) {
 	const {isOpen, onToggle} = props;
 
 	return (
-		<Modal isOpen={isOpen} onClose={onToggle} size='lg'>
+		<Modal isCentered isOpen={isOpen} onClose={onToggle} size='lg'>
 			<ModalOverlay />
 			<ModalContent>
 				<ModalHeader>Size Guide</ModalHeader>
