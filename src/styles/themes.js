@@ -5,6 +5,7 @@ import Button from './style.components/button';
 import Accordion from './style.components/accordion';
 import Checkbox from './style.components/checkbox';
 import Select from './style.components/select';
+import Card from './style.components/card';
 
 const theme = extendTheme({
 	config: {
@@ -23,6 +24,7 @@ const theme = extendTheme({
 		Accordion,
 		Checkbox,
 		Select,
+		Card,
 	},
 
 	/*

@@ -3,6 +3,7 @@ import {FaHeart, FaRegHeart} from 'react-icons/fa';
 
 import {
 	Badge,
+	Box,
 	Card,
 	CardFooter,
 	CardHeader,
@@ -10,12 +11,13 @@ import {
 	IconButton,
 	Image,
 	Text,
-	VStack,
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ColorList} from 'components/Color';
+import {PRODUCT_CURRENCY} from 'constants/products';
+import {getFormattedPrice} from 'utils/numbers';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
@@ -27,10 +29,11 @@ ProductCard.propTypes = {
 };
 
 function ProductCard(props) {
-	const {id, name, image, price, variants, description, wishlist} = props;
+	const {id, name, image, price, variants, description, wishlist, currency} =
+		props;
 
 	return (
-		<Card>
+		<Card variant='modimaCard' as={Link} to={id}>
 			<CardHeader>
 				<HStack justify='space-between'>
 					<Badge>New</Badge>
@@ -45,17 +48,21 @@ function ProductCard(props) {
 
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
-					<VStack alignItems='start' flexGrow={1}>
-						<Text textStyle='h6' as={Link} to={id}>
-							{name}
-						</Text>
-
+					<Box alignItems='start'>
+						<Text textStyle='h6'>{name}</Text>
 						<Text textStyle='bodyMd'>{description}</Text>
 
-						<ColorList items={variants} />
-					</VStack>
+						<ColorList items={variants} mt={2} />
+					</Box>
 
-					<Text textStyle='h6'>{price}</Text>
+					<Text textStyle='h6'>
+						{getFormattedPrice(
+							price,
+							currency || 'php',
+							PRODUCT_CURRENCY,
+							'0,0.00'
+						)}
+					</Text>
 				</HStack>
 			</CardFooter>
 		</Card>
