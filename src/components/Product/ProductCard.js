@@ -33,7 +33,7 @@ function ProductCard(props) {
 		props;
 
 	return (
-		<Card variant='modimaCard' as={Link} to={id}>
+		<Card variant='modimaCard'>
 			<CardHeader>
 				<HStack justify='space-between'>
 					<Badge>New</Badge>
@@ -49,7 +49,9 @@ function ProductCard(props) {
 			<CardFooter>
 				<HStack w='100%' justify='space-between'>
 					<Box alignItems='start'>
-						<Text textStyle='h6'>{name}</Text>
+						<Text textStyle='h6' as={Link} to={id}>
+							{name}
+						</Text>
 						<Text textStyle='bodyMd'>{description}</Text>
 
 						<ColorList items={variants} mt={2} />
