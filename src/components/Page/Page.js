@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Container} from '@chakra-ui/react';
+import {Box} from '@chakra-ui/react';
 
 import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
@@ -14,31 +14,21 @@ function Page(props) {
 	const _footer = footer && <PageFooter />;
 
 	return (
-		<Container
-			display='flex'
-			height='100vh'
-			flexDir='column'
-			maxW={{
-				sm: '2xl',
-				md: '4xl',
-				lg: '7xl',
-			}}
-		>
+		<Box sx={{maxHeight: '100vh', width: '100%'}}>
 			{_header}
 
 			<Box
 				as='main'
-				width='100%'
-				flexGrow={1}
 				display='flex'
+				flexGrow={1}
 				flexDir='column'
-				// overflow='hidden'
+				minHeight='100vh'
 			>
 				{children}
 			</Box>
 
 			{_footer}
-		</Container>
+		</Box>
 	);
 }
 

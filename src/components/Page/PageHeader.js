@@ -1,5 +1,5 @@
 import React from 'react';
-import {Flex, useMediaQuery} from '@chakra-ui/react';
+import {Container, Flex, useMediaQuery} from '@chakra-ui/react';
 
 import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
@@ -10,13 +10,21 @@ function PageHeader() {
 	const [isSmallerThanSm] = useMediaQuery('(max-width: 30em)');
 
 	return (
-		<Flex justify='space-between' alignItems='center' paddingTop={2}>
-			{isSmallerThanSm ? (
-				<PageHeaderMobile isAuth={isAuth} />
-			) : (
-				<PageHeaderDesktop isAuth={isAuth} />
-			)}
-		</Flex>
+		<Container
+			maxW={{
+				sm: '2xl',
+				md: '4xl',
+				lg: '7xl',
+			}}
+		>
+			<Flex justify='space-between' alignItems='center' paddingY={2}>
+				{isSmallerThanSm ? (
+					<PageHeaderMobile isAuth={isAuth} />
+				) : (
+					<PageHeaderDesktop isAuth={isAuth} />
+				)}
+			</Flex>
+		</Container>
 	);
 }
 
