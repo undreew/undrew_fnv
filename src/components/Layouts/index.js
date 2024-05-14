@@ -1,6 +1,8 @@
 import {useLayout} from 'contexts/LayoutContext';
 import {useEffect} from 'react';
 
+import {Container} from '@chakra-ui/react';
+
 function Layouts(props) {
 	const {header, aside, footer, children, type} = props;
 	const {setLayout} = useLayout();
@@ -15,7 +17,17 @@ function Layouts(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return children;
+	return (
+		<Container
+			maxW={{
+				sm: '2xl',
+				md: '4xl',
+				lg: '7xl',
+			}}
+		>
+			{children}
+		</Container>
+	);
 }
 
 function GuestLayout(props) {
