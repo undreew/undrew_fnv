@@ -11,15 +11,15 @@ import logout from './logout';
 
 const routes = [
 	{
-		access: PAGE_ACCESS.public,
+		access: PAGE_ACCESS.guest,
 		...landing,
 	},
 	{
-		access: PAGE_ACCESS.guest,
+		access: PAGE_ACCESS.public,
 		...register,
 	},
 	{
-		access: PAGE_ACCESS.guest,
+		access: PAGE_ACCESS.public,
 		...login,
 	},
 
