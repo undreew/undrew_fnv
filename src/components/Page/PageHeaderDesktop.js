@@ -2,18 +2,28 @@ import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
 
 import {LinkLogo} from 'components/Links';
-import {HStack, IconButton, Text} from '@chakra-ui/react';
-import {FaSearch, FaRegUser, FaRegHeart, FaShoppingBag} from 'react-icons/fa';
+import {Divider, HStack, IconButton, Text} from '@chakra-ui/react';
+import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
+
+import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
+
+const links = [
+	{label: 'Collection', to: '/products'},
+	{label: 'New In', to: '/new-in'},
+	// {label: 'Modiweek', to: '/modiweek'},
+	// {label: 'Plus Size', to: '/plus-size'},
+	{label: 'Sustainability', to: '/sustainability'},
+];
 
 function PageHeaderDesktop(props) {
-	const {items} = props;
+	const {isAuth} = props;
 
 	return (
 		<>
 			<LinkLogo />
 
 			<HStack gap={20} display={['none', 'none', 'none', 'flex', 'flex']}>
-				{(items || []).map((item, index) => {
+				{(links || []).map((item, index) => {
 					const {label, to} = item || {};
 					return (
 						<Text
@@ -30,21 +40,58 @@ function PageHeaderDesktop(props) {
 			</HStack>
 
 			<HStack gap={5}>
-				<IconButton variant='ghost'>
-					<FaSearch />
-				</IconButton>
+				{!isAuth && (
+					<>
+						<IconButton
+							as={Link}
+							to='/login'
+							variant='ghost'
+							aria-label='Login'
+						>
+							<FaRegUser />
+						</IconButton>
 
-				<IconButton variant='ghost' as={Link} to='/register'>
-					<FaRegUser />
-				</IconButton>
+						<IconButton
+							as={Link}
+							variant='ghost'
+							to='/wishlist'
+							aria-label='Wishlist'
+						>
+							<FaRegHeart />
+						</IconButton>
 
-				<IconButton variant='ghost'>
-					<FaRegHeart />
-				</IconButton>
+						<IconButton
+							as={Link}
+							to='/cart'
+							variant='ghost'
+							aria-label='Add to Cart'
+						>
+							<FaShoppingBag />
+						</IconButton>
+					</>
+				)}
 
-				<IconButton variant='ghost'>
-					<FaShoppingBag />
-				</IconButton>
+				{isAuth && (
+					<>
+						<IconButton
+							as={Link}
+							to='/products'
+							variant='ghost'
+							aria-label='Dashboard'
+						>
+							<FaDashcube />
+						</IconButton>
+
+						<Divider
+							orientation='vertical'
+							colorScheme='green'
+							size='lg'
+							h='20px'
+						/>
+					</>
+				)}
+
+				{isAuth && <PageHeaderDesktopMenu isAuth={isAuth} />}
 			</HStack>
 		</>
 	);

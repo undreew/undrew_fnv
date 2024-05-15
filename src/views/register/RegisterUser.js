@@ -3,6 +3,7 @@ import {FormControl, FormErrorMessage, Input} from '@chakra-ui/react';
 
 import RegisterForm from './RegisterForm';
 import useRegister from './useRegister';
+import {InputPassword} from 'components/Input';
 
 function RegisterUser() {
 	const {
@@ -61,9 +62,8 @@ function RegisterUser() {
 			</FormControl>
 
 			<FormControl isInvalid={touched.password && errors.password}>
-				<Input
+				<InputPassword
 					name='password'
-					type='password'
 					variant='modimaFilled'
 					placeholder='Password'
 					onBlur={handleBlur}

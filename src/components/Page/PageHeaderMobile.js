@@ -1,16 +1,17 @@
 import React from 'react';
 import {Box, HStack, IconButton} from '@chakra-ui/react';
+import {FaSearch, FaRegHeart, FaShoppingBag} from 'react-icons/fa';
 
 import {LinkLogo} from 'components/Links';
-import {FaBars, FaRegHeart, FaSearch, FaShoppingBag} from 'react-icons/fa';
+import PageHeaderMobileMenu from './PageHeaderMobileMenu';
 
-function PageHeaderMobile() {
+function PageHeaderMobile(props) {
+	const {isAuth} = props;
+
 	return (
 		<>
 			<HStack>
-				<IconButton variant='ghost'>
-					<FaBars />
-				</IconButton>
+				<PageHeaderMobileMenu isAuth={isAuth} />
 
 				<IconButton variant='ghost'>
 					<FaSearch />

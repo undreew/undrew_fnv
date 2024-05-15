@@ -1,7 +1,11 @@
 import {extendTheme} from '@chakra-ui/react';
 
-import Input from './input';
-import Button from './button';
+import Input from './style.components/input';
+import Button from './style.components/button';
+import Accordion from './style.components/accordion';
+import Checkbox from './style.components/checkbox';
+import Select from './style.components/select';
+import Card from './style.components/card';
 
 const theme = extendTheme({
 	config: {
@@ -17,6 +21,10 @@ const theme = extendTheme({
 	components: {
 		Input,
 		Button,
+		Accordion,
+		Checkbox,
+		Select,
+		Card,
 	},
 
 	/*
@@ -33,15 +41,15 @@ const theme = extendTheme({
 			fontWeight: 'bold',
 		},
 		h1: {
-			fontSize: ['2.75rem'], // 44px
+			fontSize: ['1.75rem', '2.25rem', '2.75rem'], // 44px
 			fontWeight: 'bold',
 		},
 		h2: {
-			fontSize: ['2.5rem'], // 40px
+			fontSize: ['1.5rem', '2rem', '2.5rem'], // 40px
 			fontWeight: 'bold',
 		},
 		h3: {
-			fontSize: ['2rem'], // 32px
+			fontSize: ['1.125rem', '1.5rem', '2rem'], // 32px
 			fontWeight: 'semibold',
 		},
 		h4: {

@@ -1,28 +1,30 @@
 import React from 'react';
-import {Flex, useMediaQuery} from '@chakra-ui/react';
+import {Container, Flex, useMediaQuery} from '@chakra-ui/react';
 
 import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
-
-const links = [
-	{label: 'Collection', to: '/collection'},
-	{label: 'New In', to: '/new-in'},
-	// {label: 'Modiweek', to: '/modiweek'},
-	// {label: 'Plus Size', to: '/plus-size'},
-	{label: 'Sustainability', to: '/sustainability'},
-];
+import {useAuth} from 'contexts/AuthContext';
 
 function PageHeader() {
+	const {isAuth} = useAuth();
 	const [isSmallerThanSm] = useMediaQuery('(max-width: 30em)');
 
 	return (
-		<Flex justify='space-between' alignItems='center' paddingTop={2}>
-			{isSmallerThanSm ? (
-				<PageHeaderMobile />
-			) : (
-				<PageHeaderDesktop items={links} />
-			)}
-		</Flex>
+		<Container
+			maxW={{
+				sm: '2xl',
+				md: '4xl',
+				lg: '7xl',
+			}}
+		>
+			<Flex justify='space-between' alignItems='center' paddingY={2}>
+				{isSmallerThanSm ? (
+					<PageHeaderMobile isAuth={isAuth} />
+				) : (
+					<PageHeaderDesktop isAuth={isAuth} />
+				)}
+			</Flex>
+		</Container>
 	);
 }
 

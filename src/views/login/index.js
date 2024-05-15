@@ -4,7 +4,7 @@ import Login from './Login';
 
 function Index() {
 	return (
-		<GuestLayout header={true} footer={true}>
+		<GuestLayout header={false} footer={true}>
 			<Login />
 		</GuestLayout>
 	);

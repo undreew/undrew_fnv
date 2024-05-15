@@ -10,13 +10,14 @@ function withRouteLayout(Component) {
 		const {isAuth} = useAuth();
 
 		if (access === PAGE_ACCESS.guest && isAuth) {
-			return <Navigate to='/dashboard' />;
+			return <Navigate to='/products' />;
 		}
 
 		if (access === PAGE_ACCESS.private) {
 			if (isAuth) {
 			} else {
-				return <Navigate to='/' />;
+				return <Navigate to='/error/401' />;
+				// return <Navigate to='/login' />;
 			}
 		}
 
