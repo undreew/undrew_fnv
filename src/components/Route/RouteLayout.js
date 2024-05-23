@@ -9,7 +9,7 @@ function withRouteLayout(Component) {
 		const {access} = props;
 		const {isAuth} = useAuth();
 
-		if (access === PAGE_ACCESS.guest && isAuth) {
+		if (access === PAGE_ACCESS.public && isAuth) {
 			return <Navigate to='/products' />;
 		}
 
