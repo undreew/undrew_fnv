@@ -2,24 +2,37 @@ import React, {useState} from 'react';
 import {Box, Button} from '@chakra-ui/react';
 
 import DetailProductSize from './DetailProductSize';
-import useAddToCart from './useAddToCart';
+
+import {useCart} from 'contexts/CartContext';
 
 function DetailProductAddCart(props) {
 	const {data} = props;
 
-	const [color, setColor] = useState('');
-	const {isLoading, postData} = useAddToCart();
+	const [size, setSize] = useState(null);
+	const [color, setColor] = useState(null);
+	const {isAdding, onAddToCart} = useCart();
 
 	return (
 		<Box>
-			<DetailProductSize data={data} onChange={setColor} />
+			<DetailProductSize
+				data={data}
+				onChangeSize={setSize}
+				onChangeColor={setColor}
+			/>
 
 			<Button
 				mt={5}
 				w='100%'
 				variant='modimaSolid'
-				isLoading={isLoading}
-				onClick={() => postData(color)}
+				isLoading={isAdding}
+				onClick={() =>
+					onAddToCart({
+						size,
+						color,
+						quantity: 1, // temp
+						product_id: data._id,
+					})
+				}
 			>
 				Add To Cart
 			</Button>
