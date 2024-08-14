@@ -3,9 +3,10 @@ import {Link, NavLink} from 'react-router-dom';
 
 import {LinkLogo} from 'components/Links';
 import {Divider, HStack, IconButton, Text} from '@chakra-ui/react';
-import {FaRegUser, FaRegHeart, FaShoppingBag, FaDashcube} from 'react-icons/fa';
+import {FaRegUser, FaRegHeart, FaDashcube} from 'react-icons/fa';
 
 import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
+import {CartPopover} from 'components/Popover';
 
 const links = [
 	{label: 'Collection', to: '/products'},
@@ -60,14 +61,7 @@ function PageHeaderDesktop(props) {
 							<FaRegHeart />
 						</IconButton>
 
-						<IconButton
-							as={Link}
-							to='/cart'
-							variant='ghost'
-							aria-label='Add to Cart'
-						>
-							<FaShoppingBag />
-						</IconButton>
+						<CartPopover />
 					</>
 				)}
 
