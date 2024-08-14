@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {getCartById} from 'api/cart';
 
 function useGetCart() {
@@ -16,6 +16,10 @@ function useGetCart() {
 			setIsFetching(false);
 		}
 	}
+
+	useEffect(() => {
+		onGetCart();
+	}, []);
 
 	return {
 		isFetching,

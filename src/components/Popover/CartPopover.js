@@ -1,15 +1,14 @@
 import {
-	Button,
 	Popover,
 	PopoverBody,
 	PopoverContent,
 	PopoverTrigger,
-	VStack,
 } from '@chakra-ui/react';
 import {CloseIcon} from '@chakra-ui/icons';
-import {Box, HStack, Image} from '@chakra-ui/react';
+import {Box, VStack, HStack, Image, Button} from '@chakra-ui/react';
 
-import React, {useEffect} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import {PulseLoader} from 'react-spinners';
 import {FaShoppingBag} from 'react-icons/fa';
 import {Center, IconButton, Text} from '@chakra-ui/react';
@@ -20,7 +19,8 @@ import {IMAGE_URL} from 'constants/configs';
 import {first, isEmpty, startCase} from 'lodash';
 
 import {useCart} from 'contexts/CartContext';
-import {Link} from 'react-router-dom';
+import {getFormattedPrice} from 'utils/numbers';
+import {PRODUCT_CURRENCY} from 'constants/products';
 
 CartPopover.defaultProps = {
 	header: 'Your shopping cart is empty',
@@ -32,7 +32,7 @@ CartPopover.propTypes = {
 	body: PropTypes.string,
 };
 
-function CartPopoverItem({item = {}}) {
+function CartPopoverItem({item = {}, isRemoving, onRemove}) {
 	const {
 		size,
 		color,
@@ -40,7 +40,7 @@ function CartPopoverItem({item = {}}) {
 		item_grand_total: total,
 		item_total_quantity: quantity,
 	} = item;
-	const {images, name} = product;
+	const {images, name, _id} = product;
 
 	const {public_id} = first(images) || {};
 	const imageSrc = urlJoin(IMAGE_URL, public_id || '');
@@ -52,17 +52,24 @@ function CartPopoverItem({item = {}}) {
 			<Box flexGrow={1}>
 				<HStack justifyContent='space-between'>
 					<Text textStyle='h6'>{name}</Text>
-					<IconButton variant='ghost' size='xs'>
+					<IconButton
+						size='xs'
+						variant='ghost'
+						isDisabled={isRemoving}
+						onClick={() => onRemove({size, color, product_id: _id})}
+					>
 						<CloseIcon />
 					</IconButton>
 				</HStack>
 
-				<Text>Size: {startCase(size)}</Text>
-				<Text>Color: {startCase(color)}</Text>
+				<Text textStyle='bodyMd'>Size: {startCase(size)}</Text>
+				<Text textStyle='bodyMd'>Color: {startCase(color)}</Text>
 
 				<HStack justifyContent='space-between'>
-					<Text>Quantity: {quantity}</Text>
-					<Text>{total}</Text>
+					<Text textStyle='bodyMd'>Quantity: {quantity}</Text>
+					<Text textStyle='h6'>
+						{getFormattedPrice(total, 'php', PRODUCT_CURRENCY, '0,0.00')}
+					</Text>
 				</HStack>
 			</Box>
 		</HStack>
@@ -70,15 +77,10 @@ function CartPopoverItem({item = {}}) {
 }
 
 function CartPopover({header, body}) {
-	const {isFetching, data, onGetCart} = useCart();
-
-	useEffect(() => {
-		onGetCart();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const {isFetching, data, isRemoving, onRemoveItem} = useCart();
 
 	return (
-		<Popover placement='bottom'>
+		<Popover placement='bottom' key={isFetching}>
 			<PopoverTrigger>
 				<IconButton variant='ghost' aria-label='Add to Cart'>
 					<FaShoppingBag />
@@ -103,7 +105,14 @@ function CartPopover({header, body}) {
 							</Text>
 							<VStack gap={5}>
 								{data.map((item, index) => {
-									return <CartPopoverItem key={index} item={item} />;
+									return (
+										<CartPopoverItem
+											key={index}
+											item={item}
+											isRemoving={isRemoving}
+											onRemove={onRemoveItem}
+										/>
+									);
 								})}
 							</VStack>
 
