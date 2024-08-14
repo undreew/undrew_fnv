@@ -3,7 +3,7 @@ import {Link, NavLink} from 'react-router-dom';
 
 import {LinkLogo} from 'components/Links';
 import {Divider, HStack, IconButton, Text} from '@chakra-ui/react';
-import {FaRegUser, FaRegHeart, FaDashcube} from 'react-icons/fa';
+import {FaRegUser, FaDashcube} from 'react-icons/fa';
 
 import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
 import {CartPopover} from 'components/Popover';
@@ -51,17 +51,6 @@ function PageHeaderDesktop(props) {
 						>
 							<FaRegUser />
 						</IconButton>
-
-						<IconButton
-							as={Link}
-							variant='ghost'
-							to='/wishlist'
-							aria-label='Wishlist'
-						>
-							<FaRegHeart />
-						</IconButton>
-
-						<CartPopover />
 					</>
 				)}
 
