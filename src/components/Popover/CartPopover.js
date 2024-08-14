@@ -1,4 +1,5 @@
 import {
+	Button,
 	Popover,
 	PopoverBody,
 	PopoverContent,
@@ -19,6 +20,7 @@ import {IMAGE_URL} from 'constants/configs';
 import {first, isEmpty, startCase} from 'lodash';
 
 import {useCart} from 'contexts/CartContext';
+import {Link} from 'react-router-dom';
 
 CartPopover.defaultProps = {
 	header: 'Your shopping cart is empty',
@@ -95,16 +97,20 @@ function CartPopover({header, body}) {
 							<Text textStyle='bodySm'>{body}</Text>
 						</Center>
 					) : (
-						<>
+						<VStack gap={5}>
 							<Text textStyle='h5' textAlign='center'>
 								Your Cart
 							</Text>
-							<VStack mt={5} gap={5}>
+							<VStack gap={5}>
 								{data.map((item, index) => {
 									return <CartPopoverItem key={index} item={item} />;
 								})}
 							</VStack>
-						</>
+
+							<Button variant='modimaSolid' w='100%' as={Link} to='/check-out'>
+								Check Out
+							</Button>
+						</VStack>
 					)}
 				</PopoverBody>
 			</PopoverContent>
