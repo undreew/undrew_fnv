@@ -76,6 +76,8 @@ function PageHeaderDesktop(props) {
 							<FaDashcube />
 						</IconButton>
 
+						<CartPopover />
+
 						<Divider
 							orientation='vertical'
 							colorScheme='green'

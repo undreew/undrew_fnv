@@ -5,26 +5,34 @@ import {
 	PopoverTrigger,
 	PopoverCloseButton,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {PulseLoader} from 'react-spinners';
 import {FaShoppingBag} from 'react-icons/fa';
 import {Center, IconButton, Text} from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
-import {noop} from 'lodash';
+import {isEmpty} from 'lodash';
+
+import {useCart} from 'contexts/CartContext';
 
 CartPopover.defaultProps = {
 	header: 'Your shopping cart is empty',
 	body: 'Discover Modimal and add products to your Bag',
-	action: noop,
 };
 
 CartPopover.propTypes = {
 	header: PropTypes.string,
 	body: PropTypes.string,
-	action: PropTypes.func,
 };
 
-function CartPopover({header, body, action}) {
+function CartPopover({header, body}) {
+	const {isFetching, data, onGetCart} = useCart();
+
+	useEffect(() => {
+		onGetCart();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<Popover placement='bottom'>
 			<PopoverTrigger>
@@ -38,8 +46,18 @@ function CartPopover({header, body, action}) {
 
 				<PopoverBody>
 					<Center height='360px' display='flex' flexDirection='column'>
-						<Text textStyle='h6'>{header}</Text>
-						<Text textStyle='bodySm'>{body}</Text>
+						{isFetching ? (
+							<PulseLoader loading color='#36d7b7' />
+						) : isEmpty(data) ? (
+							<>
+								<Text textStyle='h6'>{header}</Text>
+								<Text textStyle='bodySm'>{body}</Text>
+							</>
+						) : (
+							<>
+								<Text textStyle='bodySm'>Items</Text>
+							</>
+						)}
 					</Center>
 				</PopoverBody>
 			</PopoverContent>
