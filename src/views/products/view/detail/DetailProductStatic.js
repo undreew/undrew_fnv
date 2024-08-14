@@ -3,11 +3,9 @@ import {Box, Text} from '@chakra-ui/react';
 
 import {truncate} from 'lodash';
 
-import {ColorList} from 'components/Color';
-
 function DetailProductStatic(props) {
 	const {data} = props;
-	const {name, full_description: description, variants} = data || {};
+	const {name, full_description: description} = data || {};
 
 	return (
 		<Box>
@@ -18,8 +16,6 @@ function DetailProductStatic(props) {
 					{truncate(description, {length: 500})}
 				</Text>
 			</Box>
-
-			<ColorList mt={2} title='Colors' items={variants} />
 		</Box>
 	);
 }
