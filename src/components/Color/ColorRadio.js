@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Radio, RadioGroup, Stack, Text} from '@chakra-ui/react';
 
 import {noop} from 'lodash';
@@ -18,14 +18,21 @@ ColorRadio.defaultProps = {
 	onChange: noop,
 };
 
+const defaultValue = 0;
+
 function ColorRadio({items = [], onChange, title}) {
-	const [value, setValue] = useState(0);
+	const [value, setValue] = useState(defaultValue);
 	const {colors} = useGetParseColors(items);
 
 	function handleChange(value) {
 		setValue(value);
 		onChange && onChange(colors[value]);
 	}
+
+	useEffect(() => {
+		onChange(colors[defaultValue]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [items]);
 
 	return (
 		<Box>
