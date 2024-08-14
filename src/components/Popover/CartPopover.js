@@ -3,6 +3,7 @@ import {
 	PopoverBody,
 	PopoverContent,
 	PopoverTrigger,
+	VStack,
 } from '@chakra-ui/react';
 import {CloseIcon} from '@chakra-ui/icons';
 import {Box, HStack, Image} from '@chakra-ui/react';
@@ -98,11 +99,11 @@ function CartPopover({header, body}) {
 							<Text textStyle='h5' textAlign='center'>
 								Your Cart
 							</Text>
-							<Box mt={5}>
+							<VStack mt={5} gap={5}>
 								{data.map((item, index) => {
 									return <CartPopoverItem key={index} item={item} />;
 								})}
-							</Box>
+							</VStack>
 						</>
 					)}
 				</PopoverBody>
