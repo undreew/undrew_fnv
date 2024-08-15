@@ -1,4 +1,5 @@
 import {getProductById} from 'api/products';
+import {enqueueSnackbar} from 'notistack';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
@@ -13,7 +14,8 @@ function useGetProductDetail() {
 		try {
 			const {data} = await getProductById(id);
 			setData(data);
-		} catch (error) {
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {
 			setIsLoading(false);
 		}
