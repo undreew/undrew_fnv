@@ -17,6 +17,7 @@
     "formik": "^2.4.5",
     "framer-motion": "^10.18.0",
     "lodash": "^4.17.21",
+    "notistack": "^3.0.1",
     "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
     "qs": "^6.11.2",

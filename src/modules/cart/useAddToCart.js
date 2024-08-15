@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {postAddToCart} from 'api/cart';
+import {enqueueSnackbar} from 'notistack';
 
 function useAddToCart(callback) {
 	const [isAdding, setIsAdding] = useState(false);
@@ -9,8 +10,8 @@ function useAddToCart(callback) {
 		try {
 			await postAddToCart(data);
 			callback && callback();
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {
 			setIsAdding(false);
 		}

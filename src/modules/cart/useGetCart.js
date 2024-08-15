@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {getCartById} from 'api/cart';
+import {enqueueSnackbar} from 'notistack';
 
 function useGetCart() {
 	const [isFetching, setIsFetching] = useState(false);
@@ -10,8 +11,8 @@ function useGetCart() {
 		try {
 			const {data} = await getCartById();
 			setData(data);
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {
 			setIsFetching(false);
 		}

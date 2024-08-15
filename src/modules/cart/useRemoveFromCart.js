@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {deleteRemoveItem} from 'api/cart';
+import {enqueueSnackbar} from 'notistack';
 
 function useRemoveFromCart(callback) {
 	const [isRemoving, setIsRemoving] = useState(false);
@@ -9,8 +10,8 @@ function useRemoveFromCart(callback) {
 		try {
 			await deleteRemoveItem(formData);
 			callback && callback();
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {
 			setIsRemoving(false);
 		}
