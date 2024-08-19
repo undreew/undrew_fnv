@@ -1,11 +1,14 @@
-import {forEach} from 'lodash';
+import {find, forEach} from 'lodash';
 
-function useGetParseSizes(items) {
+function useGetParseSizes(items, color) {
 	let data = [];
 
 	forEach(items, (item) => {
-		const {size} = item || {};
-		data.push(size);
+		const {size, colors} = item || {};
+
+		if (find(colors, (c) => c.name === color)) {
+			data.push(size);
+		}
 	});
 
 	return {

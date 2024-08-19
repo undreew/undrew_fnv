@@ -9,6 +9,11 @@ function useRemoveFromCart(callback) {
 		setIsRemoving(true);
 		try {
 			await deleteRemoveItem(formData);
+			enqueueSnackbar('Item removed from cart', {
+				variant: 'success',
+				autoHideDuration: 1500,
+			});
+
 			callback && callback();
 		} catch ({message}) {
 			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});

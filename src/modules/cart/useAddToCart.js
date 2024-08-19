@@ -9,6 +9,11 @@ function useAddToCart(callback) {
 		setIsAdding(true);
 		try {
 			await postAddToCart(data);
+			enqueueSnackbar('Item added to cart', {
+				variant: 'success',
+				autoHideDuration: 1500,
+			});
+
 			callback && callback();
 		} catch ({message}) {
 			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});

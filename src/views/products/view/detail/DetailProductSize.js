@@ -10,12 +10,12 @@ import {ColorRadio} from 'components/Color';
 import useGetParseSizes from 'hooks/useGetParseSizes';
 
 function DetailProductSize(props) {
-	const {data, onChangeColor, onChangeSize} = props;
+	const {data, color, onChangeColor, onChangeSize} = props;
 	const {variants} = data || {};
 
 	const {isOpen, onToggle} = useDisclosure();
 
-	const {sizes} = useGetParseSizes(variants);
+	const {sizes} = useGetParseSizes(variants, color);
 
 	return (
 		<Box mt={5}>
@@ -27,6 +27,7 @@ function DetailProductSize(props) {
 				</Button>
 
 				<Select
+					key={sizes}
 					options={sizes}
 					placeholder='Sizes'
 					name='product_color'
