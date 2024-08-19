@@ -1,8 +1,11 @@
-import {useEffect, useState} from 'react';
 import {getCartById} from 'api/cart';
 import {enqueueSnackbar} from 'notistack';
+import {useEffect, useState} from 'react';
+import {useAuth} from 'contexts/AuthContext';
 
 function useGetCart() {
+	const {isAuth} = useAuth();
+
 	const [isFetching, setIsFetching] = useState(false);
 	const [data, setData] = useState([]);
 
@@ -19,8 +22,10 @@ function useGetCart() {
 	}
 
 	useEffect(() => {
-		onGetCart();
-	}, []);
+		if (isAuth) {
+			onGetCart();
+		}
+	}, [isAuth]);
 
 	return {
 		isFetching,

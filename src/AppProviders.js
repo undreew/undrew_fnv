@@ -13,13 +13,13 @@ function AppProviders({children}) {
 			maxSnack={3}
 			anchorOrigin={{horizontal: 'right', vertical: 'top'}}
 		>
-			<CartProvider>
-				<AuthProvider>
+			<AuthProvider>
+				<CartProvider>
 					<LayoutProvider>
 						<ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
 					</LayoutProvider>
-				</AuthProvider>
-			</CartProvider>
+				</CartProvider>
+			</AuthProvider>
 		</SnackbarProvider>
 	);
 }
