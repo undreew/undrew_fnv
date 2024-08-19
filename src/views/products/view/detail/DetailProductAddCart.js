@@ -16,6 +16,7 @@ function DetailProductAddCart(props) {
 		<Box>
 			<DetailProductSize
 				data={data}
+				color={color}
 				onChangeSize={setSize}
 				onChangeColor={setColor}
 			/>
