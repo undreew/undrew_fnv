@@ -1,11 +1,13 @@
 import React from 'react';
 import theme from 'styles/themes';
 
+import {SnackbarProvider} from 'notistack';
+import {ChakraBaseProvider} from '@chakra-ui/react';
+
 import {CartProvider} from 'contexts/CartContext';
 import {AuthProvider} from 'contexts/AuthContext';
-import {ChakraBaseProvider} from '@chakra-ui/react';
 import {LayoutProvider} from 'contexts/LayoutContext';
-import {SnackbarProvider} from 'notistack';
+import {WishlistProvider} from 'contexts/WishlistContext';
 
 function AppProviders({children}) {
 	return (
@@ -14,11 +16,13 @@ function AppProviders({children}) {
 			anchorOrigin={{horizontal: 'right', vertical: 'top'}}
 		>
 			<AuthProvider>
-				<CartProvider>
-					<LayoutProvider>
-						<ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
-					</LayoutProvider>
-				</CartProvider>
+				<WishlistProvider>
+					<CartProvider>
+						<LayoutProvider>
+							<ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
+						</LayoutProvider>
+					</CartProvider>
+				</WishlistProvider>
 			</AuthProvider>
 		</SnackbarProvider>
 	);
