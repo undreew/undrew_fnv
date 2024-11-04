@@ -35,8 +35,8 @@ function PageHeaderDesktopMenu(props) {
 			icon: <FaUserAlt />,
 		},
 		{
-			to: '/favorites',
-			label: 'Favorites',
+			to: '/wishlist',
+			label: 'Wishlist',
 			icon: <FaRegHeart />,
 		},
 		isAuth && {
