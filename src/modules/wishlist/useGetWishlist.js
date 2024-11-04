@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {enqueueSnackbar} from 'notistack';
 import {getWishlist} from 'api/wishlist';
+import {useAuth} from 'contexts/AuthContext';
 
 function useGetWishlist() {
+	const {isAuth} = useAuth();
 	const [isFetching, setIsFetching] = useState(false);
-	const [data, setData] = useState({});
+	const [data, setData] = useState([]);
 
 	async function onGetWishlist() {
 		setIsFetching(true);
@@ -17,6 +19,12 @@ function useGetWishlist() {
 			setIsFetching(false);
 		}
 	}
+
+	useEffect(() => {
+		if (isAuth) {
+			onGetWishlist();
+		}
+	}, [isAuth]);
 
 	return {
 		data,

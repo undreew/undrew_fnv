@@ -21,7 +21,7 @@ function DashboardHeader(props) {
 
 				<Divider orientation='vertical' size='lg' h='20px' />
 
-				<Text textStyle='bodyXl'>{count || 'Loading...'}</Text>
+				<Text textStyle='bodyXl'>{count}</Text>
 			</HStack>
 
 			<Text textStyle='captionMd'>{description}</Text>

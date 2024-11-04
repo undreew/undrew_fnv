@@ -8,6 +8,7 @@ import login from './login';
 import products from './products';
 import errors from './errors';
 import logout from './logout';
+import wishlist from './wishlist';
 
 const routes = [
 	{
@@ -22,7 +23,10 @@ const routes = [
 		access: PAGE_ACCESS.public,
 		...login,
 	},
-
+	{
+		access: PAGE_ACCESS.private,
+		...wishlist,
+	},
 	{
 		access: PAGE_ACCESS.private,
 		...products,
