@@ -1,19 +1,15 @@
 import React from 'react';
-
 import {Box, VStack} from '@chakra-ui/react';
-import {Button, useDisclosure} from '@chakra-ui/react';
 
 import {Select} from 'components/Selects';
-import SizeGuideModal from './SizeGuideModal';
 
 import {ColorRadio} from 'components/Color';
 import useGetParseSizes from 'hooks/useGetParseSizes';
+import SizeGuide from './SizeGuide';
 
 function DetailProductSize(props) {
 	const {data, color, onChangeColor, onChangeSize} = props;
 	const {variants} = data || {};
-
-	const {isOpen, onToggle} = useDisclosure();
 
 	const {sizes} = useGetParseSizes(variants, color);
 
@@ -22,9 +18,7 @@ function DetailProductSize(props) {
 			<ColorRadio items={variants} onChange={onChangeColor} />
 
 			<VStack>
-				<Button variant='modimaGhost' alignSelf='end' onClick={onToggle}>
-					Size Guide
-				</Button>
+				<SizeGuide />
 
 				<Select
 					key={sizes}
@@ -34,8 +28,6 @@ function DetailProductSize(props) {
 					onChange={onChangeSize}
 				/>
 			</VStack>
-
-			<SizeGuideModal isOpen={isOpen} onToggle={onToggle} />
 		</Box>
 	);
 }

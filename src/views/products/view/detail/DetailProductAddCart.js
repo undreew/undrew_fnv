@@ -4,6 +4,7 @@ import {Box, Button} from '@chakra-ui/react';
 import DetailProductSize from './DetailProductSize';
 
 import {useCart} from 'contexts/CartContext';
+import {enqueueSnackbar} from 'notistack';
 
 function DetailProductAddCart(props) {
 	const {data} = props;
@@ -26,14 +27,20 @@ function DetailProductAddCart(props) {
 				w='100%'
 				variant='modimaSolid'
 				isLoading={isAdding}
-				onClick={() =>
+				onClick={() => {
+					if (!size) {
+						return enqueueSnackbar('Please select a size', {
+							variant: 'error',
+							autoHideDuration: 1500,
+						});
+					}
 					onAddToCart({
 						size,
 						color,
 						quantity: 1, // temp
 						product_id: data._id,
-					})
-				}
+					});
+				}}
 			>
 				Add To Cart
 			</Button>
