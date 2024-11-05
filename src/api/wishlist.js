@@ -9,5 +9,5 @@ export const postWishlistAdd = (formData) => {
 };
 
 export const postWishlistRemove = (formData) => {
-	return fetcher('POST', 'wishlist/remove', formData);
+	return fetcher('DELETE', 'wishlist/remove', formData);
 };

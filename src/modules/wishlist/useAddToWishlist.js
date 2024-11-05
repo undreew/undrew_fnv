@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {enqueueSnackbar} from 'notistack';
 import {postWishlistAdd} from 'api/wishlist';
 
-function useAddToWishlist() {
+function useAddToWishlist(callback) {
 	const [isAdding, setIsAdding] = useState(false);
 
 	async function onAddToWishlist(formData) {
@@ -14,6 +14,7 @@ function useAddToWishlist() {
 				variant: 'success',
 				autoHideDuration: 1500,
 			});
+			callback && callback();
 		} catch ({message}) {
 			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {

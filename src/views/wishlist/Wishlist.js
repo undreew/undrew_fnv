@@ -6,15 +6,22 @@ import {DashboardHeader, DashboardList} from 'components/Dashboard';
 
 import WishlistTable from './WishlistTable';
 
+import {some} from 'lodash';
+
 function Wishlist() {
-	const {data, isFetching} = useWishlist();
+	const {data, isFetching, onRemoveFromWishlist, isRemoving} = useWishlist();
+	const isLoading = some([isFetching, isRemoving]);
 
 	return (
 		<Box>
 			<DashboardHeader title='Wishlist' count={data?.length} />
 
 			<DashboardList>
-				<WishlistTable isLoading={isFetching} data={data} />
+				<WishlistTable
+					data={data}
+					isLoading={isLoading}
+					onRemove={onRemoveFromWishlist}
+				/>
 			</DashboardList>
 		</Box>
 	);
