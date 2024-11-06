@@ -1,6 +1,7 @@
 import useQuery from 'hooks/useQuery';
 import {getProducts} from 'api/products';
 import {useEffect, useState} from 'react';
+import {enqueueSnackbar} from 'notistack';
 
 function useGetProducts() {
 	const {query} = useQuery();
@@ -27,8 +28,8 @@ function useGetProducts() {
 			setData((prevData) => [...(!isReload ? prevData : []), ...dataResponse]);
 			setHasNext(hasMore);
 			setNextPage(nextPage);
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		} finally {
 			isReload ? setIsReloading(false) : setIsLoading(false);
 		}

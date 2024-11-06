@@ -46,8 +46,15 @@ axios.interceptors.response.use(
 		return response;
 	},
 	function (error) {
+		const {data: errorData, status} = error?.response;
+
+		const rejectData = {
+			status,
+			message: errorData?.message,
+		};
+
 		// Do something with the error response
 		// generalize the error from be for fe formatting
-		return Promise.reject(error);
+		return Promise.reject(rejectData);
 	}
 );

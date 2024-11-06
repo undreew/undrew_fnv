@@ -1,12 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {
-	FaRegHeart,
-	FaShoppingBag,
-	FaSignOutAlt,
-	FaUserAlt,
-} from 'react-icons/fa';
+import {FaRegHeart, FaSignOutAlt, FaUserAlt} from 'react-icons/fa';
 
 import {Avatar, Menu, MenuButton, MenuItem, MenuList} from '@chakra-ui/react';
 
@@ -40,14 +35,9 @@ function PageHeaderDesktopMenu(props) {
 			icon: <FaUserAlt />,
 		},
 		{
-			to: '/favorites',
-			label: 'Favorites',
+			to: '/wishlist',
+			label: 'Wishlist',
 			icon: <FaRegHeart />,
-		},
-		{
-			to: '/cart',
-			label: 'Cart',
-			icon: <FaShoppingBag />,
 		},
 		isAuth && {
 			to: '/logout',

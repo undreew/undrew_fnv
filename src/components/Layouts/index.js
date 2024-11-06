@@ -17,22 +17,24 @@ function Layouts(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return (
-		<Container
-			maxW={{
-				sm: '2xl',
-				md: '4xl',
-				lg: '7xl',
-			}}
-		>
-			{children}
-		</Container>
-	);
+	return children;
 }
 
 function GuestLayout(props) {
-	const {type = 'guest', ...rest} = props;
-	return <Layouts type={type} {...rest} />;
+	const {type = 'guest', children, ...rest} = props;
+	return (
+		<Layouts type={type} {...rest}>
+			<Container
+				maxW={{
+					sm: '2xl',
+					md: '4xl',
+					lg: '7xl',
+				}}
+			>
+				{children}
+			</Container>
+		</Layouts>
+	);
 }
 
 function PrivateLayout(props) {
@@ -41,6 +43,7 @@ function PrivateLayout(props) {
 		aside = true,
 		footer = true,
 		type = 'private',
+		children,
 		...rest
 	} = props;
 
@@ -51,7 +54,17 @@ function PrivateLayout(props) {
 			footer={footer}
 			type={type}
 			{...rest}
-		/>
+		>
+			<Container
+				maxW={{
+					sm: '2xl',
+					md: '4xl',
+					lg: '7xl',
+				}}
+			>
+				{children}
+			</Container>
+		</Layouts>
 	);
 }
 

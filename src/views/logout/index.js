@@ -5,6 +5,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import {GuestLayout} from 'components/Layouts';
 import {useAuth} from 'contexts/AuthContext';
 import {postAuthLogout} from 'api/auth';
+import {enqueueSnackbar} from 'notistack';
 
 const hex = '#36d7b7'; // temp
 
@@ -15,8 +16,9 @@ function Index() {
 		try {
 			await postAuthLogout();
 			removeAuth();
-		} catch (error) {
-			removeAuth();
+		} catch ({message}) {
+			window.location.replace('/');
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		}
 	}
 

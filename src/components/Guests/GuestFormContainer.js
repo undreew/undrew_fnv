@@ -1,7 +1,8 @@
 import React from 'react';
-import {Box, Image, SimpleGrid} from '@chakra-ui/react';
+import {Box, HStack, Image, SimpleGrid} from '@chakra-ui/react';
 
 import register from 'assets/images/register.png';
+import {LinkLogo} from 'components/Links';
 
 function GuestFormContainer(props) {
 	const {children} = props;
@@ -19,8 +20,11 @@ function GuestFormContainer(props) {
 				src={register}
 				display={{base: 'none', sm: 'none', md: 'none', lg: 'block'}}
 			/>
-
 			<Box w='100%' maxW='375px'>
+				<HStack justifyContent='center' mb={2}>
+					<LinkLogo />
+				</HStack>
+
 				{children}
 			</Box>
 		</SimpleGrid>

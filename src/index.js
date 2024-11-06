@@ -10,12 +10,10 @@ import {ColorModeProvider, ColorModeScript} from '@chakra-ui/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<React.StrictMode>
-		<ColorModeProvider>
-			<ColorModeScript initialColorMode={theme.config.initialColorMode} />
-			<App />
-		</ColorModeProvider>
-	</React.StrictMode>
+	<ColorModeProvider>
+		<ColorModeScript initialColorMode={theme.config.initialColorMode} />
+		<App />
+	</ColorModeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

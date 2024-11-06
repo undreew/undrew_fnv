@@ -9,15 +9,14 @@ function withRouteLayout(Component) {
 		const {access} = props;
 		const {isAuth} = useAuth();
 
-		if (access === PAGE_ACCESS.guest && isAuth) {
+		if (access === PAGE_ACCESS.public && isAuth) {
 			return <Navigate to='/products' />;
 		}
 
 		if (access === PAGE_ACCESS.private) {
 			if (isAuth) {
 			} else {
-				return <Navigate to='/error/401' />;
-				// return <Navigate to='/login' />;
+				return <Navigate to='/' />;
 			}
 		}
 

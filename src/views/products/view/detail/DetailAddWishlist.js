@@ -1,13 +1,14 @@
-import {Button, HStack} from '@chakra-ui/react';
 import React from 'react';
+import {Button, HStack} from '@chakra-ui/react';
 import {FaRegHeart, FaTruck} from 'react-icons/fa';
-import useAddToWishlist from './useAddToWishlist';
+
+import {useWishlist} from 'contexts/WishlistContext';
 
 function DetailAddWishlist(props) {
 	const {data} = props;
-	const {_id} = data || {};
+	const {_id: product_id} = data || {};
 
-	const {isLoading, postData} = useAddToWishlist(_id);
+	const {isAdding, onAddToWishlist} = useWishlist();
 
 	return (
 		<HStack justify='space-between' mt={5}>
@@ -16,10 +17,10 @@ function DetailAddWishlist(props) {
 			</Button>
 
 			<Button
-				onClick={postData}
+				isLoading={isAdding}
 				variant='modimaGhost'
-				isLoading={isLoading}
 				leftIcon={<FaRegHeart />}
+				onClick={() => onAddToWishlist({product_id})}
 			>
 				Add To Wishlist
 			</Button>

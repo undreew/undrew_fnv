@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Landing from './Landing';
-import {GuestLayout} from 'components/Layouts';
+import {PublicLayout} from 'components/Layouts';
 
 function Index() {
 	return (
-		<GuestLayout header footer>
+		<PublicLayout header footer>
 			<Landing />
-		</GuestLayout>
+		</PublicLayout>
 	);
 }
 

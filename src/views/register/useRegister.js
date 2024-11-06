@@ -2,6 +2,7 @@ import {useFormik} from 'formik';
 import {object, string} from 'yup';
 import {postRegister} from 'api/auth';
 import {useAuth} from 'contexts/AuthContext';
+import {enqueueSnackbar} from 'notistack';
 
 function useRegister() {
 	const {setAuth} = useAuth();
@@ -10,8 +11,8 @@ function useRegister() {
 		try {
 			const {session_id} = await postRegister(formData);
 			setAuth(session_id);
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		}
 	}
 

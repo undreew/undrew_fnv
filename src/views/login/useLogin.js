@@ -1,17 +1,19 @@
 import {postAuthLogin} from 'api/auth';
 import {useAuth} from 'contexts/AuthContext';
 import {useFormik} from 'formik';
+import {useSnackbar} from 'notistack';
 import {object, string} from 'yup';
 
 function useLogin() {
 	const {setAuth} = useAuth();
+	const {enqueueSnackbar} = useSnackbar();
 
 	async function handleLogin(formData) {
 		try {
 			const {session_id} = await postAuthLogin(formData);
 			setAuth(session_id);
-		} catch (error) {
-			console.log(error);
+		} catch ({message}) {
+			enqueueSnackbar(message, {variant: 'error', autoHideDuration: 1500});
 		}
 	}
 

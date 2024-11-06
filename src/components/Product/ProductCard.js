@@ -29,8 +29,8 @@ ProductCard.propTypes = {
 };
 
 function ProductCard(props) {
-	const {id, name, image, price, variants, description, wishlist, currency} =
-		props;
+	const {wishlist, wishlistAction} = props;
+	const {id, name, image, price, variants, currency, description} = props;
 
 	return (
 		<Card variant='modimaCard'>
@@ -38,7 +38,11 @@ function ProductCard(props) {
 				<HStack justify='space-between'>
 					<Badge>New</Badge>
 
-					<IconButton variant='ghost' color='primary.400'>
+					<IconButton
+						variant='ghost'
+						color='primary.400'
+						onClick={wishlistAction}
+					>
 						{wishlist ? <FaHeart /> : <FaRegHeart />}
 					</IconButton>
 				</HStack>
