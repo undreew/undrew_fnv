@@ -20,7 +20,7 @@ axios.interceptors.request.use(
 			config.headers['x-http-bsid'] = bsid;
 		} else {
 			delete axios.defaults.headers.common['x-http-bsid'];
-			delete config.headers['x-http-token'];
+			delete config.headers['x-http-bsid'];
 		}
 
 		// session
@@ -46,15 +46,51 @@ axios.interceptors.response.use(
 		return response;
 	},
 	function (error) {
-		const {data: errorData, status} = error?.response;
+		// Do something with the error response
 
-		const rejectData = {
-			status,
-			message: errorData?.message,
+		// generalize the error from be for fe formatting
+		const errorResult = {
+			status: 404,
+			token: undefined,
+			code: 'not_found',
+			message: 'Your request could not be found. Please check and try again.',
 		};
 
-		// Do something with the error response
-		// generalize the error from be for fe formatting
-		return Promise.reject(rejectData);
+		// always for error.response
+		if (error.response) {
+			const response = error.response;
+
+			// Set status
+			// http code like 404, 500, etc..
+			errorResult.status = response.status;
+
+			// Set message
+			errorResult.message = response.data.message;
+
+			// Set code
+			// Internal error code
+			if (response.data?.code) {
+				errorResult.code = response.data?.code;
+			}
+
+			switch (errorResult.status) {
+				// case 401: {
+				// 	window.location.replace('error/401');
+				// 	break;
+				// }
+
+				case 440: {
+					// remove session from cookies
+					Cookies.session = '';
+					window.location.replace('error/session');
+					break;
+				}
+
+				default:
+					break;
+			}
+		}
+
+		return Promise.reject(errorResult);
 	}
 );

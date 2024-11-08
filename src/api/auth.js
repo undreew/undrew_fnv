@@ -11,3 +11,7 @@ export const postAuthLogin = (formData) => {
 export const postAuthLogout = () => {
 	return fetcher('POST', 'auth/logout');
 };
+
+export const getAuthSession = () => {
+	return fetcher('GET', `auth/session`);
+};

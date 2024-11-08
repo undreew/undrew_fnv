@@ -9,6 +9,8 @@ import {AuthProvider} from 'contexts/AuthContext';
 import {LayoutProvider} from 'contexts/LayoutContext';
 import {WishlistProvider} from 'contexts/WishlistContext';
 
+import 'utils/axios-config';
+
 function AppProviders({children}) {
 	return (
 		<SnackbarProvider

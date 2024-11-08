@@ -8,7 +8,6 @@ import {Page} from 'components/Page';
 import AppProviders from 'AppProviders';
 import {BrowserRouter as Router, Routes} from 'react-router-dom';
 
-import 'utils/axios-config';
 import useBSID from 'hooks/useBSID';
 
 function App() {
