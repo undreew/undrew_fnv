@@ -42,7 +42,8 @@ function FollowUsImage(props) {
 	return (
 		<Image
 			loading='lazy'
-			style={{objectFit: 'cover', objectPosition: '40% 15%'}}
+			objectFit='cover'
+			objectPosition='40% 15%'
 			{...props}
 		/>
 	);
@@ -68,8 +69,8 @@ function LandingFollowUs() {
 			<XMasonry maxColumns={3}>
 				{FOLLOW_US_ITEMS.map((item, index) => {
 					return (
-						<XBlock>
-							<FollowUsImage key={index} width='100%' {...item} />
+						<XBlock key={index}>
+							<FollowUsImage width='100%' {...item} />
 						</XBlock>
 					);
 				})}
