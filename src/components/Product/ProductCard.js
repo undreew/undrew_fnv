@@ -9,6 +9,7 @@ import {Link} from 'react-router-dom';
 import {ColorList} from 'components/Color';
 import {PRODUCT_CURRENCY} from 'constants/products';
 import {getFormattedPrice} from 'utils/numbers';
+import {isNull} from 'lodash';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
@@ -37,37 +38,43 @@ function ProductCard(props) {
 				</Box>
 			)}
 
-			<Box position='absolute' right='10px' top='5px'>
-				<IconButton
-					isRound
-					variant='ghost'
-					fontSize='1.25rem'
-					onClick={wishlistAction}
-					icon={in_wishlist ? <FaHeart /> : <FaRegHeart />}
-					color={in_wishlist ? 'error.main' : 'primary.500'}
-					_hover={{color: in_wishlist ? 'error.light' : 'primary.700'}}
-				/>
-			</Box>
+			{!isNull(in_wishlist) && (
+				<Box position='absolute' right='10px' top='5px'>
+					<IconButton
+						isRound
+						variant='ghost'
+						fontSize='1.25rem'
+						onClick={wishlistAction}
+						icon={in_wishlist ? <FaHeart /> : <FaRegHeart />}
+						color={in_wishlist ? 'error.main' : 'primary.500'}
+						_hover={{color: in_wishlist ? 'error.light' : 'primary.700'}}
+					/>
+				</Box>
+			)}
 
 			<CardFooter>
 				<VStack w='100%' alignItems='start'>
 					<Text textStyle='h6' as={Link} to={id}>
 						{name}
 					</Text>
-					<Text textStyle='bodyMd'>{list_description}</Text>
+					{list_description && (
+						<Text textStyle='bodyMd'>{list_description}</Text>
+					)}
 
-					<HStack w='100%' justifyContent='space-between'>
-						<ColorList items={variants} mt={2} />
+					{price && variants && (
+						<HStack w='100%' justifyContent='space-between'>
+							<ColorList items={variants} mt={2} />
 
-						<Text textStyle='h6'>
-							{getFormattedPrice(
-								price,
-								currency || 'php',
-								PRODUCT_CURRENCY,
-								'0,0.00'
-							)}
-						</Text>
-					</HStack>
+							<Text textStyle='h6'>
+								{getFormattedPrice(
+									price,
+									currency || 'php',
+									PRODUCT_CURRENCY,
+									'0,0.00'
+								)}
+							</Text>
+						</HStack>
+					)}
 				</VStack>
 			</CardFooter>
 		</Card>

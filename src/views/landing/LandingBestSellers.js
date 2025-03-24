@@ -1,16 +1,15 @@
 import React from 'react';
+import {SwiperSlide} from 'swiper/react';
 import {useBreakpointValue} from '@chakra-ui/react';
 import {HStack, SimpleGrid, Skeleton} from '@chakra-ui/react';
 
 import useGetBestSellers from './useGetBestSellers';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Pagination, Autoplay} from 'swiper/modules';
-
 import urlJoin from 'url-join';
 import {first, times} from 'lodash';
 import {IMAGE_URL} from 'constants/configs';
 
+import {Carousel} from 'components/Carousel';
 import {ProductCard} from 'components/Product';
 
 function LandingBestSellers() {
@@ -29,22 +28,14 @@ function LandingBestSellers() {
 
 	return (
 		<HStack>
-			<Swiper
-				loop={true}
-				spaceBetween={20}
-				slidesPerView={slidesPerView}
-				pagination={{clickable: true}}
-				modules={[Pagination, Autoplay]}
-				style={{paddingBottom: '3rem', cursor: 'pointer'}}
-				autoplay={{delay: 2700, disableOnInteraction: false}}
-			>
+			<Carousel slidesPerView={slidesPerView}>
 				{data.map((item, index) => {
 					const {_id, images, ...rest} = item || {};
 					const {public_id} = first(images) || {};
 					const imageSrc = urlJoin(IMAGE_URL, public_id || '');
 
 					return (
-						<SwiperSlide>
+						<SwiperSlide key={index}>
 							<ProductCard
 								id={_id}
 								key={index}
@@ -55,7 +46,7 @@ function LandingBestSellers() {
 						</SwiperSlide>
 					);
 				})}
-			</Swiper>
+			</Carousel>
 		</HStack>
 	);
 }
