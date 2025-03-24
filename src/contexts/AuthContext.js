@@ -73,6 +73,9 @@ function AuthProvider(props) {
 				isAuth,
 				setAuth,
 				removeAuth,
+
+				account,
+				account_permissions,
 			}}
 		>
 			{isLoading ? <>isLoading</> : children}
