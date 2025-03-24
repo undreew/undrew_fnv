@@ -8,11 +8,9 @@ function LandingHero() {
 		<Box position='relative'>
 			<Box className={styles['landing-hero']} />
 			<Box
-				sx={{
-					top: '70%',
-					left: '10%',
-					position: 'absolute',
-				}}
+				top='70%'
+				position='absolute'
+				left={{base: '9%', md: '5%', xl: '13%'}}
 			>
 				<Text textStyle='h3' style={{fontStyle: 'italic'}} color='white'>
 					Elegance in simplicity
