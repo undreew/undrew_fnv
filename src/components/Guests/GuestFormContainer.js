@@ -15,7 +15,9 @@ function GuestFormContainer(props) {
 			h='100vh'
 		>
 			<Image
-				width='auto'
+				width={500}
+				height={600}
+				objectFit='cover'
 				alt='Register'
 				src={register}
 				display={{base: 'none', sm: 'none', md: 'none', lg: 'block'}}

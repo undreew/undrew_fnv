@@ -10,7 +10,7 @@ function Page(props) {
 	const {children} = props;
 
 	const {header, footer} = useLayout();
-	const _header = header ? header : <PageHeader />;
+	const _header = header === true ? <PageHeader /> : header;
 	const _footer = footer && <PageFooter />;
 
 	return (

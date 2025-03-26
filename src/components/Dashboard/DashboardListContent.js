@@ -9,7 +9,7 @@ DashboardListContent.propTypes = {
 
 DashboardListContent.defaultProps = {
 	spacing: 5,
-	col: {sm: 1, md: 2, lg: 2},
+	col: {base: 1, sm: 2, md: 2, lg: 2},
 };
 
 function DashboardListContent(props) {
