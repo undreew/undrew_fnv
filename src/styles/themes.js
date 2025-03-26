@@ -66,7 +66,7 @@ const theme = extendTheme({
 		},
 
 		bodyXl: {
-			fontSize: ['1.25rem'], // 20px
+			fontSize: ['1rem', '1.125rem', '1.25rem'], // 16px, 18px, 20px
 			fontWeight: 'regular',
 		},
 		bodyLg: {

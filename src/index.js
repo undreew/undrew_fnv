@@ -8,6 +8,11 @@ import 'styles/global.scss';
 import theme from 'styles/themes';
 import {ColorModeProvider, ColorModeScript} from '@chakra-ui/react';
 
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<ColorModeProvider>

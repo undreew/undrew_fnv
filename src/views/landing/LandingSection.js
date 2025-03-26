@@ -6,7 +6,7 @@ function LandingSection(props) {
 	const {children, title, action} = props;
 
 	return (
-		<Box sx={{minHeight: '650px', padding: '2rem'}}>
+		<Box sx={{minHeight: '450px', padding: '2rem'}}>
 			<Container
 				maxW={{
 					sm: '2xl',

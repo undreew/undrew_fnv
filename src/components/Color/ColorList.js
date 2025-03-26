@@ -22,8 +22,8 @@ function ColorList(props) {
 				{(colors || []).map((color, index) => {
 					return (
 						<Box
-							w='25px'
-							height='25px'
+							w='20px'
+							height='20px'
 							borderRadius='50%'
 							bgColor={color}
 							color={color}
