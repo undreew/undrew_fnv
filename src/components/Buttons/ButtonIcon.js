@@ -7,6 +7,10 @@ ButtonIcon.propTypes = {
 	icon: PropTypes.element.isRequired,
 };
 
+ButtonIcon.defaultProps = {
+	variant: 'ghost',
+};
+
 function ButtonIcon(props) {
 	const {icon, ...rest} = props;
 	return (
