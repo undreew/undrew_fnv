@@ -1,13 +1,14 @@
 import React from 'react';
 import {FaSearch} from 'react-icons/fa';
-import {Box, IconButton} from '@chakra-ui/react';
+
+import {Box} from '@chakra-ui/react';
+
+import {ButtonIcon} from 'components/Buttons';
 
 function PageHeaderSearch() {
 	return (
 		<Box>
-			<IconButton variant='ghost'>
-				<FaSearch />
-			</IconButton>
+			<ButtonIcon icon={<FaSearch />} label='Search' />
 		</Box>
 	);
 }

@@ -17,7 +17,7 @@ import {map} from 'lodash';
 function PageHeaderDesktop(props) {
 	const {isAuth} = props;
 
-	const links = [
+	const iconsLinks = [
 		{component: PageHeaderSearch},
 		!isAuth && {
 			as: Link,
@@ -43,7 +43,7 @@ function PageHeaderDesktop(props) {
 			<PageHeaderDesktopLinks />
 
 			<HStack gap={3}>
-				{map(links, (item, index) => {
+				{map(iconsLinks, (item, index) => {
 					const {component, ...rest} = item;
 					return createElement(component, {...rest, key: index});
 				})}
