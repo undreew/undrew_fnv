@@ -5,11 +5,13 @@ import {FaRegHeart, FaSignOutAlt, FaUserAlt} from 'react-icons/fa';
 
 import {Avatar, Menu, MenuButton, MenuItem, MenuList} from '@chakra-ui/react';
 
+import {useAuth} from 'contexts/AuthContext';
+
 function DesktopMenu({items}) {
 	return (
 		<Menu>
 			<MenuButton>
-				<Avatar size='sm'></Avatar>
+				<Avatar size='sm' />
 			</MenuButton>
 			<MenuList>
 				{(items || []).map((item, index) => {
@@ -25,8 +27,8 @@ function DesktopMenu({items}) {
 	);
 }
 
-function PageHeaderDesktopMenu(props) {
-	const {isAuth} = props;
+function PageHeaderDesktopMenu() {
+	const {isAuth} = useAuth();
 
 	const items = [
 		isAuth && {
