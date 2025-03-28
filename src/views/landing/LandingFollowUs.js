@@ -2,11 +2,11 @@ import React from 'react';
 import {XBlock, XMasonry} from 'react-xmasonry';
 import {Box, Image, SimpleGrid, useBreakpointValue} from '@chakra-ui/react';
 
-import f1 from '../../assets/images/follow-us/Frame 427319383.png';
-import f2 from '../../assets/images/follow-us/2.jpg';
-import f3 from '../../assets/images/follow-us/3.jpg';
-import f4 from '../../assets/images/follow-us/4.jpg';
-import f5 from '../../assets/images/follow-us/5.webp';
+import f1 from 'assets/images/follow-us/Frame 427319383.png';
+import f2 from 'assets/images/follow-us/2.jpg';
+import f3 from 'assets/images/follow-us/3.jpg';
+import f4 from 'assets/images/follow-us/4.jpg';
+import f5 from 'assets/images/follow-us/5.webp';
 
 import {dropRight, map} from 'lodash';
 

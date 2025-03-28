@@ -2,10 +2,10 @@ import React from 'react';
 import {XBlock, XMasonry} from 'react-xmasonry';
 import {Box, Button, Image} from '@chakra-ui/react';
 
-import blouses from '../../assets/images/collection/Lifestyle_Detail_Something_Tailored_Shirt_White_1400x.webp';
-import pants from '../../assets/images/collection/Moodboard2_71ade389-dc80-49eb-b7e8-1c90a0273a2a_700x.webp';
-import dress from '../../assets/images/collection/Save_The_Date_Dress_Khaki_Lifestyle_Khaki_Main_720x.webp';
-import outwear from '../../assets/images/collection/ezgif-2-f137fd9d7d.png';
+import blouses from 'assets/images/collection/Lifestyle_Detail_Something_Tailored_Shirt_White_1400x.webp';
+import pants from 'assets/images/collection/Moodboard2_71ade389-dc80-49eb-b7e8-1c90a0273a2a_700x.webp';
+import dress from 'assets/images/collection/Save_The_Date_Dress_Khaki_Lifestyle_Khaki_Main_720x.webp';
+import outwear from 'assets/images/collection/ezgif-2-f137fd9d7d.png';
 
 import {map} from 'lodash';
 
