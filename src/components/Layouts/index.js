@@ -1,8 +1,6 @@
 import {useLayout} from 'contexts/LayoutContext';
 import {useEffect} from 'react';
 
-import {Container} from '@chakra-ui/react';
-
 function Layouts(props) {
 	const {header, aside, footer, children, type} = props;
 	const {setLayout} = useLayout();
@@ -21,18 +19,23 @@ function Layouts(props) {
 }
 
 function GuestLayout(props) {
-	const {type = 'guest', children, ...rest} = props;
+	const {
+		header = false,
+		aside = false,
+		footer = false,
+		type = 'guest',
+		children,
+		...rest
+	} = props;
 	return (
-		<Layouts type={type} {...rest}>
-			<Container
-				maxW={{
-					sm: '2xl',
-					md: '4xl',
-					lg: '7xl',
-				}}
-			>
-				{children}
-			</Container>
+		<Layouts
+			header={header}
+			aside={aside}
+			footer={footer}
+			type={type}
+			{...rest}
+		>
+			{children}
 		</Layouts>
 	);
 }
@@ -55,15 +58,7 @@ function PrivateLayout(props) {
 			type={type}
 			{...rest}
 		>
-			<Container
-				maxW={{
-					sm: '2xl',
-					md: '4xl',
-					lg: '7xl',
-				}}
-			>
-				{children}
-			</Container>
+			{children}
 		</Layouts>
 	);
 }

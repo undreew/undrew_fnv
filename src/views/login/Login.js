@@ -4,7 +4,7 @@ import LoginUser from './LoginUser';
 
 function Login() {
 	return (
-		<GuestFormContainer>
+		<GuestFormContainer title='Log In'>
 			<LoginUser />
 		</GuestFormContainer>
 	);

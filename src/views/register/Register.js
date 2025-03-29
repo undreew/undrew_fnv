@@ -5,7 +5,7 @@ import {GuestFormContainer} from 'components/Guests';
 
 function Register() {
 	return (
-		<GuestFormContainer>
+		<GuestFormContainer title='Create Account'>
 			<RegisterUser />
 		</GuestFormContainer>
 	);

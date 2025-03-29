@@ -5,7 +5,7 @@ import {GuestLayout} from 'components/Layouts';
 
 function Index() {
 	return (
-		<GuestLayout header footer={true}>
+		<GuestLayout header footer>
 			<Register />
 		</GuestLayout>
 	);
