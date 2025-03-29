@@ -31,7 +31,7 @@ function PageHeaderHoverMenu(props) {
 					display: isOpen ? 'block' : 'none',
 					position: 'absolute',
 					zIndex: 1000,
-					top: 90,
+					top: 95,
 					left: 0,
 					width: '100%',
 					bgColor: '#fff',

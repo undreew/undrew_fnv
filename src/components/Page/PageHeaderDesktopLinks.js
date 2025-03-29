@@ -37,6 +37,7 @@ function PageHeaderDesktopLinks() {
 		>
 			<HStack
 				gap={10}
+				alignSelf='stretch'
 				display={{base: 'none', md: 'none', lg: 'flex', xl: 'flex'}}
 			>
 				{map(keys(NAVS), (item, index) => {
@@ -45,6 +46,9 @@ function PageHeaderDesktopLinks() {
 							id={item}
 							key={index}
 							sx={{
+								display: 'flex',
+								alignSelf: 'stretch',
+								alignItems: 'center',
 								cursor: 'pointer',
 								textStyle: 'bodyMd',
 								fontFamily: 'heading',

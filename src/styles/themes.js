@@ -122,7 +122,7 @@ const theme = extendTheme({
 			fontSize: ['1.125rem', '1.5rem', '2rem'], //   '18px', '24px', '32px'
 			fontFamily: 'body',
 			fontWeight: 'bold',
-			lineHeight: 0,
+			lineHeight: 1,
 		},
 		logoSubtitle: {
 			fontSize: ['0.469rem', '0.625rem'], // 7px, 10px
