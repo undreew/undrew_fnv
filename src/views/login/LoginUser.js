@@ -49,8 +49,9 @@ function LoginUser() {
 				</FormErrorMessage>
 			</FormControl>
 
-			<Text textStyle='link' alignSelf='flex-start' as={Link}>
-				Forgot your password?
+			<Text textStyle='bodySm' alignSelf='flex-start' as={Link}>
+				{/* lol */}
+				<Text textStyle='link'>Forgot your password?</Text>
 			</Text>
 		</LoginForm>
 	);
