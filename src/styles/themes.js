@@ -127,6 +127,14 @@ const theme = extendTheme({
 		logoSubtitle: {
 			fontSize: ['0.469rem', '0.625rem'], // 7px, 10px
 		},
+
+		// LINKS
+		link: {
+			color: 'base.primary',
+			_hover: {
+				textDecoration: 'underline',
+			},
+		},
 	},
 
 	colors: {

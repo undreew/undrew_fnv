@@ -31,7 +31,7 @@ function RegisterForm(props) {
 			<VStack textAlign='center'>
 				<Text textStyle='bodySm' mt={2}>
 					Already have an account?{' '}
-					<Text as={Link} to='/login' color='base.primary' fontWeight='500'>
+					<Text as={Link} to='/login' fontWeight='500' textStyle='link'>
 						Login
 					</Text>
 				</Text>
@@ -54,11 +54,11 @@ function RegisterForm(props) {
 
 				<Text textStyle='bodySm'>
 					By clicking Register, you agree to{' '}
-					<Text color='base.primary' as={Link} fontWeight='500'>
+					<Text textStyle='link' as={Link} fontWeight='500'>
 						Terms & Conditions
 					</Text>{' '}
 					and{' '}
-					<Text color='base.primary' as={Link} fontWeight='500'>
+					<Text textStyle='link' as={Link} fontWeight='500'>
 						Privacy Policy.
 					</Text>
 				</Text>
