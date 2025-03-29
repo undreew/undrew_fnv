@@ -1,67 +1,28 @@
 import React, {useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
+import {FaBars, FaSignOutAlt, FaUser} from 'react-icons/fa';
 
 import {
-	Menu,
-	MenuList,
-	MenuItem,
-	IconButton,
-	MenuButton,
-	DrawerBody,
 	Accordion,
 	AccordionItem,
-	AccordionButton,
 	AccordionIcon,
-	DrawerFooter,
-	Button,
-	VStack,
 	AccordionPanel,
-	HStack,
+	AccordionButton,
 } from '@chakra-ui/react';
-
 import {
-	Box,
 	Drawer,
-	DrawerCloseButton,
+	DrawerBody,
+	DrawerFooter,
 	DrawerContent,
-	DrawerOverlay,
-	useDisclosure,
 } from '@chakra-ui/react';
+import {useDisclosure} from '@chakra-ui/react';
+import {HStack, Button, Text, VStack} from '@chakra-ui/react';
 
-import {
-	FaBars,
-	FaRegUser,
-	FaDashcube,
-	FaSignOutAlt,
-	FaRegAddressBook,
-	FaHandHoldingHeart,
-	FaRegQuestionCircle,
-	FaUser,
-} from 'react-icons/fa';
 import {ButtonIcon} from 'components/Buttons';
 
-function MobileMenu({items}) {
-	return (
-		<Menu>
-			<MenuButton
-				variant='ghost'
-				as={IconButton}
-				icon={<FaBars />}
-				aria-label='Mobile Menu'
-			/>
-			<MenuList>
-				{(items || []).map((item, index) => {
-					const {to, icon, label} = item || {};
-					return (
-						<MenuItem key={index} as={Link} to={to} icon={icon}>
-							{label}
-						</MenuItem>
-					);
-				})}
-			</MenuList>
-		</Menu>
-	);
-}
+import urlJoin from 'url-join';
+import {first, get, keys, map} from 'lodash';
+import {NAV_SUBLINKS, NAVS, NAVS_LABEL} from 'constants/nav';
 
 function PageHeaderMobileMenu(props) {
 	const {isAuth} = props;
@@ -74,135 +35,54 @@ function PageHeaderMobileMenu(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pathname]);
 
-	const items = [
-		isAuth && {
-			to: '/products',
-			label: 'Dashboard',
-			icon: <FaDashcube />,
-		},
-		!isAuth && {
-			to: '/login',
-			label: 'Login',
-			icon: <FaRegUser />,
-		},
-		{
-			to: '/sustainability',
-			label: 'Sustainability',
-			icon: <FaHandHoldingHeart />,
-		},
-		{
-			to: '/contact-us',
-			label: 'Contact Us',
-			icon: <FaRegAddressBook />,
-		},
-		{
-			to: '/faqs',
-			label: 'Faqs',
-			icon: <FaRegQuestionCircle />,
-		},
-		isAuth && {
-			to: '/logout',
-			label: 'Logout',
-			icon: <FaSignOutAlt />,
-		},
-	].filter((v) => v);
-
 	return (
 		<>
 			<ButtonIcon icon={<FaBars />} label='Mobile Menu' onClick={onOpen} />
 
 			<Drawer size='full' placement='left' isOpen={isOpen} onClose={onClose}>
 				<DrawerContent mt={95} sx={{height: 'calc(100vh - 95px)'}}>
-					<DrawerBody>
-						<Accordion allowToggle>
-							<AccordionItem>
-								<AccordionButton display='flex' justifyContent='space-between'>
-									Item
-									<AccordionIcon />
-								</AccordionButton>
+					<DrawerBody py={10}>
+						{map(keys(NAVS), (item, index) => {
+							const mainLink = NAVS_LABEL[item];
+							const sublinks = NAV_SUBLINKS[NAVS[item]];
 
-								<AccordionPanel>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Nemo, suscipit dolore doloribus maxime quasi, deleniti optio
-									nulla in qui mollitia sit molestias quos vitae laudantium
-									veritatis. Cumque repudiandae iure, aliquid magni iusto autem
-									id vel sit ut numquam voluptatibus soluta. Suscipit dolorem,
-									praesentium alias non incidunt voluptate iusto quasi eos.
-								</AccordionPanel>
-							</AccordionItem>
-						</Accordion>
+							const items = get(
+								first(get(sublinks, 'sub_categories')),
+								'items'
+							);
 
-						<Accordion allowToggle>
-							<AccordionItem>
-								<AccordionButton display='flex' justifyContent='space-between'>
-									Item
-									<AccordionIcon />
-								</AccordionButton>
+							return (
+								<Accordion key={index} variant='mobileLink' allowToggle>
+									<AccordionItem>
+										<AccordionButton
+											display='flex'
+											justifyContent='space-between'
+										>
+											{mainLink}
+											<AccordionIcon />
+										</AccordionButton>
 
-								<AccordionPanel>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Nemo, suscipit dolore doloribus maxime quasi, deleniti optio
-									nulla in qui mollitia sit molestias quos vitae laudantium
-									veritatis. Cumque repudiandae iure, aliquid magni iusto autem
-									id vel sit ut numquam voluptatibus soluta. Suscipit dolorem,
-									praesentium alias non incidunt voluptate iusto quasi eos.
-								</AccordionPanel>
-							</AccordionItem>
-						</Accordion>
-
-						<Accordion allowToggle>
-							<AccordionItem>
-								<AccordionButton display='flex' justifyContent='space-between'>
-									Item
-									<AccordionIcon />
-								</AccordionButton>
-
-								<AccordionPanel>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Nemo, suscipit dolore doloribus maxime quasi, deleniti optio
-									nulla in qui mollitia sit molestias quos vitae laudantium
-									veritatis. Cumque repudiandae iure, aliquid magni iusto autem
-									id vel sit ut numquam voluptatibus soluta. Suscipit dolorem,
-									praesentium alias non incidunt voluptate iusto quasi eos.
-								</AccordionPanel>
-							</AccordionItem>
-						</Accordion>
-
-						<Accordion allowToggle>
-							<AccordionItem>
-								<AccordionButton display='flex' justifyContent='space-between'>
-									Item
-									<AccordionIcon />
-								</AccordionButton>
-
-								<AccordionPanel>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Nemo, suscipit dolore doloribus maxime quasi, deleniti optio
-									nulla in qui mollitia sit molestias quos vitae laudantium
-									veritatis. Cumque repudiandae iure, aliquid magni iusto autem
-									id vel sit ut numquam voluptatibus soluta. Suscipit dolorem,
-									praesentium alias non incidunt voluptate iusto quasi eos.
-								</AccordionPanel>
-							</AccordionItem>
-						</Accordion>
-
-						<Accordion allowToggle>
-							<AccordionItem>
-								<AccordionButton display='flex' justifyContent='space-between'>
-									Item
-									<AccordionIcon />
-								</AccordionButton>
-
-								<AccordionPanel>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Nemo, suscipit dolore doloribus maxime quasi, deleniti optio
-									nulla in qui mollitia sit molestias quos vitae laudantium
-									veritatis. Cumque repudiandae iure, aliquid magni iusto autem
-									id vel sit ut numquam voluptatibus soluta. Suscipit dolorem,
-									praesentium alias non incidunt voluptate iusto quasi eos.
-								</AccordionPanel>
-							</AccordionItem>
-						</Accordion>
+										<AccordionPanel px={10} py={5}>
+											<VStack gap={5} alignItems='flex-start'>
+												{map(items, ({label, to}, index) => {
+													return (
+														<Text
+															as={Link}
+															key={index}
+															textStyle='bodySm'
+															fontFamily='heading'
+															to={urlJoin('/products', to)}
+														>
+															{label}
+														</Text>
+													);
+												})}
+											</VStack>
+										</AccordionPanel>
+									</AccordionItem>
+								</Accordion>
+							);
+						})}
 					</DrawerBody>
 
 					<DrawerFooter as={HStack} justifyContent='center'>

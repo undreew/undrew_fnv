@@ -3,7 +3,6 @@ import {Box, Container, Flex, Text, useMediaQuery} from '@chakra-ui/react';
 
 import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
-import {useAuth} from 'contexts/AuthContext';
 
 function FreeShippingBanner() {
 	return (
@@ -23,7 +22,6 @@ function FreeShippingBanner() {
 }
 
 function PageHeader() {
-	const {isAuth} = useAuth();
 	const [isSmallerThanSm] = useMediaQuery('(max-width: 30em)');
 
 	return (
@@ -37,11 +35,7 @@ function PageHeader() {
 				}}
 			>
 				<Flex justify='space-between' alignItems='center' py={2}>
-					{isSmallerThanSm ? (
-						<PageHeaderMobile isAuth={isAuth} />
-					) : (
-						<PageHeaderDesktop isAuth={isAuth} />
-					)}
+					{isSmallerThanSm ? <PageHeaderMobile /> : <PageHeaderDesktop />}
 				</Flex>
 			</Container>
 		</Fragment>

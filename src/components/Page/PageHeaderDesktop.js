@@ -13,9 +13,10 @@ import PageHeaderDesktopUser from './PageHeaderDesktopUser';
 import PageHeaderDesktopLinks from './PageHeaderDesktopLinks';
 
 import {map} from 'lodash';
+import {useAuth} from 'contexts/AuthContext';
 
-function PageHeaderDesktop(props) {
-	const {isAuth} = props;
+function PageHeaderDesktop() {
+	const {isAuth} = useAuth();
 
 	const iconsLinks = [
 		{component: PageHeaderSearch},

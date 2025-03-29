@@ -7,8 +7,10 @@ import {LinkLogo} from 'components/Links';
 import PageHeaderSearch from './PageHeaderSearch';
 import PageHeaderMobileMenu from './PageHeaderMobileMenu';
 
-function PageHeaderMobile(props) {
-	const {isAuth} = props;
+import {useAuth} from 'contexts/AuthContext';
+
+function PageHeaderMobile() {
+	const {isAuth} = useAuth();
 
 	return (
 		<>
