@@ -1,28 +1,41 @@
 import {Box} from '@chakra-ui/react';
 import React, {Fragment} from 'react';
 
-function PageHeaderHoverMenuBackdrop({isOpen}) {
+const MENU_TOP_OFFSET = 95;
+
+function PageHeaderHoverMenuBackdrop({isOpen, backDropOffset}) {
 	if (!isOpen) return;
 	return (
 		<Box
 			left={0}
-			top={540}
 			width='100%'
 			zIndex={999}
-			height='100vh'
 			position='absolute'
+			top={backDropOffset}
 			backdropFilter='blur(10px)'
 			bgColor='rgba(0, 0, 0, 0.4)'
+			height={`calc(100% - ${backDropOffset}px)`}
 		/>
 	);
 }
 
 function PageHeaderHoverMenu(props) {
-	const {children, isOpen = false, onHover = () => {}} = props;
+	const {
+		children,
+		height = 450,
+		zIndex = 1500,
+		isOpen = false,
+		onHover = () => {},
+	} = props;
+
+	const backDropOffset = height + MENU_TOP_OFFSET;
 
 	return (
 		<Fragment>
-			<PageHeaderHoverMenuBackdrop isOpen={isOpen} />
+			<PageHeaderHoverMenuBackdrop
+				backDropOffset={backDropOffset}
+				isOpen={isOpen}
+			/>
 			<Box
 				onMouseLeave={() => onHover('out')}
 				sx={{
@@ -30,12 +43,12 @@ function PageHeaderHoverMenu(props) {
 					border: 'none',
 					display: isOpen ? 'block' : 'none',
 					position: 'absolute',
-					zIndex: 1000,
-					top: 95,
+					zIndex,
+					top: MENU_TOP_OFFSET,
 					left: 0,
 					width: '100%',
 					bgColor: '#fff',
-					height: '450px',
+					height,
 				}}
 			>
 				{children}

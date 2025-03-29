@@ -4,6 +4,8 @@ import {Box, Container, Flex, Text, useMediaQuery} from '@chakra-ui/react';
 import PageHeaderMobile from './PageHeaderMobile';
 import PageHeaderDesktop from './PageHeaderDesktop';
 
+import {DEFAULT_CONTAINER_BREAKPOINTS} from 'constants/breakpoints';
+
 function FreeShippingBanner() {
 	return (
 		<Box
@@ -27,13 +29,7 @@ function PageHeader() {
 	return (
 		<Fragment>
 			<FreeShippingBanner />
-			<Container
-				maxW={{
-					sm: '2xl',
-					md: '4xl',
-					lg: '7xl',
-				}}
-			>
+			<Container maxW={DEFAULT_CONTAINER_BREAKPOINTS}>
 				<Flex justify='space-between' alignItems='center' py={2}>
 					{isSmallerThanSm ? <PageHeaderMobile /> : <PageHeaderDesktop />}
 				</Flex>

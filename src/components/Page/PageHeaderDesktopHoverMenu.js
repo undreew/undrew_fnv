@@ -8,6 +8,7 @@ import {map} from 'lodash';
 import urlJoin from 'url-join';
 
 import PageHeaderHoverMenu from './PageHeaderHoverMenu';
+import {DEFAULT_CONTAINER_BREAKPOINTS} from 'constants/breakpoints';
 
 function PageHeaderDesktopHoverMenu({data = {}, ...rest}) {
 	const {sub_categories, images} = data;
@@ -17,7 +18,7 @@ function PageHeaderDesktopHoverMenu({data = {}, ...rest}) {
 
 	return (
 		<PageHeaderHoverMenu {...rest}>
-			<Container maxWidth={{sm: '2xl', md: '4xl', lg: '7xl'}}>
+			<Container maxWidth={DEFAULT_CONTAINER_BREAKPOINTS}>
 				<SimpleGrid columns={2} spacing={2} py={5} h='100%'>
 					<SimpleGrid columns={categoriesLength} spacing={5}>
 						{map(sub_categories, (category, index) => {

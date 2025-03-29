@@ -35,12 +35,14 @@ function PageHeaderMobileMenu(props) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pathname]);
 
+	// uses dvh for more accurate calculation on mobile devices
+
 	return (
 		<>
 			<ButtonIcon icon={<FaBars />} label='Mobile Menu' onClick={onOpen} />
 
 			<Drawer size='full' placement='left' isOpen={isOpen} onClose={onClose}>
-				<DrawerContent mt={95} sx={{height: 'calc(100vh - 95px)'}}>
+				<DrawerContent mt={95} sx={{height: 'calc(100dvh - 95px)'}}>
 					<DrawerBody py={10}>
 						{map(keys(NAVS), (item, index) => {
 							const mainLink = NAVS_LABEL[item];

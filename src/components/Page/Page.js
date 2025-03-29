@@ -14,7 +14,7 @@ function Page(props) {
 	const _footer = footer && <PageFooter />;
 
 	return (
-		<Box sx={{maxHeight: '100vh', width: '100%'}}>
+		<Box sx={{minHeight: '100vh', width: '100%'}}>
 			{_header}
 
 			<Box
