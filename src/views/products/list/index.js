@@ -12,7 +12,9 @@ import ListFilters from './ListFilters';
 import ProductsBreadcrumb from '../ProductsBreadcrumb';
 
 import useGetProducts from './useGetProducts';
-import {Button} from '@chakra-ui/react';
+import {Button, Image} from '@chakra-ui/react';
+
+import dashboard from 'assets/images/dashboard.png';
 
 function Index() {
 	const {data, hasNext, loadMore, isLoading, isReloading} = useGetProducts();
@@ -21,6 +23,17 @@ function Index() {
 		<div>
 			<ProductsBreadcrumb />
 			<DashboardHeader title='Shop All' count={data?.length} />
+
+			<Image
+				mt={3}
+				mb={8}
+				height={655}
+				width='100%'
+				src={dashboard}
+				objectFit='cover'
+				objectPosition='85% 10%'
+				alt='Shop All - Dashboard'
+			/>
 
 			<DashboardContent itemList>
 				<ListFilters />

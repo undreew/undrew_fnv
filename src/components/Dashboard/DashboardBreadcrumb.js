@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {Breadcrumb, BreadcrumbItem, BreadcrumbLink} from '@chakra-ui/react';
+import {Text} from '@chakra-ui/react';
+import {Breadcrumb, BreadcrumbItem} from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
 
@@ -25,9 +26,13 @@ function DashboardBreadcrumb(props) {
 
 				return (
 					<BreadcrumbItem key={index} isCurrentPage={isActive}>
-						<BreadcrumbLink as={Link} to={to}>
+						<Text
+							textStyle={!!to ? 'link' : 'bodyLg'}
+							as={!!to ? Link : Text}
+							to={!!to ? to : '#'}
+						>
 							{label}
-						</BreadcrumbLink>
+						</Text>
 					</BreadcrumbItem>
 				);
 			})}

@@ -25,6 +25,7 @@ function RegisterUser() {
 					variant='modimaFilled'
 					placeholder='First Name'
 					onBlur={handleBlur}
+					disabled={isSubmitting}
 					onChange={handleChange}
 					defaultValue={values.firstName}
 				/>
@@ -40,6 +41,7 @@ function RegisterUser() {
 					variant='modimaFilled'
 					placeholder='Last Name'
 					onBlur={handleBlur}
+					disabled={isSubmitting}
 					onChange={handleChange}
 					defaultValue={values.lastName}
 				/>
@@ -55,6 +57,7 @@ function RegisterUser() {
 					variant='modimaFilled'
 					placeholder='Email'
 					onBlur={handleBlur}
+					disabled={isSubmitting}
 					onChange={handleChange}
 					defaultValue={values.email}
 				/>
@@ -67,6 +70,7 @@ function RegisterUser() {
 					variant='modimaFilled'
 					placeholder='Password'
 					onBlur={handleBlur}
+					disabled={isSubmitting}
 					onChange={handleChange}
 					defaultValue={values.password}
 				/>

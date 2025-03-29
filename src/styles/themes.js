@@ -6,6 +6,7 @@ import Accordion from './style.components/accordion';
 import Checkbox from './style.components/checkbox';
 import Select from './style.components/select';
 import Card from './style.components/card';
+import Badge from './style.components/badge';
 
 const theme = extendTheme({
 	config: {
@@ -20,11 +21,17 @@ const theme = extendTheme({
 
 	components: {
 		Input,
+		Badge,
 		Button,
 		Accordion,
 		Checkbox,
 		Select,
 		Card,
+		Text: {
+			baseStyle: {
+				fontFamily: 'heading',
+			},
+		},
 	},
 
 	/*

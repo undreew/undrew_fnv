@@ -28,6 +28,7 @@ function LoginUser() {
 					placeholder='Email'
 					onBlur={handleBlur}
 					onChange={handleChange}
+					disabled={isSubmitting}
 					defaultValue={values.email}
 				/>
 				<FormErrorMessage>{touched.email && errors.email}</FormErrorMessage>
@@ -40,6 +41,7 @@ function LoginUser() {
 					placeholder='Password'
 					onBlur={handleBlur}
 					onChange={handleChange}
+					disabled={isSubmitting}
 					defaultValue={values.password}
 				/>
 				<FormErrorMessage>
@@ -47,8 +49,9 @@ function LoginUser() {
 				</FormErrorMessage>
 			</FormControl>
 
-			<Text textStyle='link' alignSelf='flex-start' as={Link}>
-				Forgot your password?
+			<Text textStyle='bodySm' alignSelf='flex-start' as={Link}>
+				{/* lol */}
+				<Text textStyle='link'>Forgot your password?</Text>
 			</Text>
 		</LoginForm>
 	);

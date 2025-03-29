@@ -31,15 +31,15 @@ function ProductCard(props) {
 			<Image src={image} display='flex' flexGrow={1} alt='Image' />
 
 			{is_new && (
-				<Box position='absolute' left='10px' top='5px'>
-					<Badge variant='solid' colorScheme='primary'>
-						New
+				<Box position='absolute' left='10px' top='10px'>
+					<Badge variant='boxy' colorScheme='primary'>
+						<Text textStyle='bodySm'>New</Text>
 					</Badge>
 				</Box>
 			)}
 
 			{!isNull(in_wishlist) && (
-				<Box position='absolute' right='10px' top='5px'>
+				<Box position='absolute' right='10px' top='10px'>
 					<IconButton
 						isRound
 						variant='ghost'

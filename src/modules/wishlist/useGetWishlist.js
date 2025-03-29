@@ -23,6 +23,8 @@ function useGetWishlist() {
 	useEffect(() => {
 		if (isAuth) {
 			onGetWishlist();
+		} else {
+			setData([]);
 		}
 	}, [isAuth]);
 

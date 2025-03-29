@@ -12,9 +12,10 @@ function LogoImage() {
 			<HStack>
 				<Text
 					textStyle='logo'
-					color={isLightMode ? 'neutral.gray404040' : 'neutral.white'}
+					fontFamily='body'
 					_hover={{color: isLightMode && 'neutral.gray202020'}}
 					_selected={{color: isLightMode && 'neutral.gray0C0C0C'}}
+					color={isLightMode ? 'neutral.gray404040' : 'neutral.white'}
 				>
 					modimal
 				</Text>

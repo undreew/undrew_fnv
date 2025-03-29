@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, useMediaQuery} from '@chakra-ui/react';
+import {Box, Button, Text, useMediaQuery} from '@chakra-ui/react';
 
 import {filter, isEmpty} from 'lodash';
 import useQuery from 'hooks/useQuery';
@@ -93,7 +93,12 @@ function ListFilters() {
 					<Filters />
 				</FilterMobile>
 			) : (
-				<Filters />
+				<>
+					<Text textStyle='h4' fontFamily='heading' mb={3}>
+						Filters
+					</Text>
+					<Filters />
+				</>
 			)}
 		</>
 	);

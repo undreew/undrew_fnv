@@ -1,4 +1,5 @@
 import {DashboardBreadcrumb} from 'components/Dashboard';
+import {PageContainer} from 'components/Page';
 import React from 'react';
 
 function ProductsBreadcrumb() {
@@ -9,12 +10,15 @@ function ProductsBreadcrumb() {
 		},
 		{
 			isActive: true,
-			to: '/products',
 			label: 'Shop All',
 		},
 	];
 
-	return <DashboardBreadcrumb items={items} />;
+	return (
+		<PageContainer>
+			<DashboardBreadcrumb items={items} />
+		</PageContainer>
+	);
 }
 
 export default ProductsBreadcrumb;
