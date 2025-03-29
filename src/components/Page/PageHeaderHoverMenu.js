@@ -3,19 +3,19 @@ import React, {Fragment} from 'react';
 
 const MENU_TOP_OFFSET = 95;
 
-function PageHeaderHoverMenuBackdrop({isOpen, backDropOffset}) {
+function PageHeaderHoverMenuBackdrop({isOpen, onClick, backDropOffset}) {
 	if (!isOpen) return;
 	return (
 		<Box
 			left={0}
 			width='100%'
 			zIndex={999}
+			onClick={onClick}
 			position='absolute'
 			top={backDropOffset}
 			backdropFilter='blur(10px)'
 			bgColor='rgba(0, 0, 0, 0.4)'
-			// height={`calc(100% - ${backDropOffset}px)`}
-			height='100%'
+			height={`calc(100% - ${backDropOffset}px)`}
 		/>
 	);
 }
@@ -27,6 +27,7 @@ function PageHeaderHoverMenu(props) {
 		zIndex = 1500,
 		isOpen = false,
 		onHover = () => {},
+		handleBackdrop = () => {},
 	} = props;
 
 	const backDropOffset = height + MENU_TOP_OFFSET;
@@ -35,6 +36,7 @@ function PageHeaderHoverMenu(props) {
 		<Fragment>
 			<PageHeaderHoverMenuBackdrop
 				backDropOffset={backDropOffset}
+				onClick={handleBackdrop}
 				isOpen={isOpen}
 			/>
 			<Box

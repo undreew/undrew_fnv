@@ -20,7 +20,12 @@ function PageHeaderSearch() {
 				icon={isOpen ? <FaTimes /> : <FaSearch />}
 			/>
 
-			<PageHeaderHoverMenu height={100} zIndex={1400} isOpen={isOpen}>
+			<PageHeaderHoverMenu
+				height={100}
+				zIndex={1400}
+				isOpen={isOpen}
+				handleBackdrop={onToggle}
+			>
 				<Container maxWidth={DEFAULT_CONTAINER_BREAKPOINTS} pt={5} pb={10}>
 					<InputGroup>
 						<InputLeftElement pointerEvents='none' color='neutral.grayADADAD'>
