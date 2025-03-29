@@ -1,82 +1,65 @@
-import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import React, {createElement} from 'react';
+import {FaRegUser, FaRegHeart} from 'react-icons/fa';
+
+import {Divider, HStack} from '@chakra-ui/react';
 
 import {LinkLogo} from 'components/Links';
-import {Divider, HStack, IconButton, Text} from '@chakra-ui/react';
-import {FaRegUser, FaDashcube} from 'react-icons/fa';
-
-import PageHeaderDesktopMenu from './PageHeaderDesktopMenu';
+import {ButtonIcon} from 'components/Buttons';
 import {CartPopover} from 'components/Popover';
 
-const links = [
-	{label: 'Collection', to: '/products'},
-	{label: 'New In', to: '/new-in'},
-	// {label: 'Modiweek', to: '/modiweek'},
-	// {label: 'Plus Size', to: '/plus-size'},
-	{label: 'Sustainability', to: '/sustainability'},
-];
+import PageHeaderSearch from './PageHeaderSearch';
+import PageHeaderDesktopUser from './PageHeaderDesktopUser';
+import PageHeaderDesktopLinks from './PageHeaderDesktopLinks';
 
-function PageHeaderDesktop(props) {
-	const {isAuth} = props;
+import {map} from 'lodash';
+import {useAuth} from 'contexts/AuthContext';
+
+function PageHeaderDesktop() {
+	const {isAuth} = useAuth();
+
+	const iconsLinks = [
+		{component: PageHeaderSearch},
+		!isAuth && {
+			as: Link,
+			to: '/login',
+			label: 'Login',
+			icon: <FaRegUser />,
+			component: ButtonIcon,
+		},
+		{
+			as: Link,
+			to: '/wishlist',
+			label: 'Wishlist',
+			icon: <FaRegHeart />,
+			component: ButtonIcon,
+		},
+		{component: CartPopover},
+	].filter(Boolean);
 
 	return (
 		<>
 			<LinkLogo />
 
-			<HStack gap={20} display={['none', 'none', 'none', 'flex', 'flex']}>
-				{(links || []).map((item, index) => {
-					const {label, to} = item || {};
-					return (
-						<Text
-							to={to}
-							key={index}
-							as={NavLink}
-							textStyle='bodyMd'
-							fontFamily='heading'
-						>
-							{label}
-						</Text>
-					);
-				})}
-			</HStack>
+			<PageHeaderDesktopLinks />
 
-			<HStack gap={5}>
-				{!isAuth && (
-					<>
-						<IconButton
-							as={Link}
-							to='/login'
-							variant='ghost'
-							aria-label='Login'
-						>
-							<FaRegUser />
-						</IconButton>
-					</>
-				)}
+			<HStack gap={3}>
+				{map(iconsLinks, (item, index) => {
+					const {component, ...rest} = item;
+					return createElement(component, {...rest, key: index});
+				})}
 
 				{isAuth && (
-					<>
-						<IconButton
-							as={Link}
-							to='/products'
-							variant='ghost'
-							aria-label='Dashboard'
-						>
-							<FaDashcube />
-						</IconButton>
-
-						<CartPopover />
-
-						<Divider
-							orientation='vertical'
-							colorScheme='green'
-							size='lg'
-							h='20px'
-						/>
-					</>
+					<Divider
+						orientation='vertical'
+						colorScheme='green'
+						size='lg'
+						h='20px'
+						w='10px'
+					/>
 				)}
 
-				{isAuth && <PageHeaderDesktopMenu isAuth={isAuth} />}
+				{isAuth && <PageHeaderDesktopUser />}
 			</HStack>
 		</>
 	);

@@ -5,13 +5,13 @@ import {Box, useBreakpointValue} from '@chakra-ui/react';
 import {Carousel} from 'components/Carousel';
 import {ProductCard} from 'components/Product';
 
-import monday from '../../assets/images/modiweek/1.webp';
-import tuesday from '../../assets/images/modiweek/2.webp';
-import wednesday from '../../assets/images/modiweek/3.webp';
-import thursday from '../../assets/images/modiweek/4.webp';
-import friday from '../../assets/images/modiweek/5.webp';
-import saturday from '../../assets/images/modiweek/6.webp';
-import sunday from '../../assets/images/modiweek/7.webp';
+import monday from 'assets/images/modiweek/1.webp';
+import tuesday from 'assets/images/modiweek/2.webp';
+import wednesday from 'assets/images/modiweek/3.webp';
+import thursday from 'assets/images/modiweek/4.webp';
+import friday from 'assets/images/modiweek/5.webp';
+import saturday from 'assets/images/modiweek/6.webp';
+import sunday from 'assets/images/modiweek/7.webp';
 
 const MODIWEEK_ITEMS = [
 	{

@@ -10,11 +10,11 @@ function Page(props) {
 	const {children} = props;
 
 	const {header, footer} = useLayout();
-	const _header = header ? header : <PageHeader />;
+	const _header = header === true ? <PageHeader /> : header;
 	const _footer = footer && <PageFooter />;
 
 	return (
-		<Box sx={{maxHeight: '100vh', width: '100%'}}>
+		<Box sx={{minHeight: '100vh', width: '100%'}}>
 			{_header}
 
 			<Box

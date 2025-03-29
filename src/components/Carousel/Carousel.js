@@ -14,7 +14,7 @@ Carousel.defaultProps = {
 	slidesPerView: 3,
 	pagination: {clickable: true},
 	modules: [Pagination, Autoplay],
-	style: {paddingBottom: '3rem', cursor: 'pointer'},
+	style: {paddingBottom: '3rem'},
 	autoplay: {delay: 2700, disabledOnInteraction: false},
 };
 

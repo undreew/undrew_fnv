@@ -50,10 +50,24 @@ const contact = definePartsStyle({
 	icon: {},
 });
 
+const mobileLink = definePartsStyle({
+	root: {},
+
+	button: {
+		borderColor: 'neutral.grayCBCBCB',
+		borderBottom: '1px solid',
+	},
+
+	container: {
+		border: 0,
+	},
+});
+
 const Accordion = defineMultiStyleConfig({
 	variants: {
 		filter,
 		contact,
+		mobileLink,
 	},
 });
 
