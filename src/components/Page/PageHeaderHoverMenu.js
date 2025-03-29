@@ -14,7 +14,8 @@ function PageHeaderHoverMenuBackdrop({isOpen, backDropOffset}) {
 			top={backDropOffset}
 			backdropFilter='blur(10px)'
 			bgColor='rgba(0, 0, 0, 0.4)'
-			height={`calc(100% - ${backDropOffset}px)`}
+			// height={`calc(100% - ${backDropOffset}px)`}
+			height='100%'
 		/>
 	);
 }
@@ -29,6 +30,7 @@ function PageHeaderHoverMenu(props) {
 	} = props;
 
 	const backDropOffset = height + MENU_TOP_OFFSET;
+	console.log(backDropOffset);
 
 	return (
 		<Fragment>
