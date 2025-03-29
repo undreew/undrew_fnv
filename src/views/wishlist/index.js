@@ -1,15 +1,15 @@
 import React from 'react';
-import {PrivateLayout} from 'components/Layouts';
+import {GuestLayout} from 'components/Layouts';
 import {DashboardContainer} from 'components/Dashboard';
 import Wishlist from './Wishlist';
 
 function Index() {
 	return (
-		<PrivateLayout>
+		<GuestLayout header footer>
 			<DashboardContainer>
 				<Wishlist />
 			</DashboardContainer>
-		</PrivateLayout>
+		</GuestLayout>
 	);
 }
 

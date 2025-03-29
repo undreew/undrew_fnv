@@ -30,7 +30,6 @@ function PageHeaderHoverMenu(props) {
 	} = props;
 
 	const backDropOffset = height + MENU_TOP_OFFSET;
-	console.log(backDropOffset);
 
 	return (
 		<Fragment>

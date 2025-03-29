@@ -10,7 +10,6 @@ function ProductsBreadcrumb() {
 		},
 		{
 			isActive: true,
-			to: '/products',
 			label: 'Shop All',
 		},
 	];
