@@ -1,6 +1,7 @@
 import Products from 'views/products';
-import ProductsList from 'views/products/list';
 import ProductView from 'views/products/view';
+import ProductsList from 'views/products/list';
+import ProductSearch from 'views/products/search';
 import ProductDetails from 'views/products/view/detail';
 
 const products = {
@@ -11,6 +12,11 @@ const products = {
 		{
 			index: true,
 			element: ProductsList,
+		},
+		// product search
+		{
+			path: '/products/search',
+			element: ProductSearch,
 		},
 		// product view
 		{
