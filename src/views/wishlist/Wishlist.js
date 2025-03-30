@@ -15,7 +15,7 @@ function Wishlist() {
 
 	return (
 		<Box>
-			<DashboardHeader title='Wishlist' count={data?.length} />
+			<DashboardHeader title='My Wishlist' count={data?.length} />
 
 			<PageContainer my={5}>
 				<DashboardList>
