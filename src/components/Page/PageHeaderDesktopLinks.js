@@ -40,10 +40,10 @@ function PageHeaderDesktopLinks() {
 				alignSelf='stretch'
 				display={{base: 'none', md: 'none', lg: 'flex', xl: 'flex'}}
 			>
-				{map(keys(NAVS), (item, index) => {
+				{map(keys(NAVS), (nav, index) => {
 					return (
 						<Text
-							id={item}
+							id={nav}
 							key={index}
 							sx={{
 								display: 'flex',
@@ -52,9 +52,10 @@ function PageHeaderDesktopLinks() {
 								cursor: 'pointer',
 								textStyle: 'bodyMd',
 								fontFamily: 'heading',
+								fontWeight: item === nav ? 'semibold' : 'inherit',
 							}}
 						>
-							{NAVS_LABEL[item]}
+							{NAVS_LABEL[nav]}
 						</Text>
 					);
 				})}
