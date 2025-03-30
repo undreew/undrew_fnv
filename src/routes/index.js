@@ -24,11 +24,11 @@ const routes = [
 		...login,
 	},
 	{
-		access: PAGE_ACCESS.guest,
+		access: PAGE_ACCESS.private,
 		...wishlist,
 	},
 	{
-		access: PAGE_ACCESS.private,
+		access: PAGE_ACCESS.guest,
 		...products,
 	},
 	{

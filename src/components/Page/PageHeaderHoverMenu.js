@@ -3,8 +3,13 @@ import React, {Fragment} from 'react';
 
 const MENU_TOP_OFFSET = 95;
 
-function PageHeaderHoverMenuBackdrop({isOpen, onClick, backDropOffset}) {
-	if (!isOpen) return;
+function PageHeaderHoverMenuBackdrop({
+	isOpen,
+	onClick,
+	isBackdropOpen,
+	backDropOffset,
+}) {
+	if (!isOpen || !isBackdropOpen) return;
 	return (
 		<Box
 			left={0}
@@ -27,6 +32,7 @@ function PageHeaderHoverMenu(props) {
 		zIndex = 1500,
 		isOpen = false,
 		onHover = () => {},
+		isBackdropOpen = true,
 		handleBackdrop = () => {},
 	} = props;
 
@@ -35,6 +41,7 @@ function PageHeaderHoverMenu(props) {
 	return (
 		<Fragment>
 			<PageHeaderHoverMenuBackdrop
+				isBackdropOpen={isBackdropOpen}
 				backDropOffset={backDropOffset}
 				onClick={handleBackdrop}
 				isOpen={isOpen}
@@ -42,6 +49,7 @@ function PageHeaderHoverMenu(props) {
 			<Box
 				onMouseLeave={() => onHover('out')}
 				sx={{
+					boxShadow: '0px 5px 5px rgba(0, 0, 0, 0.1)',
 					backdropFilter: 'blur(5px)',
 					border: 'none',
 					display: isOpen ? 'block' : 'none',

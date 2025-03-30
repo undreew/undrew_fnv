@@ -10,6 +10,8 @@ import {ColorList} from 'components/Color';
 import {PRODUCT_CURRENCY} from 'constants/products';
 import {getFormattedPrice} from 'utils/numbers';
 import {isNull} from 'lodash';
+import urlJoin from 'url-join';
+import {ROUTES} from 'constants/routes';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
@@ -25,6 +27,8 @@ function ProductCard(props) {
 	const {is_new} = props; // in_stock
 	const {in_wishlist, wishlistAction} = props;
 	const {id, name, image, price, variants, currency, list_description} = props;
+
+	const productId = urlJoin(ROUTES.PRODUCTS.INDEX, id || '');
 
 	return (
 		<Card variant='modimaCard'>
@@ -54,7 +58,7 @@ function ProductCard(props) {
 
 			<CardFooter>
 				<VStack w='100%' alignItems='start'>
-					<Text textStyle='h6' as={Link} to={id}>
+					<Text as={Link} textStyle='h6' to={productId}>
 						{name}
 					</Text>
 					{list_description && (

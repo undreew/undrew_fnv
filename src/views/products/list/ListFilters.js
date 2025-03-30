@@ -1,7 +1,7 @@
 import React from 'react';
-import {Box, Button, Text, useMediaQuery} from '@chakra-ui/react';
+import {Box, Button, useMediaQuery} from '@chakra-ui/react';
 
-import {filter, isEmpty} from 'lodash';
+import {filter, includes, keys, omitBy, some} from 'lodash';
 import useQuery from 'hooks/useQuery';
 
 import {
@@ -15,6 +15,8 @@ import {
 import {FilterList, FilterMobile} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
 
+const FILTER_KEYS = ['price', 'sort', 'size', 'stock', 'fabric'];
+
 function Filters() {
 	const {query, pushQuery, updateQuery} = useQuery();
 	const {price, sort, size, stock, fabric} = query || {};
@@ -24,14 +26,25 @@ function Filters() {
 	}
 
 	function handleClear() {
-		pushQuery({});
+		const filteredQuery = omitBy(query, (value, key) =>
+			includes(FILTER_KEYS, key)
+		);
+		pushQuery(filteredQuery);
 	}
+
+	const hasFilters = some(keys(query), (key) => includes(FILTER_KEYS, key));
 
 	return (
 		<Box position='sticky' top={3}>
-			{!isEmpty(query) && (
+			{hasFilters && (
 				<Box mb={2}>
-					<FilterList p={2} mb={2} data={query} onChange={handleFilterItem} />
+					<FilterList
+						p={2}
+						mb={2}
+						data={query}
+						filterKeys={FILTER_KEYS}
+						onChange={handleFilterItem}
+					/>
 
 					<Button variant='modimaOutline' onClick={handleClear}>
 						Clear All Filters
@@ -93,12 +106,7 @@ function ListFilters() {
 					<Filters />
 				</FilterMobile>
 			) : (
-				<>
-					<Text textStyle='h4' fontFamily='heading' mb={3}>
-						Filters
-					</Text>
-					<Filters />
-				</>
+				<Filters />
 			)}
 		</>
 	);

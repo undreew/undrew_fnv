@@ -5,7 +5,7 @@ function DashboardContainer(props) {
 	const {children} = props;
 
 	return (
-		<Box sx={{my: 5}} minHeight='100vh'>
+		<Box sx={{my: 5}} minHeight='100%'>
 			{children}
 		</Box>
 	);
