@@ -3,12 +3,22 @@ import React from 'react';
 import {ProductCard} from 'components/Product';
 import {DashboardListContent} from 'components/Dashboard';
 
-import {first} from 'lodash';
+import {first, isEmpty} from 'lodash';
+
 import urlJoin from 'url-join';
 import {IMAGE_URL} from 'constants/configs';
+import {HStack, Text} from '@chakra-ui/react';
 
 function ListTable(props) {
 	const {isLoading, data} = props;
+
+	if (isEmpty(data)) {
+		return (
+			<HStack justifyContent='center' alignItems='center'>
+				<Text textStyle='bodyXl'>0 item/s to show</Text>
+			</HStack>
+		);
+	}
 
 	return (
 		<DashboardListContent isLoading={isLoading}>
