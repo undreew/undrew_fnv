@@ -24,10 +24,10 @@ export const PRODUCT_CATEGORIES_LABEL = {
 };
 
 export const PRODUCT_CATEGORIES_ROUTE_PATH = {
-	[PRODUCT_CATEGORIES.blouses_and_tops]: '/blouses',
+	[PRODUCT_CATEGORIES.blouses_and_tops]: '/tops',
 	[PRODUCT_CATEGORIES.pants]: '/pants',
-	[PRODUCT_CATEGORIES.dresses_and_jumpsuits]: '/dresses',
-	[PRODUCT_CATEGORIES.outwears_and_jackets]: '/outwear',
+	[PRODUCT_CATEGORIES.dresses_and_jumpsuits]: '/dress',
+	[PRODUCT_CATEGORIES.outwears_and_jackets]: '/jackets',
 	[PRODUCT_CATEGORIES.pullovers]: '/pullovers',
 	[PRODUCT_CATEGORIES.tees]: '/tees',
 	[PRODUCT_CATEGORIES.shorts_and_skirts]: '/shorts',
