@@ -24,7 +24,7 @@ function Index() {
 	return (
 		<Box>
 			<CategoryBreadcrumbs category={category} />
-			<DashboardHeader title={startCase(category)} count={1000} />
+			<DashboardHeader title={startCase(category)} count={data?.length} />
 
 			<DashboardContent itemList>
 				<ListFilters />
