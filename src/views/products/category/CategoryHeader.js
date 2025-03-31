@@ -1,9 +1,9 @@
-import {DashboardHeader} from 'components/Dashboard';
-import {startCase} from 'lodash';
 import React from 'react';
+import {DashboardHeader} from 'components/Dashboard';
+import {PRODUCT_CATEGORIES} from 'constants/products';
 
 function CategoryHeader({title, count}) {
-	return <DashboardHeader title={startCase(title)} count={count} />;
+	return <DashboardHeader title={PRODUCT_CATEGORIES[title]} count={count} />;
 }
 
 export default CategoryHeader;
