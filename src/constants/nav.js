@@ -19,35 +19,35 @@ export const NAVS_LABEL = {
 const CATEGORY_ITEMS = [
 	{
 		label: 'Shop All',
-		to: '/',
+		to: '/products',
 	},
 	{
 		label: PRODUCT_CATEGORIES['tops'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['tops'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['tops']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['pants'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['pants'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['pants']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['dress'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['dress'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['dress']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['jackets'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['jackets'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['jackets']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['pullovers'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['pullovers'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['pullovers']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['tees'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['tees'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['tees']}`,
 	},
 	{
 		label: PRODUCT_CATEGORIES['shorts'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['shorts'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['shorts']}`,
 	},
 ];
 

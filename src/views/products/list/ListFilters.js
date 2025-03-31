@@ -15,10 +15,12 @@ import {PRODUCT_CATEGORIES} from 'constants/products';
 
 import {FilterList, FilterMobile} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
+import {useParams} from 'react-router-dom';
 
 const FILTER_KEYS = ['price', 'sort', 'size', 'stock', 'fabric', 'category'];
 
 function Filters() {
+	const {category: categoryParam} = useParams();
 	const {query, pushQuery, updateQuery} = useQuery();
 	const {price, sort, size, stock, fabric, category} = query || {};
 
@@ -95,12 +97,14 @@ function Filters() {
 				defaultValue={fabric}
 			/>
 
-			<AccordionFilterBase
-				name='category'
-				title='Category'
-				defaultValue={category}
-				source={PRODUCT_CATEGORIES}
-			/>
+			{!categoryParam && (
+				<AccordionFilterBase
+					name='category'
+					title='Category'
+					defaultValue={category}
+					source={PRODUCT_CATEGORIES}
+				/>
+			)}
 		</Box>
 	);
 }

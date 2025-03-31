@@ -5,7 +5,6 @@ import {Box, Image, Text} from '@chakra-ui/react';
 import {Container, SimpleGrid, VStack} from '@chakra-ui/react';
 
 import {map} from 'lodash';
-import urlJoin from 'url-join';
 
 import PageHeaderHoverMenu from './PageHeaderHoverMenu';
 import {DEFAULT_CONTAINER_BREAKPOINTS} from 'constants/breakpoints';
@@ -32,12 +31,12 @@ function PageHeaderDesktopHoverMenu({data = {}, onToggle, ...rest}) {
 									{map(items, ({label, to}, index) => {
 										return (
 											<Text
+												to={to}
 												as={Link}
 												key={index}
 												onClick={onToggle}
 												textStyle='bodySm'
 												fontFamily='heading'
-												to={urlJoin('/products', to)}
 												_hover={{textDecoration: 'underline'}}
 											>
 												{label}
