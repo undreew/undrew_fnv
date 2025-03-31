@@ -1,12 +1,51 @@
 import React from 'react';
-import {Text} from '@chakra-ui/react';
-import {PageContainer} from 'components/Page';
+import {useParams} from 'react-router-dom';
+
+import {startCase} from 'lodash';
+import {Box, Button} from '@chakra-ui/react';
+import {
+	DashboardList,
+	DashboardHeader,
+	DashboardContent,
+	DashboardListFooter,
+} from 'components/Dashboard';
+
+import ListTable from '../list/ListTable';
+import ListFilters from '../list/ListFilters';
+import useGetProducts from '../list/useGetProducts';
+
+import CategoryBreadcrumbs from './CategoryBreadcrumbs';
 
 function Index() {
+	const {category} = useParams();
+	const {isReloading, isLoading, data, hasNext, loadMore} =
+		useGetProducts(category);
+
 	return (
-		<PageContainer>
-			<Text textStyle='h3'>ProductCategory</Text>
-		</PageContainer>
+		<Box>
+			<CategoryBreadcrumbs category={category} />
+			<DashboardHeader title={startCase(category)} count={1000} />
+
+			<DashboardContent itemList>
+				<ListFilters />
+
+				<DashboardList>
+					<ListTable isLoading={isReloading} data={data} />
+
+					{hasNext && (
+						<DashboardListFooter direction='row' mt={5} justify='center'>
+							<Button
+								isLoading={isLoading}
+								variant='modimaOutline'
+								onClick={() => loadMore(false)}
+							>
+								Load more
+							</Button>
+						</DashboardListFooter>
+					)}
+				</DashboardList>
+			</DashboardContent>
+		</Box>
 	);
 }
 

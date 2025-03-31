@@ -2,8 +2,9 @@ import useQuery from 'hooks/useQuery';
 import {getProducts} from 'api/products';
 import {useEffect, useState} from 'react';
 import {enqueueSnackbar} from 'notistack';
+import cleanDeep from 'clean-deep';
 
-function useGetProducts() {
+function useGetProducts(category) {
 	const {query} = useQuery();
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ function useGetProducts() {
 
 	async function getData(isReload) {
 		const _query = {
+			category,
 			...query,
 			page: !isReload ? nextPage : '',
 		};
@@ -22,7 +24,7 @@ function useGetProducts() {
 		isReload ? setIsReloading(true) : setIsLoading(true);
 
 		try {
-			const {data: dataResponse, meta} = await getProducts(_query);
+			const {data: dataResponse, meta} = await getProducts(cleanDeep(_query));
 			const {hasMore, nextPage} = meta || {};
 
 			setData((prevData) => [...(!isReload ? prevData : []), ...dataResponse]);
@@ -38,7 +40,7 @@ function useGetProducts() {
 	useEffect(() => {
 		getData(true);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [query]);
+	}, [query, category]);
 
 	return {
 		data,
