@@ -10,8 +10,6 @@ import {ColorList} from 'components/Color';
 import {PRODUCT_CURRENCY} from 'constants/products';
 import {getFormattedPrice} from 'utils/numbers';
 import {isNull} from 'lodash';
-import urlJoin from 'url-join';
-import {ROUTES} from 'constants/routes';
 
 ProductCard.propTypes = {
 	name: PropTypes.string,
@@ -26,13 +24,21 @@ ProductCard.propTypes = {
 function ProductCard(props) {
 	const {is_new} = props; // in_stock
 	const {in_wishlist, wishlistAction} = props;
-	const {id, name, image, price, variants, currency, list_description} = props;
+	const {id, name, image, price, variants} = props;
+	const {category, currency, list_description} = props;
 
-	const productId = urlJoin(ROUTES.PRODUCTS.INDEX, id || '');
+	const productId = `/products/${category}/${id}`;
 
 	return (
 		<Card variant='modimaCard'>
-			<Image src={image} display='flex' flexGrow={1} alt='Image' />
+			<Image
+				src={image}
+				alt='Image'
+				height={450}
+				flexGrow={1}
+				display='flex'
+				objectFit='cover'
+			/>
 
 			{is_new && (
 				<Box position='absolute' left='10px' top='10px'>

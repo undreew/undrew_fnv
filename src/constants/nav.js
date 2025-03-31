@@ -22,7 +22,7 @@ export const NAVS_LABEL = {
 const CATEGORY_ITEMS = [
 	{
 		label: 'Shop All',
-		to: '/all',
+		to: '/',
 	},
 	{
 		label: PRODUCT_CATEGORIES_LABEL['blouses_and_tops'],

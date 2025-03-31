@@ -65,6 +65,7 @@ function PageHeaderDesktopLinks() {
 				isOpen={isOpen}
 				onHover={handleHover}
 				data={NAV_SUBLINKS[NAVS[item]]}
+				onToggle={() => setHovered(defaultState)}
 			/>
 		</HStack>
 	);

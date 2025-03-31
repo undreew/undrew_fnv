@@ -10,7 +10,7 @@ import urlJoin from 'url-join';
 import PageHeaderHoverMenu from './PageHeaderHoverMenu';
 import {DEFAULT_CONTAINER_BREAKPOINTS} from 'constants/breakpoints';
 
-function PageHeaderDesktopHoverMenu({data = {}, ...rest}) {
+function PageHeaderDesktopHoverMenu({data = {}, onToggle, ...rest}) {
 	const {sub_categories, images} = data;
 
 	const imagesLength = images?.length;
@@ -34,6 +34,7 @@ function PageHeaderDesktopHoverMenu({data = {}, ...rest}) {
 											<Text
 												as={Link}
 												key={index}
+												onClick={onToggle}
 												textStyle='bodySm'
 												fontFamily='heading'
 												to={urlJoin('/products', to)}
