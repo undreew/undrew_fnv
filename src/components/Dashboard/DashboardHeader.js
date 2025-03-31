@@ -1,7 +1,8 @@
 import React from 'react';
-import {Box, Divider, HStack, Text} from '@chakra-ui/react';
+import {Divider, HStack, Text} from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
+import {PageContainer} from 'components/Page';
 
 DashboardHeader.propTypes = {
 	count: PropTypes.number,
@@ -13,7 +14,7 @@ function DashboardHeader(props) {
 	const {count, title, description} = props;
 
 	return (
-		<Box>
+		<PageContainer>
 			<HStack gap={3}>
 				<Text textStyle='h2' mt={2}>
 					{title}
@@ -25,7 +26,7 @@ function DashboardHeader(props) {
 			</HStack>
 
 			<Text textStyle='captionMd'>{description}</Text>
-		</Box>
+		</PageContainer>
 	);
 }
 

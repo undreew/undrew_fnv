@@ -16,7 +16,7 @@ function withRouteLayout(Component) {
 		if (access === PAGE_ACCESS.private) {
 			if (isAuth) {
 			} else {
-				return <Navigate to='/' />;
+				return <Navigate to='/login' />;
 			}
 		}
 

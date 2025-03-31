@@ -28,7 +28,7 @@ const routes = [
 		...wishlist,
 	},
 	{
-		access: PAGE_ACCESS.private,
+		access: PAGE_ACCESS.guest,
 		...products,
 	},
 	{

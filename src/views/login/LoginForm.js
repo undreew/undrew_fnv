@@ -47,7 +47,7 @@ function LoginForm(props) {
 
 				<Text textStyle='bodySm'>
 					New to Modimal?{' '}
-					<Text color='base.primary' as={Link} fontWeight='500' to='/register'>
+					<Text textStyle='link' as={Link} fontWeight='500' to='/register'>
 						Create an account
 					</Text>
 				</Text>

@@ -7,6 +7,7 @@ import {DashboardHeader, DashboardList} from 'components/Dashboard';
 import WishlistTable from './WishlistTable';
 
 import {some} from 'lodash';
+import {PageContainer} from 'components/Page';
 
 function Wishlist() {
 	const {data, isFetching, onRemoveFromWishlist, isRemoving} = useWishlist();
@@ -14,15 +15,17 @@ function Wishlist() {
 
 	return (
 		<Box>
-			<DashboardHeader title='Wishlist' count={data?.length} />
+			<DashboardHeader title='My Wishlist' count={data?.length} />
 
-			<DashboardList>
-				<WishlistTable
-					data={data}
-					isLoading={isLoading}
-					onRemove={onRemoveFromWishlist}
-				/>
-			</DashboardList>
+			<PageContainer my={5}>
+				<DashboardList>
+					<WishlistTable
+						data={data}
+						isLoading={isLoading}
+						onRemove={onRemoveFromWishlist}
+					/>
+				</DashboardList>
+			</PageContainer>
 		</Box>
 	);
 }

@@ -3,9 +3,9 @@ import React from 'react';
 import {DashboardBreadcrumb} from 'components/Dashboard';
 
 import {startCase} from 'lodash';
-import useQuery from 'hooks/useQuery';
 
 import PropTypes from 'prop-types';
+import {PageContainer} from 'components/Page';
 
 DetailBreadcrumb.propTypes = {
 	data: PropTypes.object.isRequired,
@@ -13,10 +13,7 @@ DetailBreadcrumb.propTypes = {
 
 function DetailBreadcrumb(props) {
 	const {data} = props;
-	const {name, _id} = data || {};
-
-	const {query} = useQuery();
-	const {category} = query || {};
+	const {name, category} = data || {};
 
 	const items = [
 		{
@@ -25,17 +22,20 @@ function DetailBreadcrumb(props) {
 		},
 		// temp
 		category && {
-			to: '/',
+			to: `/products/${category}`,
 			label: startCase(category),
 		},
 		{
 			isActive: true,
-			to: `/products/${_id}`,
-			label: name || '',
+			label: name || 'Loading...',
 		},
 	].filter((v) => v);
 
-	return <DashboardBreadcrumb items={items} />;
+	return (
+		<PageContainer>
+			<DashboardBreadcrumb items={items} />
+		</PageContainer>
+	);
 }
 
 export default DetailBreadcrumb;

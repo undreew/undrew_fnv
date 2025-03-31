@@ -6,6 +6,7 @@ import Accordion from './style.components/accordion';
 import Checkbox from './style.components/checkbox';
 import Select from './style.components/select';
 import Card from './style.components/card';
+import Badge from './style.components/badge';
 
 const theme = extendTheme({
 	config: {
@@ -20,11 +21,17 @@ const theme = extendTheme({
 
 	components: {
 		Input,
+		Badge,
 		Button,
 		Accordion,
 		Checkbox,
 		Select,
 		Card,
+		Text: {
+			baseStyle: {
+				fontFamily: 'heading',
+			},
+		},
 	},
 
 	/*
@@ -66,7 +73,7 @@ const theme = extendTheme({
 		},
 
 		bodyXl: {
-			fontSize: ['1.25rem'], // 20px
+			fontSize: ['1rem', '1.125rem', '1.25rem'], // 16px, 18px, 20px
 			fontWeight: 'regular',
 		},
 		bodyLg: {
@@ -122,6 +129,18 @@ const theme = extendTheme({
 			fontSize: ['1.125rem', '1.5rem', '2rem'], //   '18px', '24px', '32px'
 			fontFamily: 'body',
 			fontWeight: 'bold',
+			lineHeight: 1,
+		},
+		logoSubtitle: {
+			fontSize: ['0.469rem', '0.625rem'], // 7px, 10px
+		},
+
+		// LINKS
+		link: {
+			color: 'base.primary',
+			_hover: {
+				textDecoration: 'underline',
+			},
 		},
 	},
 

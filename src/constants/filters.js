@@ -1,3 +1,5 @@
+import {PRODUCT_CATEGORIES} from './products';
+
 export const SORT_BY_ITEMS = {
 	featured: 'Featured',
 	best_seller: 'Best Seller',
@@ -35,4 +37,5 @@ export const FILTERS = {
 	...SORT_BY_SIZE,
 	...SORT_BY_COLLECTION,
 	...SORT_BY_FABRIC,
+	...PRODUCT_CATEGORIES,
 };

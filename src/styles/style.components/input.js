@@ -59,6 +59,8 @@ const modimaFlush = definePartsStyle({
 		_focus: {
 			borderColor: 'primary.400',
 		},
+		border: 'none',
+		borderBottom: '1px solid',
 	},
 });
 

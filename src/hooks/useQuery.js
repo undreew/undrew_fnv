@@ -5,14 +5,14 @@ import urlJoin from 'url-join';
 import cleanDeep from 'clean-deep';
 import qs from 'qs';
 
+export function queryStringify(obj, options) {
+	return qs.stringify(obj, options);
+}
+
 function useQuery() {
 	const [search] = useSearchParams();
 	const {pathname} = useLocation();
 	const navigate = useNavigate();
-
-	function queryStringify(obj, options) {
-		return qs.stringify(obj, options);
-	}
 
 	function queryParse(query, options = {ignoreQueryPrefix: true}) {
 		return qs.parse(query, options);

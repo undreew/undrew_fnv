@@ -1,6 +1,8 @@
 import Products from 'views/products';
-import ProductsList from 'views/products/list';
 import ProductView from 'views/products/view';
+import ProductsList from 'views/products/list';
+import ProductSearch from 'views/products/search';
+import ProductCategory from 'views/products/category';
 import ProductDetails from 'views/products/view/detail';
 
 const products = {
@@ -10,16 +12,26 @@ const products = {
 		// products list
 		{
 			index: true,
+			path: '/products',
 			element: ProductsList,
 		},
-		// product view
+		// product search
 		{
-			path: '/products/:id',
+			path: '/products/search',
+			element: ProductSearch,
+		},
+		// product category
+		{
+			path: '/products/:category',
 			element: ProductView,
 			children: [
-				// product details
 				{
 					index: true,
+					path: '/products/:category',
+					element: ProductCategory,
+				},
+				{
+					path: '/products/:category/:id',
 					element: ProductDetails,
 				},
 			],

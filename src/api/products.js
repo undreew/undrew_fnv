@@ -7,3 +7,7 @@ export const getProducts = (params) => {
 export const getProductById = (id) => {
 	return fetcher('GET', `products/${id}`);
 };
+
+export const getAllProducts = (params) => {
+	return fetcher('GET', 'products', params);
+};

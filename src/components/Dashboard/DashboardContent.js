@@ -3,6 +3,7 @@ import {Grid, GridItem, useMediaQuery} from '@chakra-ui/react';
 
 import {first, last} from 'lodash';
 import PropTypes from 'prop-types';
+import {PageContainer} from 'components/Page';
 
 DashboardContent.propTypes = {
 	itemList: PropTypes.bool,
@@ -25,15 +26,17 @@ function DashboardContent(props) {
 	}
 
 	return (
-		<Grid
-			gap={4}
-			sx={{my: 5}}
-			templateColumns={`repeat(${itemList ? 3 : 4}, 1fr)`}
-			{...rest}
-		>
-			<GridItem colSpan={firstItemSpan}>{first(children)}</GridItem>
-			<GridItem colSpan={secondItemSpan}>{last(children)}</GridItem>
-		</Grid>
+		<PageContainer>
+			<Grid
+				gap={4}
+				sx={{my: 5}}
+				templateColumns={`repeat(${itemList ? 3 : 4}, 1fr)`}
+				{...rest}
+			>
+				<GridItem colSpan={firstItemSpan}>{first(children)}</GridItem>
+				<GridItem colSpan={secondItemSpan}>{last(children)}</GridItem>
+			</Grid>
+		</PageContainer>
 	);
 }
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom';
 
-import {PrivateLayout} from 'components/Layouts';
+import {GuestLayout} from 'components/Layouts';
 import {DashboardContainer} from 'components/Dashboard';
 
 function Index() {
 	return (
-		<PrivateLayout>
+		<GuestLayout header footer>
 			<DashboardContainer>
 				<Outlet />
 			</DashboardContainer>
-		</PrivateLayout>
+		</GuestLayout>
 	);
 }
 

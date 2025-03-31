@@ -4,6 +4,12 @@ import {createMultiStyleConfigHelpers} from '@chakra-ui/react';
 const {definePartsStyle, defineMultiStyleConfig} =
 	createMultiStyleConfigHelpers(accordionAnatomy.keys);
 
+const baseStyle = definePartsStyle({
+	container: {
+		fontFamily: 'heading',
+	},
+});
+
 const filter = definePartsStyle({
 	root: {},
 
@@ -50,10 +56,25 @@ const contact = definePartsStyle({
 	icon: {},
 });
 
+const mobileLink = definePartsStyle({
+	root: {},
+
+	button: {
+		borderColor: 'neutral.grayCBCBCB',
+		borderBottom: '1px solid',
+	},
+
+	container: {
+		border: 0,
+	},
+});
+
 const Accordion = defineMultiStyleConfig({
+	baseStyle,
 	variants: {
 		filter,
 		contact,
+		mobileLink,
 	},
 });
 

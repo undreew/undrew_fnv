@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, useMediaQuery} from '@chakra-ui/react';
 
-import {filter, isEmpty} from 'lodash';
+import {filter, includes, keys, omitBy, some} from 'lodash';
 import useQuery from 'hooks/useQuery';
 
 import {
@@ -11,27 +11,43 @@ import {
 	SORT_BY_FABRIC,
 	SORT_BY_COLLECTION,
 } from 'constants/filters';
+import {PRODUCT_CATEGORIES} from 'constants/products';
 
 import {FilterList, FilterMobile} from 'components/Filter';
 import {AccordionFilterBase} from 'components/Filter/AccordionFilter';
+import {useParams} from 'react-router-dom';
+
+const FILTER_KEYS = ['price', 'sort', 'size', 'stock', 'fabric', 'category'];
 
 function Filters() {
+	const {category: categoryParam} = useParams();
 	const {query, pushQuery, updateQuery} = useQuery();
-	const {price, sort, size, stock, fabric} = query || {};
+	const {price, sort, size, stock, fabric, category} = query || {};
 
 	function handleFilterItem(item, key) {
 		updateQuery({[key]: filter(query[key], (i) => i !== item)});
 	}
 
 	function handleClear() {
-		pushQuery({});
+		const filteredQuery = omitBy(query, (value, key) =>
+			includes(FILTER_KEYS, key)
+		);
+		pushQuery(filteredQuery);
 	}
+
+	const hasFilters = some(keys(query), (key) => includes(FILTER_KEYS, key));
 
 	return (
 		<Box position='sticky' top={3}>
-			{!isEmpty(query) && (
+			{hasFilters && (
 				<Box mb={2}>
-					<FilterList p={2} mb={2} data={query} onChange={handleFilterItem} />
+					<FilterList
+						p={2}
+						mb={2}
+						data={query}
+						filterKeys={FILTER_KEYS}
+						onChange={handleFilterItem}
+					/>
 
 					<Button variant='modimaOutline' onClick={handleClear}>
 						Clear All Filters
@@ -74,11 +90,21 @@ function Filters() {
 			/>
 
 			<AccordionFilterBase
+				mb={2}
 				name='fabric'
 				title='Fabric'
 				source={SORT_BY_FABRIC}
 				defaultValue={fabric}
 			/>
+
+			{!categoryParam && (
+				<AccordionFilterBase
+					name='category'
+					title='Category'
+					defaultValue={category}
+					source={PRODUCT_CATEGORIES}
+				/>
+			)}
 		</Box>
 	);
 }

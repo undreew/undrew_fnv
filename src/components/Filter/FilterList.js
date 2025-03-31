@@ -2,26 +2,25 @@ import React, {useEffect, useState} from 'react';
 import {HStack, Tag, TagCloseButton, TagLabel} from '@chakra-ui/react';
 
 import {FILTERS} from 'constants/filters';
-import {flatMap, map, upperCase} from 'lodash';
+import {filter, flatMap, includes, map, toPairs, upperCase} from 'lodash';
 
 function FilterList(props) {
-	const {data, onChange, ...rest} = props;
+	const {data, onChange, filterKeys, ...rest} = props;
 
 	const [filters, setFilters] = useState([]);
 
 	useEffect(() => {
 		if (data) {
-			const queries = flatMap(data, (value, key) => {
-				return map(value, (val) => {
-					return {
-						value: val,
-						queryKey: key,
-						label: FILTERS[val], // FILTERS may become dynamic
-					};
-				});
-			});
+			const filtersToApply = filter(toPairs(data), ([key]) =>
+				includes(filterKeys, key)
+			);
+
+			const queries = flatMap(filtersToApply, ([key, values]) =>
+				map(values, (value) => ({value, queryKey: key, label: FILTERS[value]}))
+			).filter(Boolean);
 			setFilters(queries);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
 	return (
