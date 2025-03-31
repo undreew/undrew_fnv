@@ -1,11 +1,14 @@
 import React from 'react';
+import {useParams} from 'react-router-dom';
 
 import {startCase} from 'lodash';
 
 import {PageContainer} from 'components/Page';
 import {DashboardBreadcrumb} from 'components/Dashboard';
 
-function CategoryBreadcrumbs({category}) {
+function CategoryBreadcrumbs() {
+	const {category} = useParams();
+
 	const items = [
 		{
 			to: '/',
