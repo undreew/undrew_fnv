@@ -1,7 +1,4 @@
-import {
-	PRODUCT_CATEGORIES_LABEL,
-	PRODUCT_CATEGORIES_ROUTE_PATH,
-} from './products';
+import {PRODUCT_CATEGORIES, PRODUCT_CATEGORIES_ROUTE_PATH} from './products';
 
 export const NAVS = {
 	collection: 'collection',
@@ -22,35 +19,35 @@ export const NAVS_LABEL = {
 const CATEGORY_ITEMS = [
 	{
 		label: 'Shop All',
-		to: '/all',
+		to: '/products',
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['blouses_and_tops'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['blouses_and_tops'],
+		label: PRODUCT_CATEGORIES['tops'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['tops']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['pants'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['pants'],
+		label: PRODUCT_CATEGORIES['pants'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['pants']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['dresses_and_jumpsuits'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['dresses_and_jumpsuits'],
+		label: PRODUCT_CATEGORIES['dress'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['dress']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['outwears_and_jackets'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['outwears_and_jackets'],
+		label: PRODUCT_CATEGORIES['jackets'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['jackets']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['pullovers'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['pullovers'],
+		label: PRODUCT_CATEGORIES['pullovers'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['pullovers']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['tees'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['tees'],
+		label: PRODUCT_CATEGORIES['tees'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['tees']}`,
 	},
 	{
-		label: PRODUCT_CATEGORIES_LABEL['shorts_and_skirts'],
-		to: PRODUCT_CATEGORIES_ROUTE_PATH['shorts_and_skirts'],
+		label: PRODUCT_CATEGORIES['shorts'],
+		to: `/products${PRODUCT_CATEGORIES_ROUTE_PATH['shorts']}`,
 	},
 ];
 
