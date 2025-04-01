@@ -13,6 +13,8 @@ function Wishlist() {
 	const {data, isFetching, onRemoveFromWishlist, isRemoving} = useWishlist();
 	const isLoading = some([isFetching, isRemoving]);
 
+	console.log(data);
+
 	return (
 		<Box>
 			<DashboardHeader title='My Wishlist' count={data?.length} />

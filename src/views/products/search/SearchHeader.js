@@ -2,6 +2,7 @@ import React from 'react';
 import {HStack, Text} from '@chakra-ui/react';
 
 function SearchHeader({count, title}) {
+	if (!title) return;
 	return (
 		<HStack justifyContent='center' my={14}>
 			<Text textStyle='bodyXl'>

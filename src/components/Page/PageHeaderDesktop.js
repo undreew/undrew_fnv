@@ -14,6 +14,7 @@ import PageHeaderDesktopLinks from './PageHeaderDesktopLinks';
 
 import {map} from 'lodash';
 import {useAuth} from 'contexts/AuthContext';
+import {CartDrawer} from 'components/Drawer';
 
 function PageHeaderDesktop() {
 	const {isAuth} = useAuth();
@@ -34,7 +35,8 @@ function PageHeaderDesktop() {
 			icon: <FaRegHeart />,
 			component: ButtonIcon,
 		},
-		{component: CartPopover},
+		// {component: CartPopover},
+		{component: CartDrawer},
 	].filter(Boolean);
 
 	return (
