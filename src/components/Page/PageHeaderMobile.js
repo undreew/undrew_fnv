@@ -1,8 +1,11 @@
 import React from 'react';
-import {Box, HStack, IconButton} from '@chakra-ui/react';
-import {FaRegHeart, FaShoppingBag} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
+import {FaRegHeart} from 'react-icons/fa';
+import {Box, HStack} from '@chakra-ui/react';
 
 import {LinkLogo} from 'components/Links';
+import {CartDrawer} from 'components/Drawer';
+import {ButtonIcon} from 'components/Buttons';
 
 import PageHeaderSearch from './PageHeaderSearch';
 import PageHeaderMobileMenu from './PageHeaderMobileMenu';
@@ -24,13 +27,9 @@ function PageHeaderMobile() {
 			</Box>
 
 			<HStack gap={2}>
-				<IconButton variant='ghost'>
-					<FaRegHeart />
-				</IconButton>
+				<ButtonIcon icon={<FaRegHeart />} as={Link} to='/wishlist' />
 
-				<IconButton variant='ghost'>
-					<FaShoppingBag />
-				</IconButton>
+				<ButtonIcon icon={<CartDrawer />} />
 			</HStack>
 		</>
 	);
