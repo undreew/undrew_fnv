@@ -6,7 +6,6 @@ import {Divider, HStack} from '@chakra-ui/react';
 
 import {LinkLogo} from 'components/Links';
 import {ButtonIcon} from 'components/Buttons';
-import {CartPopover} from 'components/Popover';
 
 import PageHeaderSearch from './PageHeaderSearch';
 import PageHeaderDesktopUser from './PageHeaderDesktopUser';
@@ -14,6 +13,7 @@ import PageHeaderDesktopLinks from './PageHeaderDesktopLinks';
 
 import {map} from 'lodash';
 import {useAuth} from 'contexts/AuthContext';
+import {CartDrawer} from 'components/Drawer';
 
 function PageHeaderDesktop() {
 	const {isAuth} = useAuth();
@@ -34,7 +34,7 @@ function PageHeaderDesktop() {
 			icon: <FaRegHeart />,
 			component: ButtonIcon,
 		},
-		{component: CartPopover},
+		{component: CartDrawer},
 	].filter(Boolean);
 
 	return (
