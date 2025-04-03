@@ -1,6 +1,6 @@
-import {FaShoppingBag} from 'react-icons/fa';
+import {FaMinus, FaPlus, FaShoppingBag} from 'react-icons/fa';
 import {Link, useLocation} from 'react-router-dom';
-import React, {createElement, useEffect} from 'react';
+import React, {createElement, useEffect, useState} from 'react';
 import {
 	Drawer,
 	DrawerBody,
@@ -21,6 +21,7 @@ import {IMAGE_URL} from 'constants/configs';
 import {PRODUCT_CURRENCY} from 'constants/products';
 
 import {useCart} from 'contexts/CartContext';
+import {ButtonIcon} from 'components/Buttons';
 
 function CartDrawerItem({item = {}, isRemoving, onRemove}) {
 	const {
@@ -34,6 +35,21 @@ function CartDrawerItem({item = {}, isRemoving, onRemove}) {
 
 	const {public_id} = first(images) || {};
 	const imageSrc = urlJoin(IMAGE_URL, public_id || '');
+
+	const {isAdding, onAddToCart, isReducing, onReduceItem} = useCart();
+	const [itemQuantity, setItemQuantity] = useState(quantity);
+
+	function handleIncrease() {
+		setItemQuantity((prev) => prev + 1);
+		onAddToCart({size, color, product_id: _id, quantity: 1});
+	}
+
+	function handleDecrease() {
+		setItemQuantity((prev) => prev - 1);
+		onReduceItem({size, color, product_id: _id, quantity: 1});
+	}
+
+	const isLoading = isAdding || isReducing;
 
 	return (
 		<HStack>
@@ -55,8 +71,25 @@ function CartDrawerItem({item = {}, isRemoving, onRemove}) {
 				<Text textStyle='bodyMd'>Size: {startCase(size)}</Text>
 				<Text textStyle='bodyMd'>Color: {startCase(color)}</Text>
 
-				<HStack justifyContent='space-between'>
-					<Text textStyle='bodyMd'>Quantity: {quantity}</Text>
+				<HStack justifyContent='space-between' flexGrow={1}>
+					<HStack bgColor='primary.50'>
+						<ButtonIcon
+							width={5}
+							height={5}
+							icon={<FaMinus />}
+							onClick={handleDecrease}
+							isDisabled={itemQuantity === 0 || isLoading}
+						/>
+						<Text textStyle='bodyMd'>{itemQuantity}</Text>
+						<ButtonIcon
+							width={5}
+							height={5}
+							icon={<FaPlus />}
+							isDisabled={isLoading}
+							onClick={handleIncrease}
+						/>
+					</HStack>
+
 					<Text textStyle='h6'>
 						{getFormattedPrice(total, 'php', PRODUCT_CURRENCY, '0,0.00')}
 					</Text>
