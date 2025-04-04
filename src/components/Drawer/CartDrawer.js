@@ -208,6 +208,8 @@ function CartDrawer() {
 						<DrawerFooter>
 							<Button
 								w='100%'
+								as={Link}
+								to='/checkout'
 								onClick={onClose}
 								variant='modimaSolid'
 								isDisabled={isFetching || isRemoving}
