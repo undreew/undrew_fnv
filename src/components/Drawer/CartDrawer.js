@@ -154,7 +154,7 @@ const DEFAULT_DATA_LENGTH = 2;
 function CartDrawer() {
 	const {pathname} = useLocation();
 	const {isOpen, onOpen, onClose} = useDisclosure();
-	const {isFetching, data, isRemoving, onRemoveItem} = useCart();
+	const {isFetching, cartItems, isRemoving, onRemoveItem} = useCart();
 
 	useEffect(() => {
 		if (pathname) onClose();
@@ -171,7 +171,7 @@ function CartDrawer() {
 				<DrawerOverlay />
 				<DrawerContent>
 					<DrawerCloseButton />
-					{!isEmpty(data) && (
+					{!isEmpty(cartItems) && (
 						<DrawerHeader>
 							<Text textStyle='h5' textAlign='center'>
 								Your Cart
@@ -186,11 +186,11 @@ function CartDrawer() {
 									return <CartDrawerSkeleton key={index} />;
 								})}
 							</>
-						) : isEmpty(data) ? (
+						) : isEmpty(cartItems) ? (
 							<CartEmptyState />
 						) : (
 							<VStack gap={5}>
-								{map(data, (item, index) => {
+								{map(cartItems, (item, index) => {
 									return (
 										<CartDrawerItem
 											key={index}
@@ -204,7 +204,7 @@ function CartDrawer() {
 						)}
 					</DrawerBody>
 
-					{!isEmpty(data) && (
+					{!isEmpty(cartItems) && (
 						<DrawerFooter>
 							<Button
 								w='100%'

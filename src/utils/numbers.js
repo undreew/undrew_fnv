@@ -1,3 +1,4 @@
+import {PRODUCT_CURRENCY} from 'constants/products';
 import {toLower} from 'lodash';
 import numeral from 'numeral';
 
@@ -9,7 +10,7 @@ export function getFormattedNumber(value, formatter = '0,0') {
 export function getFormattedPrice(
 	value,
 	currency,
-	currencyLabel,
+	currencyLabel = PRODUCT_CURRENCY,
 	format = '0,0.00'
 ) {
 	return `${currencyLabel[toLower(currency)]}${getFormattedNumber(

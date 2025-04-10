@@ -13,11 +13,18 @@ export function CartProvider({children}) {
 	const removeFromCartProps = useRemoveFromCart(getCartProps.onGetCart); // isRemoving, onRemoveItem
 	const reduceFormCart = useReduceFromCart(getCartProps.onGetCart); // isReducing, onReduceItem
 
+	const {data} = getCartProps;
+	const {items, total_quantity, grand_total} = data;
+
 	const value = {
 		...getCartProps,
 		...addToCartProps,
 		...removeFromCartProps,
 		...reduceFormCart,
+
+		cartItems: items,
+		cartGrandTotal: grand_total,
+		cartTotalQuantity: total_quantity,
 	};
 
 	return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

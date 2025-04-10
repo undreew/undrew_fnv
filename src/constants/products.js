@@ -32,3 +32,5 @@ export const PRODUCT_CATEGORIES_ROUTE_PATH = {
 	[PRODUCT_CATEGORIES_KEYS.tees]: '/tees',
 	[PRODUCT_CATEGORIES_KEYS.shorts_and_skirts]: '/shorts',
 };
+
+export const PRODUCT_TAX = 38.8;

@@ -40,7 +40,7 @@ const theme = extendTheme({
 	 */
 	textStyles: {
 		display1: {
-			fontSize: ['4rem'], // 64px
+			fontSize: ['2.5rem', '3.25rem', '4rem'], // [40px, 52px, 64px]
 			fontWeight: 'bold',
 		},
 		display2: {
@@ -68,7 +68,7 @@ const theme = extendTheme({
 			fontWeight: 'bold',
 		},
 		h6: {
-			fontSize: ['1rem'], // 16px
+			fontSize: ['0.875rem', '0.9375rem', '1rem'], // [14px, 15px, 16px]
 			fontWeight: 'bold',
 		},
 
@@ -81,7 +81,7 @@ const theme = extendTheme({
 			fontWeight: 'regular',
 		},
 		bodyMd: {
-			fontSize: ['1rem'], // 16px
+			fontSize: ['0.8125rem', '0.875rem', '1rem'], // [13px, 14px, 16px]
 			fontWeight: 'regular',
 		},
 		bodySm: {
