@@ -9,6 +9,7 @@ import products from './products';
 import errors from './errors';
 import logout from './logout';
 import wishlist from './wishlist';
+import checkout from './checkout';
 
 const routes = [
 	{
@@ -30,6 +31,10 @@ const routes = [
 	{
 		access: PAGE_ACCESS.guest,
 		...products,
+	},
+	{
+		access: PAGE_ACCESS.private,
+		...checkout,
 	},
 	{
 		access: PAGE_ACCESS.private,

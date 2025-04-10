@@ -1,11 +1,14 @@
 import React from 'react';
-
-import {startCase} from 'lodash';
+import {useParams} from 'react-router-dom';
 
 import {PageContainer} from 'components/Page';
 import {DashboardBreadcrumb} from 'components/Dashboard';
 
-function CategoryBreadcrumbs({category}) {
+import {PRODUCT_CATEGORIES} from 'constants/products';
+
+function CategoryBreadcrumbs() {
+	const {category} = useParams();
+
 	const items = [
 		{
 			to: '/',
@@ -13,7 +16,7 @@ function CategoryBreadcrumbs({category}) {
 		},
 		{
 			isActive: true,
-			label: startCase(category) || 'Loading...',
+			label: PRODUCT_CATEGORIES[category] || 'Loading...',
 		},
 	];
 

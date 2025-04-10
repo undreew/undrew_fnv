@@ -11,3 +11,7 @@ export const postAddToCart = (data) => {
 export const deleteRemoveItem = (data) => {
 	return fetcher('DELETE', '/cart/remove-item', data);
 };
+
+export const patchCartReduceItem = (data) => {
+	return fetcher('PATCH', '/cart/reduce-item', data);
+};

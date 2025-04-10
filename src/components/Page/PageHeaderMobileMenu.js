@@ -20,7 +20,6 @@ import {HStack, Button, Text, VStack} from '@chakra-ui/react';
 
 import {ButtonIcon} from 'components/Buttons';
 
-import urlJoin from 'url-join';
 import {first, get, keys, map} from 'lodash';
 import {NAV_SUBLINKS, NAVS, NAVS_LABEL} from 'constants/nav';
 
@@ -42,7 +41,10 @@ function PageHeaderMobileMenu(props) {
 			<ButtonIcon icon={<FaBars />} label='Mobile Menu' onClick={onOpen} />
 
 			<Drawer size='full' placement='left' isOpen={isOpen} onClose={onClose}>
-				<DrawerContent mt={95} sx={{height: 'calc(100dvh - 95px)'}}>
+				<DrawerContent
+					mt={{base: 90, md: 95}}
+					sx={{height: 'calc(100dvh - 95px)'}}
+				>
 					<DrawerBody py={10}>
 						{map(keys(NAVS), (item, index) => {
 							const mainLink = NAVS_LABEL[item];
@@ -69,11 +71,11 @@ function PageHeaderMobileMenu(props) {
 												{map(items, ({label, to}, index) => {
 													return (
 														<Text
+															to={to}
 															as={Link}
 															key={index}
 															textStyle='bodySm'
 															fontFamily='heading'
-															to={urlJoin('/products', to)}
 														>
 															{label}
 														</Text>
