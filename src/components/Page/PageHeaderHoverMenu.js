@@ -1,7 +1,7 @@
-import {Box} from '@chakra-ui/react';
+import {Box, useBreakpointValue} from '@chakra-ui/react';
 import React, {Fragment} from 'react';
 
-const MENU_TOP_OFFSET = 95;
+const BASE_MENU_TOP_OFFSET = 95;
 
 function PageHeaderHoverMenuBackdrop({
 	isOpen,
@@ -36,7 +36,11 @@ function PageHeaderHoverMenu(props) {
 		handleBackdrop = () => {},
 	} = props;
 
-	const backDropOffset = height + MENU_TOP_OFFSET;
+	const topOffset = useBreakpointValue({
+		base: 90,
+		md: BASE_MENU_TOP_OFFSET,
+	});
+	const backDropOffset = height + topOffset;
 
 	return (
 		<Fragment>
@@ -55,7 +59,7 @@ function PageHeaderHoverMenu(props) {
 					display: isOpen ? 'block' : 'none',
 					position: 'absolute',
 					zIndex,
-					top: MENU_TOP_OFFSET,
+					top: topOffset,
 					left: 0,
 					width: '100%',
 					bgColor: '#fff',
